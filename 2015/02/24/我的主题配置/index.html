@@ -1,0 +1,590 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>我的主题配置 | </title>
+    <meta name="author" content="gaoke">
+    
+    <meta name="description" content="hexo-theme-raytaylorism v2raytaylorism是一款清新的的响应式Material Design风格的Hexo主题。该主题支持最新的Hexo 3.1版本。
+本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。
+安装12cd yourbloggit clone https://github.com/raytaylorlin/hexo-theme-raytaylorism.git themes/raytaylorism">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="我的主题配置"/>
+    <meta property="og:site_name" content="前端小知识"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="前端小知识" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="green">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">前端小知识</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            Home
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            Archives
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            Reading
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            About
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            Search
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav green darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">你的大名</p>
+                        <p class="desc">Web前端/iOS/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    Home
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    Archives
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    Categories
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    Reading
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    About
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    Search
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav green darken-1" id="category-menu">
+    
+
+            
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">Search</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper green">
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>我的主题配置</h1>
+    
+
+
+            </div>
+            <time class="red-link-context" datetime="2015-02-23T16:00:00.000Z"><a href="/2015/02/24/我的主题配置/">2015-02-24</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/hexo/" class="chip red lighten-1">hexo</a>
+        
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#hexo-theme-raytaylorism-v2"><span class="section table-of-contents-text">hexo-theme-raytaylorism v2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#安装"><span class="section table-of-contents-text">安装</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#启用（重要）"><span class="section table-of-contents-text">启用（重要）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#配置指南（重要）"><span class="section table-of-contents-text">配置指南（重要）</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#样式"><span class="section table-of-contents-text">样式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#数据"><span class="section table-of-contents-text">数据</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#插件"><span class="section table-of-contents-text">插件</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#使用的插件"><span class="section table-of-contents-text">使用的插件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#更新日志"><span class="section table-of-contents-text">更新日志</span></a></li></ol>
+</div>
+
+
+            <div class="entry red-link-context">
+                <h2 id="hexo-theme-raytaylorism-v2"><a href="#hexo-theme-raytaylorism-v2" class="headerlink" title="hexo-theme-raytaylorism v2"></a>hexo-theme-raytaylorism v2</h2><p>raytaylorism是一款清新的的响应式Material Design风格的<a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>主题。该主题支持最新的Hexo 3.1版本。</p>
+<p><strong>本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。</strong></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd yourblog</span><br><span class="line">git clone https://github.com/raytaylorlin/hexo-theme-raytaylorism.git themes/raytaylorism</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>请不定期<code>git pull</code>一下主题以便获得最新的功能。<strong>请在pull之前先备份好你原来的配置。</strong></p>
+<h2 id="启用（重要）"><a href="#启用（重要）" class="headerlink" title="启用（重要）"></a>启用（重要）</h2><ol>
+<li>修改 <code>_config.yml</code> 中的<code>theme</code>一项的值为<code>raytaylorism</code></li>
+<li>由于本主题使用了<a href="https://hexo.io/docs/data-files.html" target="_blank" rel="external">Data Files</a>数据文件和额外的layout文件，所以请复制以下文件到你的博客目录中，否则在启动server时可能会报错<ul>
+<li><strong>复制<code>yourblog/themes/raytaylorism/_data</code>文件夹到<code>yourblog/source</code>目录下</strong></li>
+<li><strong>复制<code>yourblog/themes/raytaylorism/_md/</code>下所有文件夹（about和reading）到<code>yourblog/source</code>目录下</strong></li>
+</ul>
+</li>
+<li>在你的<code>yourblog/_config.yml</code>配置文件的<code>#pagination</code>的位置添加下面配置（禁用归档、标签、目录页面的分页功能）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">archive_generator:</span><br><span class="line">  per_page: 0</span><br><span class="line">tag_generator:</span><br><span class="line">  per_page: 0</span><br><span class="line">category_generator:</span><br><span class="line">  per_page: 0</span><br></pre></td></tr></table></figure>
+<h2 id="配置指南（重要）"><a href="#配置指南（重要）" class="headerlink" title="配置指南（重要）"></a>配置指南（重要）</h2><p>本主题作者博文<a href="http://raytaylorlin.com/daily/hexo-theme-raytaylorism-v2/" target="_blank" rel="external">《新版Hexo主题Raytaylorism v2发布》</a>写了一些本指南没有涉及到的主题使用小技巧，可以作为参考。其余配置细节，还是以本指南的说明为主。</p>
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><ul>
+<li><strong>主题颜色配置</strong>：如果对主题的配色不满意，可以自行在<code>yourblog/themes/raytaylorism/_config.yml</code>中的<code>color</code>一项进行配置。其中各部件的颜色字符串命名遵循<a href="http://materializecss.com/color.html#palette" target="_blank" rel="external">Materializecss色板</a>规范。注意：<code>link</code>、<code>article_title_link</code>和<code>tab</code>配置的是文字的颜色，<strong>因此不可以给这几项配置<code>lighten</code>和<code>darken</code>的颜色加亮加暗的后缀</strong>。</li>
+<li><strong>页面标题</strong>：在<code>yourblog/_config.yml</code>中，<code>title</code>项决定了页面header中显示的标题，<code>subtitle</code>决定了浏览器的<code>&lt;title&gt;</code>标签内容。</li>
+<li><strong>favicon</strong>：请将<code>yourblog/themes/raytaylorism/source/favicon.png</code>替换为你自己的图标文件，<strong>保持<code>favicon.png</code>命名不变</strong>。</li>
+<li><strong>多语言</strong>：目前主题支持简体中文、繁体中文和英文三种语言，可以将<code>yourblog/_config.yml</code>中<code>language</code>一项设置为<code>zh-CN</code>、<code>zh-TW</code>、<code>en</code>实现</li>
+</ul>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li><strong>外部链接</strong>：在<code>yourblog/source/_data/link.json</code>数据文件中进行配置<ul>
+<li>社交平台：对应<code>social</code>项，预设有<code>weibo</code>和<code>github</code>两种，如果需要其他社交平台可自行追加，但要注意<strong>key值必须与<a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_blank" rel="external">Font Awesome图标</a>相对应，否则可能无法正常显示</strong>。</li>
+<li>友情链接：对应<code>extern</code>项，其中key值为链接文字，value值为外链URL</li>
+</ul>
+</li>
+<li><strong>首页幻灯片</strong>：在<code>yourblog/source/_data/slider.json</code>数据文件中进行配置。可以配置背景图、标题、副标题、对齐方式。如果不需要幻灯片，直接把<code>slider.json</code>删除即可。</li>
+<li><strong>关于页面</strong>：<code>yourblog/themes/raytaylorism/_md/about/index.md</code>文件为自我介绍的正文，只需要像平时写博文一样正常地书写markdown即可。在<code>yourblog/source/_data/about.json</code>数据文件中配置关于页面的其他项。<ul>
+<li><code>avatar</code>：String类型，头像图片链接</li>
+<li><code>name</code>：String类型，自己的姓名</li>
+<li><code>tag</code>: String类型，描述自己的标签，<strong>主要显示在侧滑栏的头部</strong></li>
+<li><code>desc</code>：String类型，对自己的简短描述</li>
+<li><code>skills</code>：Object类型，对象技能展示。对象key值为技能名，value值为评分（取值为0-10的整数），取值为-1为分隔线。若不需要则将该字段设为null</li>
+<li><code>projects</code>：Array类型，作品与项目展示，内含多个Object，每个Object都有<code>name</code>作品名、<code>image</code>封面、<code>description</code>作品描述、<code>link_text</code>链接文字、<code>link</code>链接地址。若不需要则将该字段设为null</li>
+<li><code>reward</code>：Array类型，打赏二维码图片列表。例子中两个图片分别为微信和支付宝的二维码图片链接。若不需要则将该字段设为null</li>
+</ul>
+</li>
+<li><strong>读书页面</strong>：在<code>yourblog/source/_data/reading.json</code>数据文件中进行配置。读书页面有“已读”“在读”和“想读”三栏，分别对应<code>contents</code>项中的<code>readed</code>、<code>reading</code>和<code>wanted</code>字段，每个字段对应一个书籍列表，按照例子进行修改即可。</li>
+<li><strong>new标签</strong>：在<code>yourblog/source/_data/hint.json</code>数据文件中进行配置。<code>selector</code>项是一个数组，里面可以包含若干个CSS选择器用于选择要添加new标签的DOM元素。</li>
+</ul>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><ul>
+<li><strong>代码语法高亮</strong>：语法高亮的主题默认由CSS文件<code>yourblog/themes/raytaylorism/source/css/lib/prettify-tomorrow-night-eighties.css</code>。如果需要替换，可以到<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/" target="_blank" rel="external">Prettify Theme</a>选择你喜欢的主题，下载主题的CSS文件并存放到相同的目录下，并将<code>yourblog/themes/raytaylorism/_config.yml</code>中的<code>google_code_prettify_theme</code>一项改为对应的文件名。</li>
+<li><strong>评论</strong>：评论插件默认使用<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>，需要自行配置<code>yourblog/themes/raytaylorism/_config.yml</code>中的<code>duoshuo_shortname</code>为你自己站点的shortname</li>
+<li><p><strong>搜索</strong>：安装<a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="external">hexo-generator-search</a>，在<code>yourblog/_config.yml</code>中添加如下配置代码。如果不需要搜索功能，将<code>yourblog/themes/raytaylorism/_config.yml</code>中<code>menu</code>的<code>-id: search</code>那一整项删除即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: all</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RSS</strong>：安装<a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="external">hexo-generator-feed</a>，并按照说明配置（<code>atom.xml</code>的链接写在<code>yourblog/source/_data/link.json</code>的social项中，一般无需更改）</p>
+</li>
+<li><strong>站点分析</strong>：<ul>
+<li>Google分析：<code>yourblog/themes/raytaylorism/_config.yml</code>中的<code>google_analytics</code>一项改为你的<strong>Google分析track id</strong>，留空则不启用</li>
+<li>腾讯分析：（国内用户有Google分析被墙的可能）<code>yourblog/themes/raytaylorism/_config.yml</code>中的<code>tencent_analytics</code>一项改为你的<strong>sId</strong>（在腾讯分析添加站点后，复制代码中<code>sId=xxxxxxxx</code>那串数字就是sId），留空则不启用</li>
+<li>如果你需要其他第三方的站点统计，可以仿照上面的例子添加配置，并在<code>yourblog/themes/raytaylorism/layout/_partial/plugin/analytics.ejs</code>中添加相应的统计代码</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用的插件"><a href="#使用的插件" class="headerlink" title="使用的插件"></a>使用的插件</h2><ul>
+<li>样式框架：<a href="http://materializecss.com/" target="_blank" rel="external">Materialize</a></li>
+<li>代码语法高亮：<a href="https://code.google.com/p/google-code-prettify/" target="_blank" rel="external">Google-code-prettify</a></li>
+<li>流量分析：<a href="http://www.google.com/analytics/" target="_blank" rel="external">Google Analytics</a>、<a href="http://v2.ta.qq.com/" target="_blank" rel="external">腾讯分析</a></li>
+<li>第三方社会化评论：<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a></li>
+</ul>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><ul>
+<li>2.2.0(2016-4-22) 新增搜索功能</li>
+<li>2.1.3(2016-4-13) 修复多行代码被挤到下方的显示问题</li>
+<li>2.1.2(2016-4-5) 优化二级无序列表的样式，修复标签页和分类页的pagenav链接重复显示了两次导致404的问题</li>
+<li>2.1.1(2016-3-29) 优化正文表格和引用的显示</li>
+<li>2.1.0(2016-3-28) 增加对繁体中文和英文的支持</li>
+<li>2.0.0-alpha(2016-3-14) 发布raytaylorism v2 alpha版本</li>
+</ul>
+<p><a href="log.md">历史记录</a></p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large red">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect cyan" title="Return to top"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse light-green"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer green darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">Social</h5>
+                
+                    <a class="social-link" href="http://weibo.com/1956184117" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">Links</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright red-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">Blog powered by <a href="https://hexo.io">Hexo</a> | Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('red lighten-2');
+
+            
+            // 添加new标签
+            $('').append('<span class="new badge red"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal();
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword red lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword red lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
