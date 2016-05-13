@@ -84,8 +84,7 @@
     <entry>
       <title><![CDATA[sublime text3快捷键]]></title>
       <url>http://yoursite.com/2015/02/14/sublime-text3%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      <content type="html"><![CDATA[<p><a href="http://i4.buimg.com/23f3fafab3fad17c.jpg" title="点击显示原始图片" target="_blank" rel="external"><img src="http://i4.buimg.com/23f3fafab3fad17ct.jpg"></a></p>
-<h3 id="选择类"><a href="#选择类" class="headerlink" title="选择类"></a>选择类</h3><p>Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</p>
+      <content type="html"><![CDATA[<h3 id="选择类"><a href="#选择类" class="headerlink" title="选择类"></a>选择类</h3><p>Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</p>
 <p>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</p>
 <p>Ctrl+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</p>
 <p>Ctrl+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</p>
