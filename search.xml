@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[jquery中attr和prop的区别]]></title>
+      <url>http://yoursite.com/2015/08/26/jquery%E4%B8%ADattr%E5%92%8Cprop%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <content type="html"><![CDATA[<p>在高版本的jquery引入prop方法后，什么时候该用prop？什么时候用attr？它们两个之间有什么区别？这些问题就出现了。</p>
+<p>关于它们两个的区别，网上的答案很多。这里谈谈我的心得，我的心得很简单：</p>
+<ul>
+<li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li>
+</ul>
+<ul>
+<li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li>
+</ul>
+<p>上面的描述也许有点模糊，举几个例子就知道了。<br>    <a href="http://www.baidu.com" target="_self" class="btn">百度</a><br> 这个例子里\<a>元素的DOM属性有“href、target和class”，这些属性就是\<a>元素本身就带有的属性，也是W3C标准里就包含有这几个属性，或者说在IDE里能够智能提示出的属性，这些就叫做固有属性。处理这些属性时，建议使用prop方法。</a></a></p>
+<pre><code>&lt;a href=&quot;#&quot; id=&quot;link1&quot; action=&quot;delete&quot;&gt;删除&lt;/a&gt;
+</code></pre><p>这个例子里\<a>元素的DOM属性有“href、id和action”，很明显，前两个是固有属性，而后面一个“action”属性是我们自己自定义上去的，\<a>元素本身是没有这个属性的。这种就是自定义的DOM属性。处理这些属性时，建议使用attr方法。使用prop方法取值和设置属性值时，都会返回undefined值。</a></a></p>
+<p>再举一个例子：</p>
+<pre><code>input id=&quot;chk1&quot; type=&quot;checkbox&quot; /&gt;是否可见
+&lt;input id=&quot;chk2&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt;是否可见
+</code></pre><p>像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</p>
+<pre><code>$(&quot;#chk1&quot;).prop(&quot;checked&quot;) == false
+$(&quot;#chk2&quot;).prop(&quot;checked&quot;) == true
+</code></pre><p>如果上面使用attr方法，则会出现：</p>
+<pre><code>$(&quot;#chk1&quot;).attr(&quot;checked&quot;) == undefined
+$(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[我的主题配置]]></title>
       <url>http://yoursite.com/2015/02/24/%E6%88%91%E7%9A%84%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h2 id="hexo-theme-raytaylorism-v2"><a href="#hexo-theme-raytaylorism-v2" class="headerlink" title="hexo-theme-raytaylorism v2"></a>hexo-theme-raytaylorism v2</h2><p>raytaylorism是一款清新的的响应式Material Design风格的<a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>主题。该主题支持最新的Hexo 3.1版本。</p>

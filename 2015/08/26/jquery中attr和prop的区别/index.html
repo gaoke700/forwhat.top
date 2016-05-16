@@ -7,13 +7,21 @@
 
     
 
-    <title>Archives | </title>
+    <title>jquery中attr和prop的区别 | </title>
     <meta name="author" content="gaoke">
+    
+    <meta name="description" content="在高版本的jquery引入prop方法后，什么时候该用prop？什么时候用attr？它们两个之间有什么区别？这些问题就出现了。
+关于它们两个的区别，网上的答案很多。这里谈谈我的心得，我的心得很简单：
+
+对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。
+
+
+对于HTML元素我们自己自">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="jquery中attr和prop的区别"/>
     <meta property="og:site_name" content="前端小知识"/>
 
     
@@ -191,69 +199,103 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper green">
-        <span class="breadcrumb">Current page(Archives)</span>
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>jquery中attr和prop的区别</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="red-link-context" datetime="2015-08-26T12:19:24.000Z"><a href="/2015/08/26/jquery中attr和prop的区别/">2015-08-26</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/jQuery/" class="chip red lighten-1">jQuery</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2015
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2015/08/26/jquery中attr和prop的区别/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-08-26T12:19:24.000Z">2015-08-26</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                jquery中attr和prop的区别
-                            </a>
-                        
-                            <a href="/2015/02/24/我的主题配置/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-02-23T16:00:00.000Z">2015-02-24</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                我的主题配置
-                            </a>
-                        
-                            <a href="/2015/02/14/sublime-text3快捷键/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-02-14T10:12:24.000Z">2015-02-14</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                sublime text3快捷键
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
-        
-            <li>
-                <div class="collapsible-header ">
-                    <i class="fa fa-archive"></i>2014
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2014/12/24/hello-world/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2014-12-23T16:00:00.000Z">2014-12-24</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                Hello World
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
-        
-    </ul>
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry red-link-context">
+                <p>在高版本的jquery引入prop方法后，什么时候该用prop？什么时候用attr？它们两个之间有什么区别？这些问题就出现了。</p>
+<p>关于它们两个的区别，网上的答案很多。这里谈谈我的心得，我的心得很简单：</p>
+<ul>
+<li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li>
+</ul>
+<ul>
+<li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li>
+</ul>
+<p>上面的描述也许有点模糊，举几个例子就知道了。<br>    <a href="http://www.baidu.com" target="_self" class="btn">百度</a><br> 这个例子里\<a>元素的DOM属性有“href、target和class”，这些属性就是\<a>元素本身就带有的属性，也是W3C标准里就包含有这几个属性，或者说在IDE里能够智能提示出的属性，这些就叫做固有属性。处理这些属性时，建议使用prop方法。</a></a></p>
+<pre><code>&lt;a href=&quot;#&quot; id=&quot;link1&quot; action=&quot;delete&quot;&gt;删除&lt;/a&gt;
+</code></pre><p>这个例子里\<a>元素的DOM属性有“href、id和action”，很明显，前两个是固有属性，而后面一个“action”属性是我们自己自定义上去的，\<a>元素本身是没有这个属性的。这种就是自定义的DOM属性。处理这些属性时，建议使用attr方法。使用prop方法取值和设置属性值时，都会返回undefined值。</a></a></p>
+<p>再举一个例子：</p>
+<pre><code>input id=&quot;chk1&quot; type=&quot;checkbox&quot; /&gt;是否可见
+&lt;input id=&quot;chk2&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt;是否可见
+</code></pre><p>像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</p>
+<pre><code>$(&quot;#chk1&quot;).prop(&quot;checked&quot;) == false
+$(&quot;#chk2&quot;).prop(&quot;checked&quot;) == true
+</code></pre><p>如果上面使用attr方法，则会出现：</p>
+<pre><code>$(&quot;#chk1&quot;).attr(&quot;checked&quot;) == undefined
+$(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
+</code></pre>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2015/08/26/jquery中attr和prop的区别/" data-title="jquery中attr和prop的区别" data-url="http://yoursite.com/2015/08/26/jquery中attr和prop的区别/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'true'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
