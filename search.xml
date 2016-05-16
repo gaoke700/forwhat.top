@@ -12,11 +12,12 @@
 <li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li>
 </ul>
 <ul>
-<li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li>
+<li><p>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</p>
+<a id="more"></a>
+<p>上面的描述也许有点模糊，举几个例子就知道了。<br><a href="http://www.baidu.com" target="_self" class="btn">百度</a><br>这个例子里\<a>元素的DOM属性有“href、target和class”，这些属性就是\<a>元素本身就带有的属性，也是W3C标准里就包含有这几个属性，或者说在IDE里能够智能提示出的属性，这些就叫做固有属性。处理这些属性时，建议使用prop方法。</a></a></p>
+<p><a href="#" id="link1" action="delete">删除</a><br>这个例子里\<a>元素的DOM属性有“href、id和action”，很明显，前两个是固有属性，而后面一个“action”属性是我们自己自定义上去的，\<a>元素本身是没有这个属性的。这种就是自定义的DOM属性。处理这些属性时，建议使用attr方法。使用prop方法取值和设置属性值时，都会返回undefined值。</a></a></p>
+</li>
 </ul>
-<p>上面的描述也许有点模糊，举几个例子就知道了。<br>    <a href="http://www.baidu.com" target="_self" class="btn">百度</a><br> 这个例子里\<a>元素的DOM属性有“href、target和class”，这些属性就是\<a>元素本身就带有的属性，也是W3C标准里就包含有这几个属性，或者说在IDE里能够智能提示出的属性，这些就叫做固有属性。处理这些属性时，建议使用prop方法。</a></a></p>
-<pre><code>&lt;a href=&quot;#&quot; id=&quot;link1&quot; action=&quot;delete&quot;&gt;删除&lt;/a&gt;
-</code></pre><p>这个例子里\<a>元素的DOM属性有“href、id和action”，很明显，前两个是固有属性，而后面一个“action”属性是我们自己自定义上去的，\<a>元素本身是没有这个属性的。这种就是自定义的DOM属性。处理这些属性时，建议使用attr方法。使用prop方法取值和设置属性值时，都会返回undefined值。</a></a></p>
 <p>再举一个例子：</p>
 <pre><code>input id=&quot;chk1&quot; type=&quot;checkbox&quot; /&gt;是否可见
 &lt;input id=&quot;chk2&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt;是否可见
