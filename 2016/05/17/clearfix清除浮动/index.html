@@ -13,7 +13,7 @@
     <meta name="description" content="clearfix清除浮动首先在很多很多年以前我们常用的清除浮动是这样的。
 .clear{clear:both;line-height:0;}
 现在可能还可以在很多老的站点上可以看到这样的代码，相当暴力有效的解决浮动的问题。
-但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。">
+但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。这种做法如果在页面复杂的布局要经常清楚浮动的时候就会产生很多的空标签，增加了页面无用标签，不利于页面优化。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -242,8 +242,7 @@
                 <h2 id="clearfix清除浮动"><a href="#clearfix清除浮动" class="headerlink" title="clearfix清除浮动"></a>clearfix清除浮动</h2><p>首先在很多很多年以前我们常用的清除浮动是这样的。</p>
 <pre><code>.clear{clear:both;line-height:0;}
 </code></pre><p>现在可能还可以在很多老的站点上可以看到这样的代码，相当暴力有效的解决浮动的问题。</p>
-<p>但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。这种做法如果在页面复杂的布局要经常清楚浮动的时候就会产生很多的空标签，增加了页面无用标签，不利于页面优化。</p>
-<p>因此有很多大神就研究出了 clearfix 清除浮动的方法，直接解决了上面的缺陷，不需要增加空标签，直接在有浮动的外层加上这个样式就可以了，这也是我们今天要讨论的clearfix进化史。</p>
+<p>但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。这种做法如果在页面复杂的布局要经常清楚浮动的时候就会产生很多的空标签，增加了页面无用标签，不利于页面优化。<br><a id="more"></a><br>因此有很多大神就研究出了 clearfix 清除浮动的方法，直接解决了上面的缺陷，不需要增加空标签，直接在有浮动的外层加上这个样式就可以了，这也是我们今天要讨论的clearfix进化史。</p>
 <h3 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h3><pre><code>.clearfix:after { 
        visibility: hidden; 
         display: block; 
