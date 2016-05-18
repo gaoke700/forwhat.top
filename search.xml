@@ -5,10 +5,55 @@
     
     <entry>
       <title><![CDATA[前端面试题1]]></title>
-      <url>http://yoursite.com/2016/05/17/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%981/</url>
+      <url>http://yoursite.com/2015/12/06/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%981/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
-<p><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions" target="_blank" rel="external">前言</a></p>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><hr>
+<p>前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。</p>
+<p>面试有几点需注意：(来源寒冬winter 老师，github:@wintercn)</p>
+<ul>
+<li><p>面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。</p>
+</li>
+<li><p>题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。</p>
+</li>
+<li><p>细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。</p>
+</li>
+<li><p>回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）</p>
+</li>
+<li><p>资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。</p>
+</li>
+</ul>
+<p>前端开发知识点：</p>
+<pre><code>HTML&amp;CSS：
+        对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、选择器优先级、
+    HTML5、CSS3、Flexbox
+
+JavaScript：
+    数据类型、运算、对象、Function、继承、闭包、作用域、原型链、事件、RegExp、JSON、Ajax、
+    DOM、BOM、内存泄漏、跨域、异步装载、模板引擎、前端MVC、路由、模块化、Canvas、ECMAScript 6、Nodejs
+
+其他：
+    移动端、响应式、自动化构建、HTTP、离线存储、WEB安全、优化、重构、团队协作、可维护、易用性、SEO、UED、架构、职业生涯、快速学习能力
+</code></pre><p>作为一名前端工程师，无论工作年头长短都应该掌握的知识点：</p>
+<p>此条由 王子墨 发表在 <a href="http://lab.yuanwai.wang/" target="_blank" rel="external">攻城师的实验室</a></p>
+<pre><code>1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
+
+2、DOM操作 ——如何添加、移除、移动、复制、创建和查找节点等。
+
+3、事件 —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。
+
+4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。
+
+5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。
+
+6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型
+
+7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们
+
+8、浮动元素 ——怎么使用它们、它们有什么问题以及怎么解决这些问题。
+
+9、HTML与XHTML ——二者有什么区别，你觉得应该使用哪一个并说出理由。
+
+10、JSON —— 作用、用途、设计结构。
+</code></pre><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><hr>
 <ul>
 <li><p>Doctype作用？严格模式与混杂模式如何区分？它们有何意义?</p>
 </li>
@@ -53,7 +98,8 @@
 <li><p>title与h1的区别、b与strong的区别、i与em的区别？</p>
 </li>
 </ul>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="###CSS"></a>###CSS</h2><ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><hr>
+<ul>
 <li><p>介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</p>
 </li>
 <li><p>CSS选择符有哪些？哪些属性可以继承？</p>
@@ -149,7 +195,8 @@
 <li><p>什么是CSS 预处理器 / 后处理器？</p>
 </li>
 </ul>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="###JavaScript"></a>###JavaScript</h2><ul>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><hr>
+<ul>
 <li><p>介绍JavaScript的基本数据类型。</p>
 </li>
 <li><p>说说写JavaScript的基本规范？</p>
@@ -319,18 +366,17 @@
 <li><p>我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？</p>
 </li>
 </ul>
-<p>###ECMAScript6 相关</p>
-<ul>
+<h3 id="ECMAScript6-相关"><a href="#ECMAScript6-相关" class="headerlink" title="ECMAScript6 相关"></a>ECMAScript6 相关</h3><ul>
 <li>Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？</li>
 </ul>
-<p>###前端框架相关</p>
-<ul>
+<h3 id="前端框架相关"><a href="#前端框架相关" class="headerlink" title="前端框架相关"></a>前端框架相关</h3><ul>
 <li><p>react-router 路由系统的实现原理？</p>
 </li>
 <li><p>React中如何解决第三方类库的问题?</p>
 </li>
 </ul>
-<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="##其他问题"></a>##其他问题</h2><ul>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><hr>
+<ul>
 <li><p>原来公司工作流程是怎么样的，如何与其他人协作的？如何夸部门合作的？</p>
 </li>
 <li><p>你遇到过比较难的技术问题是？你是如何解决的？</p>
@@ -424,7 +470,8 @@
 <li><p>最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p>
 </li>
 </ul>
-<h2 id="有趣的问题"><a href="#有趣的问题" class="headerlink" title="###有趣的问题"></a>###有趣的问题</h2><ul>
+<h3 id="有趣的问题"><a href="#有趣的问题" class="headerlink" title="有趣的问题"></a>有趣的问题</h3><hr>
+<ul>
 <li><p>A、B两人分别在两座岛上。B生病了，A有B所需要的药。C有一艘小船和一个可以上锁的箱子。C愿意在A和B之间运东西，但东西只能放在箱子里。只要箱子没被上锁，C都会偷走箱子里的东西，不管箱子里有什么。如果A和B各自有一把锁和只能开自己那把锁的钥匙，A应该如何把东西安全递交给B？</p>
 <pre><code>答案：A把药放进箱子，用自己的锁把箱子锁上。B拿到箱子后，再在箱子上加一把自己的锁。
 箱子运回A后，A取下自己的锁。箱子再运到B手中时，B取下自己的锁，获得药物。
@@ -433,8 +480,10 @@
 <pre><code>答案是通过探测鼠标移动的方向和轨迹，具体查看Khan Academy工程师 Ben Kamens 写的 jQuery插件
 </code></pre></li>
 </ul>
-<h2 id="相关答案"><a href="#相关答案" class="headerlink" title="##相关答案"></a>##相关答案</h2><p><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers" target="_blank" rel="external">偷看答案</a></p>
-<h2 id="前端学习网站推荐"><a href="#前端学习网站推荐" class="headerlink" title="##前端学习网站推荐"></a>##前端学习网站推荐</h2><pre><code>1. 极客标签：     http://www.gbtags.com/
+<h2 id="相关答案"><a href="#相关答案" class="headerlink" title="相关答案"></a>相关答案</h2><hr>
+<p><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers" target="_blank" rel="external">偷看答案</a></p>
+<h2 id="前端学习网站推荐"><a href="#前端学习网站推荐" class="headerlink" title="前端学习网站推荐"></a>前端学习网站推荐</h2><hr>
+<pre><code>1. 极客标签：     http://www.gbtags.com/
 
 2. 码农周刊：     http://weekly.manong.io/issues/
 
@@ -455,7 +504,8 @@
 10.w3school：    http://www.w3school.com.cn/
 
 11.mozilla：     https://developer.mozilla.org/zh-CN/docs/Web/
-</code></pre><h2 id="文档推荐"><a href="#文档推荐" class="headerlink" title="##文档推荐"></a>##文档推荐</h2><ul>
+</code></pre><h2 id="文档推荐"><a href="#文档推荐" class="headerlink" title="文档推荐"></a>文档推荐</h2><hr>
+<ul>
 <li><p><a href="http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html" target="_blank" rel="external">jQuery 基本原理</a></p>
 </li>
 <li><p><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/" target="_blank" rel="external">JavaScript 秘密花园</a></p>
@@ -467,12 +517,13 @@
 <li><p><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ECMAScript 6入门</a></p>
 </li>
 </ul>
+<p>本文引自<a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Question" target="_blank" rel="external">https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Question</a></p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[jade的使用]]></title>
-      <url>http://yoursite.com/2016/05/17/jade%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      <url>http://yoursite.com/2015/11/17/jade%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>Jade是一个基于javascript，可以运行与node与浏览器环境的一个前端模板引擎</p>
 <h2 id="tag标签"><a href="#tag标签" class="headerlink" title="tag标签"></a>tag标签</h2><p>通过缩进关系，代替以往html的层级包含关系，如一个简单的静态页面可以表达为<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032309283997.png" alt=""><br><a id="more"></a><br>内联书写层级<br>   a: img<br>   通过分号区分元素内内容<br>自闭合标签<br>   img、meta、link 等自闭合会自动识别<br>可通过在标签后添加” / “强制输出自闭合元素<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032309514383.png" alt=""><br>style属性<br>style属性可以想上面的格式传入一个文本包含所有样式内容，或者传入一个类似js中的对象，达到同样的效果<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310010255.png" alt=""></p>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>使用” = “号输出变量值到元素内<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310126718.png" alt=""><br>通过 #{variable} 插入相应的变量值<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310227714.png" alt=""></p>
@@ -487,7 +538,7 @@
     
     <entry>
       <title><![CDATA[jade的基础语法]]></title>
-      <url>http://yoursite.com/2016/05/17/jade%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+      <url>http://yoursite.com/2015/11/17/jade%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>如果你熟悉 Sublime Text 和 Emmet 的组合，那么 Jade 也会是你的菜。<code>模板引擎</code>这个术语听起来太过于高大上了，私下里我更喜欢称它们是 HTML 预处理语言，非常类似 Sass 之于 CSS —— 不过相比起 Sass 操纵 CSS 的强大力量，Jade 对 HTML 的影响只能说本本分分，没有什么激进之处，当然，这并不是坏事。</p>
 <p>Jade 中省略了大量的尖括号，给我的感觉就是简洁和高效。这里不会讨论各种模板引擎的优劣，技术和工具的好坏向来都是不死不休的伪命题，还是花更多的时间来创造有价值的东西更有意思。</p>
 <p>本文主要参考了 <a href="http://jade-lang.com/reference/" target="_blank" rel="external">Jade 官方的英文文档</a>，并根据自己的经验缩减了部分内容——求全求精不是本文的目的，希望本文能够让你快速入门。即使做了部分精简，掌握之后也可以应对百分之九十以上的需求。此外，官方文档的各个小节是按字典序排列的，这并不适合第一次接触 Jade 的开发者，所以你懂得，我又给它改了……</p>
@@ -1119,100 +1170,8 @@ block prepend content
     </entry>
     
     <entry>
-      <title><![CDATA[clearfix清除浮动进化史]]></title>
-      <url>http://yoursite.com/2016/05/17/clearfix%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</url>
-      <content type="html"><![CDATA[<h2 id="clearfix清除浮动"><a href="#clearfix清除浮动" class="headerlink" title="clearfix清除浮动"></a>clearfix清除浮动</h2><p>首先在很多很多年以前我们常用的清除浮动是这样的。</p>
-<pre><code>.clear{clear:both;line-height:0;}
-</code></pre><p>现在可能还可以在很多老的站点上可以看到这样的代码，相当暴力有效的解决浮动的问题。</p>
-<p>但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。这种做法如果在页面复杂的布局要经常清楚浮动的时候就会产生很多的空标签，增加了页面无用标签，不利于页面优化。<br><a id="more"></a><br>因此有很多大神就研究出了 clearfix 清除浮动的方法，直接解决了上面的缺陷，不需要增加空标签，直接在有浮动的外层加上这个样式就可以了，这也是我们今天要讨论的clearfix进化史。</p>
-<h3 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h3><pre><code>.clearfix:after { 
-       visibility: hidden; 
-        display: block; 
-    font-size: 0; 
-    content: &quot; &quot;; 
-    clear: both; 
-    height: 0; 
-} 
-.clearfix { display: inline-table; } 
-
-* html .clearfix { height: 1%; }        //Hides from IE-mac 
-.clearfix { display: block; }            //End hide from IE-mac
-</code></pre><p>解释一下以上的代码：</p>
-<ul>
-<li>对大多数符合标准的浏览器应用第一个声明块，目的是创建一个隐形的内容为空的块来为目标元素清除浮动。</li>
-<li>第二条为clearfix应用 inline-table 显示属性，仅仅针对IE/Mac。利用 * 对 IE/Mac 隐藏一些规则：</li>
-<li>height:1% 用来触发 IE6 下的haslayout。</li>
-<li><p>重新对 IE/Mac 外的IE应用 block 显示属性。</p>
-</li>
-<li><p>最后一行用于结束针对 IE/Mac 的hack。（是不是觉得很坑爹，Mac下还有IE）</p>
-</li>
-</ul>
-<p>起源代码可能也是很早期的时候了，再往后Mac下的IE5也发展到IE6了，各种浏览器开始向W3C这条标准慢慢靠齐了。所以就有了下面这个写法出现了。</p>
-<pre><code>.clearfix:after { 
-    visibility: hidden; 
-    display: block; 
-    font-size: 0; 
-    content: &quot; &quot;; 
-    clear: both; 
-    height: 0; 
-} 
-* html .clearfix { zoom: 1; }                  /* IE6 */
-*:first-child+html .clearfix { zoom: 1; }     /* IE7 */
-</code></pre><p>IE6 和 IE7 都不支持 :after 这个伪类，因此需要后面两条来触发IE6/7的haslayout，以清除浮动。幸运的是IE8支持 :after 伪类。因此只需要针对IE6/7的hack了。</p>
-<p>在一个有float 属性元素的外层增加一个拥有clearfix属性的div包裹，可以保证外部div的height，即清除”浮动元素脱离了文档流，包围图片和文本的 div 不占据空间”的问题。</p>
-<p>Jeff Starr 在这里针对IE6/7用了两条语句来触发haslayout。我在想作者为什么不直接用 * 来直接对 IE6/7 同时应用 zoom:1 或者直接就写成：</p>
-<pre><code>.clearfix:after { 
-    visibility: hidden; 
-    display: block; 
-    font-size: 0; 
-    content: &quot; &quot;; 
-    clear: both; 
-    height: 0; 
-} 
-.clearfix{*zoom:1;}
-</code></pre><p>　　但是对于很多同学这种优化程度代码还是不够给力，clearfix 发展到现在的两个终极版。</p>
-<h3 id="重构clearfix浮动"><a href="#重构clearfix浮动" class="headerlink" title="重构clearfix浮动"></a>重构clearfix浮动</h3><p>构成Block Formatting Context的方法有下面几种： </p>
-<ul>
-<li><p>float的值不为none。</p>
-</li>
-<li><p>overflow的值不为visible。</p>
-</li>
-<li><p>display的值为table-cell, table-caption, inline-block中的任何一个。 </p>
-</li>
-<li><p>position的值不为relative和static。 </p>
-</li>
-</ul>
-<p>很明显，float和position不合适我们的需求。那只能从overflow或者display中选取一个。</p>
-<p>因为是应用了.clearfix和.menu的菜单极有可能是多级的，所以overflow: hidden或overflow: auto也不满足需求（会把下拉的菜单隐藏掉或者出滚动条），那么只能从display下手。 </p>
-<p>我们可以将.clearfix的display值设为table-cell, table-caption, inline-block中的任何一个</p>
-<p>但是display: inline-block会产生多余空白，所以也排除掉。</p>
-<p>剩下的只有table-cell, table-caption，为了保证兼容可以用display: table来使.clearfix形成一个Block Formatting Context</p>
-<p>因为display: table会产生一些匿名盒子，这些匿名盒子的其中一个（display值为table-cell）会形成Block Formatting Context。</p>
-<p>这样我们新的.clearfix就会闭合内部元素的浮动。</p>
-<p>后面又有人对此进行了改良：</p>
-<h4 id="终极版一："><a href="#终极版一：" class="headerlink" title="终极版一："></a>终极版一：</h4><pre><code>.clearfix:after { 
-    content:&quot;\200B&quot;; 
-    display:block; 
-    height:0; 
-    clear:both; 
-} 
-.clearfix {*zoom:1;}    /*IE/7/6*/
-</code></pre><p>　　解释下:content:”\200B”;这个参数，Unicode字符里有一个“零宽度空格”，即 U+200B，代替原来的“.”，可以缩减代码量。而且不再使用visibility:hidden。</p>
-<h4 id="终极版二："><a href="#终极版二：" class="headerlink" title="终极版二："></a>终极版二：</h4><pre><code>.clearfix:before,.clearfix:after{ 
-    content:&quot;&quot;; 
-    display:table; 
-} 
-.clearfix:after{clear:both;} 
-.clearfix{ 
-    *zoom:1;    /*IE/7/6*/
-}
-</code></pre><p>　　这两个终极版代码都很简洁，终极版一和二都可以使用。<br>　　<br>　本文参考<a href="http://www.admin10000.com/document/6259.html" target="_blank" rel="external">http://www.admin10000.com/document/6259.html</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[自动化构建工具gulp]]></title>
-      <url>http://yoursite.com/2016/05/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7gulp/</url>
+      <url>http://yoursite.com/2015/10/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7gulp/</url>
       <content type="html"><![CDATA[<h2 id="What-Is-Gulp"><a href="#What-Is-Gulp" class="headerlink" title="What Is Gulp?"></a>What Is Gulp?</h2><p>Gulp是一个构建系统，它能通过自动执行常见任务，比如编译预处理CSS，压缩JavaScript和刷新浏览器，来改进网站开发的过程。</p>
 <p>Gulp是基于Node.js构建的，因此Gulp源文件和你用来定义任务的Gulp文件都被写进了JavaScript（或者CoffeeScript）里。</p>
 <p>Gulp本身虽然不能完成很多任务，但它有大量插件可用，开发者可以访问插件页面或者在npm搜索gulpplugin就能看到。例如，有些插件可以用来执行JSHint、编译CoffeeScript，执行Mocha测试，甚至更新版本号。</p>
@@ -1681,6 +1640,161 @@ gulp.task(&apos;watch&apos;, function() {
     </entry>
     
     <entry>
+      <title><![CDATA[hexo博客搭建]]></title>
+      <url>http://yoursite.com/2015/09/18/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<h2 id="本文将教大家怎么搭建hexo博客"><a href="#本文将教大家怎么搭建hexo博客" class="headerlink" title="本文将教大家怎么搭建hexo博客"></a>本文将教大家怎么搭建hexo博客</h2><h3 id="准备工作（本文所有操作均在mac系统下执行）："><a href="#准备工作（本文所有操作均在mac系统下执行）：" class="headerlink" title="准备工作（本文所有操作均在mac系统下执行）："></a>准备工作（本文所有操作均在mac系统下执行）：</h3><h4 id="1-搭建Node-js运行环境"><a href="#1-搭建Node-js运行环境" class="headerlink" title="1.搭建Node.js运行环境"></a>1.搭建Node.js运行环境</h4><p>hexo是一个基于Node.js的第三方模块，能够生成一个<code>静态</code>博客框架，所以要搭建hexo需要先安装node.js</p>
+<p>Node.js<a href="https://nodejs.org/en/" target="_blank" rel="external">下载地址</a> 建议安装LTS稳定版<br><a id="more"></a><br>该文件属于系统文件，安装后没有自己的图标进口，可通过在终端输入以下命令查看是否安装成功：</p>
+<pre><code>$ node -v
+</code></pre><p>该命令是打印Node.js的版本,如果显示版本号（version），表示安装成功。</p>
+<h4 id="2-git账号以及本地环境搭建"><a href="#2-git账号以及本地环境搭建" class="headerlink" title="2.git账号以及本地环境搭建"></a>2.git账号以及本地环境搭建</h4><p>这个教程大家可以参考我上一篇博客<a href=""></a>;</p>
+<p>新建一个仓库，仓库名（即博客地址）设置为yourgitname.github.io</p>
+<p>比如我的git账号是gaoke700，那我的这个博客域名就是<a href="http://gaoke700.github.io" target="_blank" rel="external">gaoke700.github.io</a></p>
+<h3 id="安装hexo插件"><a href="#安装hexo插件" class="headerlink" title="安装hexo插件"></a>安装hexo插件</h3><p>下载安装hexo<br>Node.js的第三方模块托管地址是<a href="https://www.npmjs.com/" target="_blank" rel="external">https://www.npmjs.com/</a>在这里我们能找到数以万计的Node.js第三方模块，node在安装的时候默认安装npm环境，这样我们就可以直接使用npm命令安装hexo</p>
+<pre><code>npm install hexo
+</code></pre><p>如果需要权限，在命令前面加上 sudo ,如果要全局安装，再加个 -g</p>
+<h3 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h3><p>在当前博客目录下：</p>
+<pre><code>hexo init
+</code></pre><p>初始化完成后，文件内会默认生成播客相关的文件，一般包括：</p>
+<ol>
+<li>_config.yml 配置文件</li>
+<li>node_modules 模块文件夹</li>
+<li>package.json 插件记录文件</li>
+<li>scaffolds  </li>
+<li>source 里面放博客的md文件和一些主题里的配置文件</li>
+<li>theme 里面放置主题文件</li>
+<li>public  这个一般刚装上是没有的，在第一次 hexo -g生成静态文件后才有</li>
+<li>等等</li>
+</ol>
+<h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><p>1.通过输入以下：</p>
+<pre><code>hexo new 文章titil
+</code></pre><p>通过该命令，系统会在source/_posts/目录下生成一个 文章titil.md 文件，然后通过md语法编辑博客内容就好了，特别简单的md语法在mou菜单下面的help下面的mou help里面。</p>
+<p>2.直接在source/_posts/目录下新建或复制一份md文件，然后进行编辑。跟上面唯一的区别就是复制出来的文章的时间信息跟被复制的文件的时间一样，我们需要手动改一下（时间是可以随便改的哟），而通过终端创建出来的文件时间是创建文件那一刻的时间。</p>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><pre><code>hexo g
+</code></pre><p>g:generate 该命令将md文件和相关的配置文件生成浏览器可以解析的HTML和CSS以及js文件，并放到一个自动新建的public文件夹下</p>
+<h3 id="本地查看"><a href="#本地查看" class="headerlink" title="本地查看"></a>本地查看</h3><pre><code>hexo s
+</code></pre><p>或者 hexo server 运行本地服务器，运行完成后，下面会出现服务器地址 一般为 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> ,只要将这个地址在浏览器中打开就可以看到效果了，退出服务器运行环境 按 ctrl + c 就可以了</p>
+<h3 id="将本地文件上线"><a href="#将本地文件上线" class="headerlink" title="将本地文件上线"></a>将本地文件上线</h3><h4 id="deployer"><a href="#deployer" class="headerlink" title="deployer"></a>deployer</h4><p>将hexo的本地文件上传到线上git，我们需要安装一个插件：hexo-deployer-git</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p>通过–save 安装成功后 会在package.json文件里多出一行”hexo-deployer-git”: “^0.1.0”,的记录信息。 “^0.1.0”为版本号</p>
+<h4 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h4><p>打开你的_config.yml配置文件，找到deploy，更改为：</p>
+<pre><code>deploy:
+      type: git
+      repo: https://github.com/yourname/yourname.github.io.git
+</code></pre><p>设置你域名仓库的ssh或https链接，让终端知道往哪里传。直接打开仓库，右边有个 Clone or download 点击后将里面的地址直接复制粘贴过来。注意冒号后面的空格；当然上面的yourname要改为你的git账户名</p>
+<h4 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h4><p>安装好后，执行：</p>
+<pre><code>hexo d
+</code></pre><p>通过该命令会把生成好的静态文件上传到你的github，完成后，登入你的yourname.github.io就可以看到你的博客页面了</p>
+<h3 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h3><p>如果你觉得自己的主题不够漂亮，你可以在 theme 文件夹下 你的主题文件里做更改。</p>
+<p>你也可以直接在网上下载你喜欢的 hexo 主题，直接放到 theme 目录下，然后将_config.yml文件下 “theme: themeName”的themeName更改为你的主题文件夹名字，注意冒号后面有空格。</p>
+<p>当然如果你够牛，你可以自己写自己的主题。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[github的下载与上传]]></title>
+      <url>http://yoursite.com/2015/09/17/%E6%9C%AC%E5%9C%B0git%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<h2 id="1-申请git账号"><a href="#1-申请git账号" class="headerlink" title="1.申请git账号"></a>1.申请git账号</h2><p>这个大家自己去git官网申请，申请地址：<a href="https://github.com/join?source=header-home" target="_blank" rel="external">https://github.com/join?source=header-home</a><br><a id="more"></a></p>
+<h2 id="2-搭建本地环境"><a href="#2-搭建本地环境" class="headerlink" title="2.搭建本地环境"></a>2.搭建本地环境</h2><p>mac下通过安装Xcode来搭建git环境，xcode自带git环境。安装完成后，通过终端输入以下命令检测git环境：</p>
+<pre><code>git --version 
+</code></pre><p>出现 git version 数字序列的版本号就表示安装成功。</p>
+<h2 id="3-创建仓库"><a href="#3-创建仓库" class="headerlink" title="3.创建仓库"></a>3.创建仓库</h2><p>在你的git主页面的右上角点击“加号”&gt;New reposltory（仓库简写repo），仓库名随便，比如：myTest.这个就好比在本地新建一个文件夹，再给文件夹命个名。<br>仓库创建完成后会生成一个ssh地址，就是你访问本库的连接</p>
+<h2 id="4-克隆仓库"><a href="#4-克隆仓库" class="headerlink" title="4.克隆仓库"></a>4.克隆仓库</h2><p>通过终端输入以下命令：</p>
+<pre><code>git clone 仓库ssh地址
+</code></pre><p>本命令将在线仓库复制到本地当前文件夹（终端所在文件夹），比如我的当前目录下多出一个myTest文件夹</p>
+<p>克隆语法：git clone  <name> <url> <directory></directory></url></name></p>
+<p>这里，name(远程仓库名)可以不写，默认origin；directory是你要复制到的文件夹，也可以不写，默认使用远程git一样的根目录名</p>
+<h2 id="5-上传仓库"><a href="#5-上传仓库" class="headerlink" title="5.上传仓库"></a>5.上传仓库</h2><p>接下来的操作都要先进入这个文件夹</p>
+<pre><code>$ cd myTest
+</code></pre><p>在本地添加或修改仓库文件后，我们要把仓库发布到线上托管起来，就需要上传仓库</p>
+<h3 id="1-git-status"><a href="#1-git-status" class="headerlink" title="1). git status"></a>1). git status</h3><p>在终端输入 ：</p>
+<pre><code>git status
+</code></pre><p>我们可以查看仓库文件的修改状态（可以不查看），确定后，输入：</p>
+<h3 id="2-git-add"><a href="#2-git-add" class="headerlink" title="2). git add"></a>2). git add</h3><pre><code>git add .
+</code></pre><p>该命令跟踪新文件或者已有文件的改动，并把文件提交到缓存区，或者用来解决冲突， add后面是文件名  “.”代表所有文件</p>
+<p>git add .命令除了能够判断出当前目录（包括其子目录）所有被修改或者已删除的文档，还能判断用户所添加的新文档，并将其信息追加到索引中。</p>
+<h3 id="3-git-commit"><a href="#3-git-commit" class="headerlink" title="3) .git commit"></a>3) .git commit</h3><pre><code>git commit -m &quot;注释内容&quot;
+</code></pre><p>git commit 把文件的修改记录到分支中，建立上传日志</p>
+<p>使用 -m 选项直接添加提交信息（会记录到日志里），如果我们这里不用-m参数（message）的话，git将调到一个文本编译器（通常是vim）来让你输入提交的描述信息</p>
+<h4 id="git仓库的组成"><a href="#git仓库的组成" class="headerlink" title="git仓库的组成"></a>git仓库的组成</h4><p>要理解上述代码 我们先来了解一下git仓库的组成，git系统由三种对象组成，分别是：</p>
+<p>（1）提交（commit）</p>
+<p>（2）树（tree）</p>
+<p>（3）原文（blob）</p>
+<p>先看一张图：</p>
+<p><img src="http://i2.buimg.com/869623a5e85e030e.png"></p>
+<p>git的每一次提交是一个commit对象，这个对象中又包括这几个内容：</p>
+<ul>
+<li>tree对象：真正记录文件改变的记录，是tree的地址，指向真正的记录地址</li>
+</ul>
+<ul>
+<li>author：文件的创建者，第一次是放在仓库的</li>
+<li>commiter：就是这次是谁提交的</li>
+<li>comment：这次提交的注释</li>
+</ul>
+<p>tree对象记录了这次提交的记录，每一个文件代表一个blob，指向一个文件地址。</p>
+<p>tree里面还可以包括tree对象，就像目录可以有子目录。</p>
+<p>上面这就是一次提交的commit操作的结果。是不是关系也搞懂了，概念也搞懂了。</p>
+<p>每次提交git都会生成一个快照（snapshot），每提交一次生成一个快照，这次的快照是上次的快照基础上生成的。</p>
+<p>请看下图：</p>
+<p><img src="http://i2.buimg.com/3e0515e2afd84579.jpg"></p>
+<p>一共提交了三次，生成了三次快照，这次快照将会完整的保存下来。每次快照都是在上一次快照的基础上生成的，第一次入仓库时也会提供一个快照。</p>
+<p>这些生成的一个链条，就可以理解为一个分支。</p>
+<p>git仓库存放在哪呢？就是在当前工作目录的.git文件夹（可能为隐藏文件夹）下。</p>
+<ul>
+<li>git/objects  存放所有的对象</li>
+<li>git/heads   存放的所有分支，这里仅仅是一个引用，每个引用引用的都是该分支最后一次提交的记录。</li>
+<li>git/refs/tags  所有的tag，方便以后查看的标签</li>
+<li>git/logs/HEAD  HEAD的历史变化</li>
+<li>git/refs/heads  除了master分支之外的其他分支HEAD的变化历史</li>
+</ul>
+<p>一般仓库中的文件可能存在于这三种状态：</p>
+<ol>
+<li>Untracked files → 文件未被跟踪；</li>
+<li>Changes to be committed → 文件已暂存，这是下次提交的内容；</li>
+<li>Changes but not updated → 文件被修改，但并没有添加到暂存区。如果 commit 时没有带 -a 选项，这个状态下的文件不会被提交。    </li>
+</ol>
+<p>git commit 提交的是暂存区里面的内容，也就是 Changes to be committed 中的文件。</p>
+<p>git commit -a 把所有修改的文件先提交到stage,然后再从stash提交到branch</p>
+<p>git commit -a 除了将暂存区里的文件提交外，还提交 Changes but not updated 中的文件。</p>
+<p>git commit -am “描述信息”</p>
+<p>git commit 命令的 -a即–all：commit all changed files, 可将所有被修改或者已删除的且已经被git管理的文档提交倒仓库中。如果只是修改或者删除了已被Git 管理的文档，是没必要使用git add 命令的。如果你有新添加的文件这条命令就不适用。</p>
+<h3 id="4-修改-取消"><a href="#4-修改-取消" class="headerlink" title="4. 修改/取消"></a>4. 修改/取消</h3><p>有时候我们会发现有几个文件漏了提交或者想修改一下提交信息，又或者忘记使用 -a 选项导致一些文件没有被提交，我们希望对上一次提交进行修改，或者说取消上一次提交，这时候我们需要使用 –amend 选项。</p>
+<p>比如我们发现在提交时忘记使用 -a 选项，导致 Changes but not updated 中的内容没有被提交，我们可以使用：</p>
+<pre><code>git commit --amend -a
+</code></pre><h3 id="配置本地用户"><a href="#配置本地用户" class="headerlink" title="配置本地用户"></a>配置本地用户</h3><pre><code>git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;email@example.com&quot;
+</code></pre><p>在本地配置你的用户名和邮箱，这个将被记录到日志文件中，说明是那个用户上传的，如果就你自己上传，这个信息在本地配置一次就可以了；如果加–global（注意是两个“-”）就是全局配置</p>
+<h3 id="上传到线上仓库"><a href="#上传到线上仓库" class="headerlink" title="上传到线上仓库"></a>上传到线上仓库</h3><pre><code>git remote add origin git@github.com:yourname/learngit.git
+git push -u origin master
+</code></pre><p>这一步执行的时候，如果让你输入用户名密码等，就是你的git账号密码</p>
+<p>第一句 origin是远程仓库名 后面的是你仓库的地址</p>
+<p>第二句语法： git push <remote name=""> <branchname></branchname></remote></p>
+<p>尖括号部分可选内容。其中origin是远程仓库名，master是分支名；如果是第一次提交建议加上origin和master</p>
+<p><code>完事进入自己的线上仓库就可以看得到了</code></p>
+<h3 id="SSH-key"><a href="#SSH-key" class="headerlink" title="SSH key"></a>SSH key</h3><p>按说到这里已经结束了，但我觉得每次远程连接的时候都要验证身份（虽然这样更安全）挺烦的，所以我们可以通过生成本机ssh key钥匙，绑定到git里面，就不用每次连接都验证了。</p>
+<p>1.我们先登录到github页面，点击 账户右面的下三角 &gt; Settings &gt; 左侧SSH and GPG keys &gt; 右上角有一个 new ssh key  点击后，随便取一个title(you happy is good),让git来辨别是哪个机器，key看下一步</p>
+<p>2.然后来获取一下钥匙，先进入到终端，输入：</p>
+<pre><code>ssh-keygen
+vim ~/.ssh/id_rsa.pub
+</code></pre><p>然后就是一阵狂回车，直到出来一个ssh开头.local结束的一长串，将其复制（不要多复制），粘贴到上一步的key中保存即可</p>
+<p>3.接下来我们先退出vim环境，输一个冒号“：”,（即shift+分号；）再输入一个q,回车就退出了；</p>
+<p>然后我们来测试一下链接，输入：</p>
+<pre><code>ssh git@github.com
+</code></pre><p>出现</p>
+<pre><code>The authenticity of host &apos;github.com (192.30.252.123)&apos; can&apos;t be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? 
+</code></pre><p>输入yes回车，</p>
+<pre><code>Warning: Permanently added &apos;github.com,192.30.252.123&apos; (RSA) to the list of known hosts.
+PTY allocation request failed on channel 0
+Hi gaoke700! You&apos;ve successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</code></pre><p>出现上述提示信息说明连接成功</p>
+<p><code>终于写完了，累死宝宝了，本博客内容有不对的欢迎纠正</code></p>
+<p>更多git基本概念<a href="http://www.cnblogs.com/wilber2013/category/643754.html" target="_blank" rel="external">http://www.cnblogs.com/wilber2013/category/643754.html</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[jquery中attr和prop的区别]]></title>
       <url>http://yoursite.com/2015/08/26/jquery%E4%B8%ADattr%E5%92%8Cprop%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
       <content type="html"><![CDATA[<p>在高版本的jquery引入prop方法后，什么时候该用prop？什么时候用attr？它们两个之间有什么区别？这些问题就出现了。</p>
@@ -1705,6 +1819,164 @@ $(&quot;#chk2&quot;).prop(&quot;checked&quot;) == true
 <pre><code>$(&quot;#chk1&quot;).attr(&quot;checked&quot;) == undefined
 $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
 </code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[sublime text3快捷键]]></title>
+      <url>http://yoursite.com/2015/04/14/sublime-text3%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h3 id="选择类"><a href="#选择类" class="headerlink" title="选择类"></a>选择类</h3><p>Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</p>
+<p>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</p>
+<p>Ctrl+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</p>
+<p>Ctrl+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</p>
+<p>Ctrl+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。<br><a id="more"></a></p>
+<p>Ctrl+M 光标移动至括号内结束或开始的位置。</p>
+<p>Ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</p>
+<p>Ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</p>
+<p>Ctrl+Shift+[ 选中代码，按下快捷键，折叠代码。</p>
+<p>Ctrl+Shift+] 选中代码，按下快捷键，展开代码。</p>
+<p>Ctrl+K+0 展开所有折叠代码。</p>
+<p>Ctrl+← 向左单位性地移动光标，快速移动光标。</p>
+<p>Ctrl+→ 向右单位性地移动光标，快速移动光标。</p>
+<p>shift+↑ 向上选中多行。</p>
+<p>shift+↓ 向下选中多行。</p>
+<p>Shift+← 向左选中文本。</p>
+<p>Shift+→ 向右选中文本。</p>
+<p>Ctrl+Shift+← 向左单位性地选中文本。</p>
+<p>Ctrl+Shift+→ 向右单位性地选中文本。</p>
+<p>Ctrl+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。</p>
+<p>Ctrl+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。</p>
+<p>Ctrl+Alt+↑ 向上添加多行光标，可同时编辑多行。</p>
+<p>Ctrl+Alt+↓ 向下添加多行光标，可同时编辑多行。</p>
+<h3 id="编辑类"><a href="#编辑类" class="headerlink" title="编辑类"></a>编辑类</h3><p>Ctrl+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。</p>
+<p>Ctrl+Shift+D 复制光标所在整行，插入到下一行。</p>
+<p>Tab 向右缩进。</p>
+<p>Shift+Tab 向左缩进。</p>
+<p>Ctrl+K+K 从光标处开始删除代码至行尾。</p>
+<p>Ctrl+Shift+K 删除整行。</p>
+<p>Ctrl+/ 注释单行。</p>
+<p>Ctrl+Shift+/ 注释多行。</p>
+<p>Ctrl+K+U 转换大写。</p>
+<p>Ctrl+K+L 转换小写。</p>
+<p>Ctrl+Z 撤销。</p>
+<p>Ctrl+Y 恢复撤销。</p>
+<p>Ctrl+U 软撤销，感觉和 Gtrl+Z 一样。</p>
+<p>Ctrl+F2 设置书签</p>
+<p>Ctrl+T 左右字母互换。</p>
+<p>F6 单词检测拼写</p>
+<h3 id="搜索类"><a href="#搜索类" class="headerlink" title="搜索类"></a>搜索类</h3><p>Ctrl+F 打开底部搜索框，查找关键字。</p>
+<p>Ctrl+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。</p>
+<p>Ctrl+P 打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。</p>
+<p>Ctrl+G 打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。</p>
+<p>Ctrl+R 打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。</p>
+<p>Ctrl+： 打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。</p>
+<p>Ctrl+Shift+P 打开命令框。场景栗子：打开命名框，输入关键字，调用sublime text或插件的功能，例如使用package安装插件。</p>
+<p>Esc 退出光标多行选择，退出搜索框，命令框等。</p>
+<h3 id="显示类"><a href="#显示类" class="headerlink" title="显示类"></a>显示类</h3><p>Ctrl+Tab 按文件浏览过的顺序，切换当前窗口的标签页。</p>
+<p>Ctrl+PageDown 向左切换当前窗口的标签页。</p>
+<p>Ctrl+PageUp 向右切换当前窗口的标签页。</p>
+<p>Alt+Shift+1 窗口分屏，恢复默认1屏（非小键盘的数字）</p>
+<p>Alt+Shift+2 左右分屏-2列</p>
+<p>Alt+Shift+3 左右分屏-3列</p>
+<p>Alt+Shift+4 左右分屏-4列</p>
+<p>Alt+Shift+5 等分4屏</p>
+<p>Alt+Shift+8 垂直分屏-2屏</p>
+<p>Alt+Shift+9 垂直分屏-3屏</p>
+<p>Ctrl+K+B 开启/关闭侧边栏。</p>
+<p>F11 全屏模式</p>
+<p>Shift+F11 免打扰模式</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[clearfix清除浮动进化史]]></title>
+      <url>http://yoursite.com/2015/03/17/clearfix%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</url>
+      <content type="html"><![CDATA[<h2 id="clearfix清除浮动"><a href="#clearfix清除浮动" class="headerlink" title="clearfix清除浮动"></a>clearfix清除浮动</h2><p>首先在很多很多年以前我们常用的清除浮动是这样的。</p>
+<pre><code>.clear{clear:both;line-height:0;}
+</code></pre><p>现在可能还可以在很多老的站点上可以看到这样的代码，相当暴力有效的解决浮动的问题。</p>
+<p>但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。这种做法如果在页面复杂的布局要经常清楚浮动的时候就会产生很多的空标签，增加了页面无用标签，不利于页面优化。<br><a id="more"></a><br>因此有很多大神就研究出了 clearfix 清除浮动的方法，直接解决了上面的缺陷，不需要增加空标签，直接在有浮动的外层加上这个样式就可以了，这也是我们今天要讨论的clearfix进化史。</p>
+<h3 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h3><pre><code>.clearfix:after { 
+       visibility: hidden; 
+        display: block; 
+    font-size: 0; 
+    content: &quot; &quot;; 
+    clear: both; 
+    height: 0; 
+} 
+.clearfix { display: inline-table; } 
+
+* html .clearfix { height: 1%; }        //Hides from IE-mac 
+.clearfix { display: block; }            //End hide from IE-mac
+</code></pre><p>解释一下以上的代码：</p>
+<ul>
+<li>对大多数符合标准的浏览器应用第一个声明块，目的是创建一个隐形的内容为空的块来为目标元素清除浮动。</li>
+<li>第二条为clearfix应用 inline-table 显示属性，仅仅针对IE/Mac。利用 * 对 IE/Mac 隐藏一些规则：</li>
+<li>height:1% 用来触发 IE6 下的haslayout。</li>
+<li><p>重新对 IE/Mac 外的IE应用 block 显示属性。</p>
+</li>
+<li><p>最后一行用于结束针对 IE/Mac 的hack。（是不是觉得很坑爹，Mac下还有IE）</p>
+</li>
+</ul>
+<p>起源代码可能也是很早期的时候了，再往后Mac下的IE5也发展到IE6了，各种浏览器开始向W3C这条标准慢慢靠齐了。所以就有了下面这个写法出现了。</p>
+<pre><code>.clearfix:after { 
+    visibility: hidden; 
+    display: block; 
+    font-size: 0; 
+    content: &quot; &quot;; 
+    clear: both; 
+    height: 0; 
+} 
+* html .clearfix { zoom: 1; }                  /* IE6 */
+*:first-child+html .clearfix { zoom: 1; }     /* IE7 */
+</code></pre><p>IE6 和 IE7 都不支持 :after 这个伪类，因此需要后面两条来触发IE6/7的haslayout，以清除浮动。幸运的是IE8支持 :after 伪类。因此只需要针对IE6/7的hack了。</p>
+<p>在一个有float 属性元素的外层增加一个拥有clearfix属性的div包裹，可以保证外部div的height，即清除”浮动元素脱离了文档流，包围图片和文本的 div 不占据空间”的问题。</p>
+<p>Jeff Starr 在这里针对IE6/7用了两条语句来触发haslayout。我在想作者为什么不直接用 * 来直接对 IE6/7 同时应用 zoom:1 或者直接就写成：</p>
+<pre><code>.clearfix:after { 
+    visibility: hidden; 
+    display: block; 
+    font-size: 0; 
+    content: &quot; &quot;; 
+    clear: both; 
+    height: 0; 
+} 
+.clearfix{*zoom:1;}
+</code></pre><p>　　但是对于很多同学这种优化程度代码还是不够给力，clearfix 发展到现在的两个终极版。</p>
+<h3 id="重构clearfix浮动"><a href="#重构clearfix浮动" class="headerlink" title="重构clearfix浮动"></a>重构clearfix浮动</h3><p>构成Block Formatting Context的方法有下面几种： </p>
+<ul>
+<li><p>float的值不为none。</p>
+</li>
+<li><p>overflow的值不为visible。</p>
+</li>
+<li><p>display的值为table-cell, table-caption, inline-block中的任何一个。 </p>
+</li>
+<li><p>position的值不为relative和static。 </p>
+</li>
+</ul>
+<p>很明显，float和position不合适我们的需求。那只能从overflow或者display中选取一个。</p>
+<p>因为是应用了.clearfix和.menu的菜单极有可能是多级的，所以overflow: hidden或overflow: auto也不满足需求（会把下拉的菜单隐藏掉或者出滚动条），那么只能从display下手。 </p>
+<p>我们可以将.clearfix的display值设为table-cell, table-caption, inline-block中的任何一个</p>
+<p>但是display: inline-block会产生多余空白，所以也排除掉。</p>
+<p>剩下的只有table-cell, table-caption，为了保证兼容可以用display: table来使.clearfix形成一个Block Formatting Context</p>
+<p>因为display: table会产生一些匿名盒子，这些匿名盒子的其中一个（display值为table-cell）会形成Block Formatting Context。</p>
+<p>这样我们新的.clearfix就会闭合内部元素的浮动。</p>
+<p>后面又有人对此进行了改良：</p>
+<h4 id="终极版一："><a href="#终极版一：" class="headerlink" title="终极版一："></a>终极版一：</h4><pre><code>.clearfix:after { 
+    content:&quot;\200B&quot;; 
+    display:block; 
+    height:0; 
+    clear:both; 
+} 
+.clearfix {*zoom:1;}    /*IE/7/6*/
+</code></pre><p>　　解释下:content:”\200B”;这个参数，Unicode字符里有一个“零宽度空格”，即 U+200B，代替原来的“.”，可以缩减代码量。而且不再使用visibility:hidden。</p>
+<h4 id="终极版二："><a href="#终极版二：" class="headerlink" title="终极版二："></a>终极版二：</h4><pre><code>.clearfix:before,.clearfix:after{ 
+    content:&quot;&quot;; 
+    display:table; 
+} 
+.clearfix:after{clear:both;} 
+.clearfix{ 
+    *zoom:1;    /*IE/7/6*/
+}
+</code></pre><p>　　这两个终极版代码都很简洁，终极版一和二都可以使用。<br>　　<br>　本文参考<a href="http://www.admin10000.com/document/6259.html" target="_blank" rel="external">http://www.admin10000.com/document/6259.html</a></p>
+]]></content>
     </entry>
     
     <entry>
@@ -1786,73 +2058,7 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
     </entry>
     
     <entry>
-      <title><![CDATA[sublime text3快捷键]]></title>
-      <url>http://yoursite.com/2015/02/14/sublime-text3%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      <content type="html"><![CDATA[<h3 id="选择类"><a href="#选择类" class="headerlink" title="选择类"></a>选择类</h3><p>Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</p>
-<p>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</p>
-<p>Ctrl+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</p>
-<p>Ctrl+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</p>
-<p>Ctrl+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。<br><a id="more"></a></p>
-<p>Ctrl+M 光标移动至括号内结束或开始的位置。</p>
-<p>Ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</p>
-<p>Ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</p>
-<p>Ctrl+Shift+[ 选中代码，按下快捷键，折叠代码。</p>
-<p>Ctrl+Shift+] 选中代码，按下快捷键，展开代码。</p>
-<p>Ctrl+K+0 展开所有折叠代码。</p>
-<p>Ctrl+← 向左单位性地移动光标，快速移动光标。</p>
-<p>Ctrl+→ 向右单位性地移动光标，快速移动光标。</p>
-<p>shift+↑ 向上选中多行。</p>
-<p>shift+↓ 向下选中多行。</p>
-<p>Shift+← 向左选中文本。</p>
-<p>Shift+→ 向右选中文本。</p>
-<p>Ctrl+Shift+← 向左单位性地选中文本。</p>
-<p>Ctrl+Shift+→ 向右单位性地选中文本。</p>
-<p>Ctrl+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。</p>
-<p>Ctrl+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。</p>
-<p>Ctrl+Alt+↑ 向上添加多行光标，可同时编辑多行。</p>
-<p>Ctrl+Alt+↓ 向下添加多行光标，可同时编辑多行。</p>
-<h3 id="编辑类"><a href="#编辑类" class="headerlink" title="编辑类"></a>编辑类</h3><p>Ctrl+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。</p>
-<p>Ctrl+Shift+D 复制光标所在整行，插入到下一行。</p>
-<p>Tab 向右缩进。</p>
-<p>Shift+Tab 向左缩进。</p>
-<p>Ctrl+K+K 从光标处开始删除代码至行尾。</p>
-<p>Ctrl+Shift+K 删除整行。</p>
-<p>Ctrl+/ 注释单行。</p>
-<p>Ctrl+Shift+/ 注释多行。</p>
-<p>Ctrl+K+U 转换大写。</p>
-<p>Ctrl+K+L 转换小写。</p>
-<p>Ctrl+Z 撤销。</p>
-<p>Ctrl+Y 恢复撤销。</p>
-<p>Ctrl+U 软撤销，感觉和 Gtrl+Z 一样。</p>
-<p>Ctrl+F2 设置书签</p>
-<p>Ctrl+T 左右字母互换。</p>
-<p>F6 单词检测拼写</p>
-<h3 id="搜索类"><a href="#搜索类" class="headerlink" title="搜索类"></a>搜索类</h3><p>Ctrl+F 打开底部搜索框，查找关键字。</p>
-<p>Ctrl+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。</p>
-<p>Ctrl+P 打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。</p>
-<p>Ctrl+G 打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。</p>
-<p>Ctrl+R 打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。</p>
-<p>Ctrl+： 打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。</p>
-<p>Ctrl+Shift+P 打开命令框。场景栗子：打开命名框，输入关键字，调用sublime text或插件的功能，例如使用package安装插件。</p>
-<p>Esc 退出光标多行选择，退出搜索框，命令框等。</p>
-<h3 id="显示类"><a href="#显示类" class="headerlink" title="显示类"></a>显示类</h3><p>Ctrl+Tab 按文件浏览过的顺序，切换当前窗口的标签页。</p>
-<p>Ctrl+PageDown 向左切换当前窗口的标签页。</p>
-<p>Ctrl+PageUp 向右切换当前窗口的标签页。</p>
-<p>Alt+Shift+1 窗口分屏，恢复默认1屏（非小键盘的数字）</p>
-<p>Alt+Shift+2 左右分屏-2列</p>
-<p>Alt+Shift+3 左右分屏-3列</p>
-<p>Alt+Shift+4 左右分屏-4列</p>
-<p>Alt+Shift+5 等分4屏</p>
-<p>Alt+Shift+8 垂直分屏-2屏</p>
-<p>Alt+Shift+9 垂直分屏-3屏</p>
-<p>Ctrl+K+B 开启/关闭侧边栏。</p>
-<p>F11 全屏模式</p>
-<p>Shift+F11 免打扰模式</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
+      <title><![CDATA[Welcome to Hexo!]]></title>
       <url>http://yoursite.com/2014/12/24/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>

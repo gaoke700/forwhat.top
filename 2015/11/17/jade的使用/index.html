@@ -7,13 +7,16 @@
 
     
 
-    <title>Archives: 2015/8 | </title>
+    <title>jade的使用 | </title>
     <meta name="author" content="gaoke">
+    
+    <meta name="description" content="Jade是一个基于javascript，可以运行与node与浏览器环境的一个前端模板引擎
+tag标签通过缩进关系，代替以往html的层级包含关系，如一个简单的静态页面可以表达为">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="jade的使用"/>
     <meta property="og:site_name" content="前端小知识"/>
 
     
@@ -191,40 +194,94 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper green">
-        <span class="breadcrumb">Current page(Tags)</span>
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>jade的使用</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="red-link-context" datetime="2015-11-17T09:01:38.000Z"><a href="/2015/11/17/jade的使用/">2015-11-17</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/工具/" class="chip red lighten-1">工具</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2015
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2015/08/26/jquery中attr和prop的区别/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-08-26T12:19:24.000Z">2015-08-26</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                jquery中attr和prop的区别
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
+            <a href="/tags/jade/" class="chip red lighten-1">jade</a>
         
-    </ul>
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#tag标签"><span class="section table-of-contents-text">tag标签</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#变量"><span class="section table-of-contents-text">变量</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#属性"><span class="section table-of-contents-text">属性</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#文本"><span class="section table-of-contents-text">文本</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#注释"><span class="section table-of-contents-text">注释</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#迭代"><span class="section table-of-contents-text">迭代</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#条件判断"><span class="section table-of-contents-text">条件判断</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Filter"><span class="section table-of-contents-text">Filter</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Mixins"><span class="section table-of-contents-text">Mixins</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Extends"><span class="section table-of-contents-text">Extends</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Include"><span class="section table-of-contents-text">Include</span></a></li></ol>
+</div>
+
+
+            <div class="entry red-link-context">
+                <p>Jade是一个基于javascript，可以运行与node与浏览器环境的一个前端模板引擎</p>
+<h2 id="tag标签"><a href="#tag标签" class="headerlink" title="tag标签"></a>tag标签</h2><p>通过缩进关系，代替以往html的层级包含关系，如一个简单的静态页面可以表达为<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032309283997.png" alt=""><br><a id="more"></a><br>内联书写层级<br>   a: img<br>   通过分号区分元素内内容<br>自闭合标签<br>   img、meta、link 等自闭合会自动识别<br>可通过在标签后添加” / “强制输出自闭合元素<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032309514383.png" alt=""><br>style属性<br>style属性可以想上面的格式传入一个文本包含所有样式内容，或者传入一个类似js中的对象，达到同样的效果<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310010255.png" alt=""></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>使用” = “号输出变量值到元素内<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310126718.png" alt=""><br>通过 #{variable} 插入相应的变量值<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310227714.png" alt=""></p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>html 元素属性通过在标签右边通过括号包含（此处逗号可拆分为多行书写属性的格式）<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310322591.png" alt=""><br>也支持表达式进行属性的判断：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310425785.png" alt=""><br>如果是布尔型的属性，jade会自动根据当前doctype输出适合的格式，对比如下：</p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul>
+<li>通过在文字前面添加竖线符号” | “可让 jade 原样输出内容</li>
+<li>在html标签标记后面通过空格隔开文本内容</li>
+<li>在html标签标记后通过添加英文句号” . “添加块级文本<br>上面3个形式的方式效果为：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310547794.png" alt=""><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2>可以通过双斜杠进行注释，jade有3种注释方式，可以分别对应输出html注释、不输出html注释、块级html注释，如图：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032311031332.png" alt=""><h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2>jade支持通过js语法形式运行一些表达式，最简单常用的就一个迭代可以表达为：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032311125828.png" alt=""><h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2>jade 支持 if 、case条件判断，类比js的相应语法：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032311213244.png" alt=""><h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2>支持其他不同语法的代码插入。(需要安装有相应的包）<br>比如我们可以在一个段落下插入一段markdown文本：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032311294998.png" alt=""><h2 id="Mixins"><a href="#Mixins" class="headerlink" title="Mixins"></a>Mixins</h2>如果我们以前有接触过sass等预编译样式语言的话，也就理解了这个的用法，方法十分类似，通过定义部分可以公用的代码之后，适当的设置可传入参数，可以实现代码大程度上的复用。<br>定义和使用的语法也比较简单：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032311381267.png" alt=""><br><a href="http://jade-lang.com/reference/mixins/" target="_blank" rel="external">http://jade-lang.com/reference/mixins/</a><br>可以参考官方说明文档，重点可以着重理解最后2种调用方式。<h2 id="Extends"><a href="#Extends" class="headerlink" title="Extends"></a>Extends</h2>layout.jade 文件:<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032321530427.png" alt=""><br>index.jade 文件:<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032322046531.png" alt=""><br>默认继承方式为覆盖原内容，还可选 <code>prepend</code> 在代码前插入， <code>append</code> 在代码后插入，<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032322156104.png" alt="">“/&gt;<br>可以省略 <code>block</code> 写为：<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032322224643.png" alt=""><h2 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h2><strong>index.jade 文件</strong><br><img src="http://fs.powereasy.net/summarize/2015/11/201511032322319735.png" alt=""><br><strong>head.jade 文件</strong><br><img alt="" src="http://fs.powereasy.net/summarize/2015/11/201511032322393385.png"><br><strong>包含文件</strong><br><img alt="" src="http://fs.powereasy.net/summarize/2015/11/201511032323021595.png"></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2015/11/17/jade的使用/" data-title="jade的使用" data-url="http://yoursite.com/2015/11/17/jade的使用/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'true'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
