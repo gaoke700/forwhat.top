@@ -7,13 +7,18 @@
 
     
 
-    <title>Archives: 2015/3 | </title>
+    <title>github的下载与上传 | </title>
     <meta name="author" content="gaoke">
+    
+    <meta name="description" content="1.申请git账号这个大家自己去git官网申请，申请地址：https://github.com/join?source=header-home
+2.搭建本地环境mac下通过安装Xcode来搭建git环境，xcode自带git环境。安装完成后，通过终端输入以下命令检测git环境：
+git --version 
+出现 git version 数字序列的版本号就表示安装成功。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="github的下载与上传"/>
     <meta property="og:site_name" content="前端小知识"/>
 
     
@@ -191,40 +196,183 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper green">
-        <span class="breadcrumb">Current page(Archives)</span>
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>github的下载与上传</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="red-link-context" datetime="2015-09-17T12:14:34.000Z"><a href="/2015/09/17/github的下载与上传/">2015-09-17</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/git/" class="chip red lighten-1">git</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2015
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2015/03/17/clearfix清除浮动/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-03-17T05:51:04.000Z">2015-03-17</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                clearfix清除浮动进化史
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
+            <a href="/tags/工具/" class="chip red lighten-1">工具</a>
         
-    </ul>
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-申请git账号"><span class="section table-of-contents-text">1.申请git账号</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-搭建本地环境"><span class="section table-of-contents-text">2.搭建本地环境</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-创建仓库"><span class="section table-of-contents-text">3.创建仓库</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#4-克隆仓库"><span class="section table-of-contents-text">4.克隆仓库</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-上传仓库"><span class="section table-of-contents-text">5.上传仓库</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-git-status"><span class="section table-of-contents-text">1). git status</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-git-add"><span class="section table-of-contents-text">2). git add</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-git-commit"><span class="section table-of-contents-text">3) .git commit</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#git仓库的组成"><span class="section table-of-contents-text">git仓库的组成</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#4-修改-取消"><span class="section table-of-contents-text">4. 修改/取消</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#配置本地用户"><span class="section table-of-contents-text">配置本地用户</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#上传到线上仓库"><span class="section table-of-contents-text">上传到线上仓库</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#SSH-key"><span class="section table-of-contents-text">SSH key</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry red-link-context">
+                <h2 id="1-申请git账号"><a href="#1-申请git账号" class="headerlink" title="1.申请git账号"></a>1.申请git账号</h2><p>这个大家自己去git官网申请，申请地址：<a href="https://github.com/join?source=header-home" target="_blank" rel="external">https://github.com/join?source=header-home</a></p>
+<h2 id="2-搭建本地环境"><a href="#2-搭建本地环境" class="headerlink" title="2.搭建本地环境"></a>2.搭建本地环境</h2><p>mac下通过安装Xcode来搭建git环境，xcode自带git环境。安装完成后，通过终端输入以下命令检测git环境：</p>
+<pre><code>git --version 
+</code></pre><p>出现 git version 数字序列的版本号就表示安装成功。<br><a id="more"></a></p>
+<h2 id="3-创建仓库"><a href="#3-创建仓库" class="headerlink" title="3.创建仓库"></a>3.创建仓库</h2><p>在你的git主页面的右上角点击“加号”&gt;New reposltory（仓库简写repo），仓库名随便，比如：myTest.这个就好比在本地新建一个文件夹，再给文件夹命个名。<br>仓库创建完成后会生成一个ssh地址，就是你访问本库的连接</p>
+<h2 id="4-克隆仓库"><a href="#4-克隆仓库" class="headerlink" title="4.克隆仓库"></a>4.克隆仓库</h2><p>通过终端输入以下命令：</p>
+<pre><code>git clone 仓库ssh地址
+</code></pre><p>本命令将在线仓库复制到本地当前文件夹（终端所在文件夹），比如我的当前目录下多出一个myTest文件夹</p>
+<p>克隆语法：git clone  <name> <url> <directory></directory></url></name></p>
+<p>这里，name(远程仓库名)可以不写，默认origin；directory是你要复制到的文件夹，也可以不写，默认使用远程git一样的根目录名</p>
+<h2 id="5-上传仓库"><a href="#5-上传仓库" class="headerlink" title="5.上传仓库"></a>5.上传仓库</h2><p>接下来的操作都要先进入这个文件夹</p>
+<pre><code>$ cd myTest
+</code></pre><p>在本地添加或修改仓库文件后，我们要把仓库发布到线上托管起来，就需要上传仓库</p>
+<h3 id="1-git-status"><a href="#1-git-status" class="headerlink" title="1). git status"></a>1). git status</h3><p>在终端输入 ：</p>
+<pre><code>git status
+</code></pre><p>我们可以查看仓库文件的修改状态（可以不查看），确定后，输入：</p>
+<h3 id="2-git-add"><a href="#2-git-add" class="headerlink" title="2). git add"></a>2). git add</h3><pre><code>git add .
+</code></pre><p>该命令跟踪新文件或者已有文件的改动，并把文件提交到缓存区，或者用来解决冲突， add后面是文件名  “.”代表所有文件</p>
+<p>git add .命令除了能够判断出当前目录（包括其子目录）所有被修改或者已删除的文档，还能判断用户所添加的新文档，并将其信息追加到索引中。</p>
+<h3 id="3-git-commit"><a href="#3-git-commit" class="headerlink" title="3) .git commit"></a>3) .git commit</h3><pre><code>git commit -m &quot;注释内容&quot;
+</code></pre><p>git commit 把文件的修改记录到分支中，建立上传日志</p>
+<p>使用 -m 选项直接添加提交信息（会记录到日志里），如果我们这里不用-m参数（message）的话，git将调到一个文本编译器（通常是vim）来让你输入提交的描述信息</p>
+<h4 id="git仓库的组成"><a href="#git仓库的组成" class="headerlink" title="git仓库的组成"></a>git仓库的组成</h4><p>要理解上述代码 我们先来了解一下git仓库的组成，git系统由三种对象组成，分别是：</p>
+<p>（1）提交（commit）</p>
+<p>（2）树（tree）</p>
+<p>（3）原文（blob）</p>
+<p>先看一张图：</p>
+<p><img src="http://i2.buimg.com/869623a5e85e030e.png"></p>
+<p>git的每一次提交是一个commit对象，这个对象中又包括这几个内容：</p>
+<ul>
+<li>tree对象：真正记录文件改变的记录，是tree的地址，指向真正的记录地址</li>
+</ul>
+<ul>
+<li>author：文件的创建者，第一次是放在仓库的</li>
+<li>commiter：就是这次是谁提交的</li>
+<li>comment：这次提交的注释</li>
+</ul>
+<p>tree对象记录了这次提交的记录，每一个文件代表一个blob，指向一个文件地址。</p>
+<p>tree里面还可以包括tree对象，就像目录可以有子目录。</p>
+<p>上面这就是一次提交的commit操作的结果。是不是关系也搞懂了，概念也搞懂了。</p>
+<p>每次提交git都会生成一个快照（snapshot），每提交一次生成一个快照，这次的快照是上次的快照基础上生成的。</p>
+<p>请看下图：</p>
+<p><img src="http://i2.buimg.com/3e0515e2afd84579.jpg"></p>
+<p>一共提交了三次，生成了三次快照，这次快照将会完整的保存下来。每次快照都是在上一次快照的基础上生成的，第一次入仓库时也会提供一个快照。</p>
+<p>这些生成的一个链条，就可以理解为一个分支。</p>
+<p>git仓库存放在哪呢？就是在当前工作目录的.git文件夹（可能为隐藏文件夹）下。</p>
+<ul>
+<li>git/objects  存放所有的对象</li>
+<li>git/heads   存放的所有分支，这里仅仅是一个引用，每个引用引用的都是该分支最后一次提交的记录。</li>
+<li>git/refs/tags  所有的tag，方便以后查看的标签</li>
+<li>git/logs/HEAD  HEAD的历史变化</li>
+<li>git/refs/heads  除了master分支之外的其他分支HEAD的变化历史</li>
+</ul>
+<p>一般仓库中的文件可能存在于这三种状态：</p>
+<ol>
+<li>Untracked files → 文件未被跟踪；</li>
+<li>Changes to be committed → 文件已暂存，这是下次提交的内容；</li>
+<li>Changes but not updated → 文件被修改，但并没有添加到暂存区。如果 commit 时没有带 -a 选项，这个状态下的文件不会被提交。    </li>
+</ol>
+<p>git commit 提交的是暂存区里面的内容，也就是 Changes to be committed 中的文件。</p>
+<p>git commit -a 把所有修改的文件先提交到stage,然后再从stash提交到branch</p>
+<p>git commit -a 除了将暂存区里的文件提交外，还提交 Changes but not updated 中的文件。</p>
+<p>git commit -am “描述信息”</p>
+<p>git commit 命令的 -a即–all：commit all changed files, 可将所有被修改或者已删除的且已经被git管理的文档提交倒仓库中。如果只是修改或者删除了已被Git 管理的文档，是没必要使用git add 命令的。如果你有新添加的文件这条命令就不适用。</p>
+<h3 id="4-修改-取消"><a href="#4-修改-取消" class="headerlink" title="4. 修改/取消"></a>4. 修改/取消</h3><p>有时候我们会发现有几个文件漏了提交或者想修改一下提交信息，又或者忘记使用 -a 选项导致一些文件没有被提交，我们希望对上一次提交进行修改，或者说取消上一次提交，这时候我们需要使用 –amend 选项。</p>
+<p>比如我们发现在提交时忘记使用 -a 选项，导致 Changes but not updated 中的内容没有被提交，我们可以使用：</p>
+<pre><code>git commit --amend -a
+</code></pre><h3 id="配置本地用户"><a href="#配置本地用户" class="headerlink" title="配置本地用户"></a>配置本地用户</h3><pre><code>git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;email@example.com&quot;
+</code></pre><p>在本地配置你的用户名和邮箱，这个将被记录到日志文件中，说明是那个用户上传的，如果就你自己上传，这个信息在本地配置一次就可以了；如果加–global（注意是两个“-”）就是全局配置</p>
+<h3 id="上传到线上仓库"><a href="#上传到线上仓库" class="headerlink" title="上传到线上仓库"></a>上传到线上仓库</h3><pre><code>git remote add origin git@github.com:yourname/learngit.git
+git push -u origin master
+</code></pre><p>这一步执行的时候，如果让你输入用户名密码等，就是你的git账号密码</p>
+<p>第一句 origin是远程仓库名 后面的是你仓库的地址</p>
+<p>第二句语法： git push <remote name=""> <branchname></branchname></remote></p>
+<p>尖括号部分可选内容。其中origin是远程仓库名，master是分支名；如果是第一次提交建议加上origin和master</p>
+<p><code>完事进入自己的线上仓库就可以看得到了</code></p>
+<h3 id="SSH-key"><a href="#SSH-key" class="headerlink" title="SSH key"></a>SSH key</h3><p>按说到这里已经结束了，但我觉得每次远程连接的时候都要验证身份（虽然这样更安全）挺烦的，所以我们可以通过生成本机ssh key钥匙，绑定到git里面，就不用每次连接都验证了。</p>
+<p>1.我们先登录到github页面，点击 账户右面的下三角 &gt; Settings &gt; 左侧SSH and GPG keys &gt; 右上角有一个 new ssh key  点击后，随便取一个title(you happy is good),让git来辨别是哪个机器，key看下一步</p>
+<p>2.然后来获取一下钥匙，先进入到终端，输入：</p>
+<pre><code>ssh-keygen
+vim ~/.ssh/id_rsa.pub
+</code></pre><p>然后就是一阵狂回车，直到出来一个ssh开头.local结束的一长串，将其复制（不要多复制），粘贴到上一步的key中保存即可</p>
+<p>3.接下来我们先退出vim环境，输一个冒号“：”,（即shift+分号；）再输入一个q,回车就退出了；</p>
+<p>然后我们来测试一下链接，输入：</p>
+<pre><code>ssh git@github.com
+</code></pre><p>出现</p>
+<pre><code>The authenticity of host &apos;github.com (192.30.252.123)&apos; can&apos;t be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? 
+</code></pre><p>输入yes回车，</p>
+<pre><code>Warning: Permanently added &apos;github.com,192.30.252.123&apos; (RSA) to the list of known hosts.
+PTY allocation request failed on channel 0
+Hi gaoke700! You&apos;ve successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</code></pre><p>出现上述提示信息说明连接成功</p>
+<p><code>终于写完了，累死宝宝了，本博客内容有不对的欢迎纠正</code></p>
+<p>更多git基本概念<a href="http://www.cnblogs.com/wilber2013/category/643754.html" target="_blank" rel="external">http://www.cnblogs.com/wilber2013/category/643754.html</a></p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2015/09/17/github的下载与上传/" data-title="github的下载与上传" data-url="http://yoursite.com/2015/09/17/github的下载与上传/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'true'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
