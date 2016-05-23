@@ -7,18 +7,17 @@
 
     
 
-    <title>clearfix清除浮动进化史 | </title>
+    <title>前端面试题2 | </title>
     <meta name="author" content="gaoke">
     
-    <meta name="description" content="clearfix清除浮动首先在很多很多年以前我们常用的清除浮动是这样的。
-.clear{clear:both;line-height:0;}
-现在可能还可以在很多老的站点上可以看到这样的代码，相当暴力有效的解决浮动的问题。
-但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。这种做法如果在页面复杂的布局要经常清楚浮动的时候就会产生很多的空标签，增加了页面无用标签，不利于页面优化。">
+    <meta name="description" content="前言
+此题由JS的各种坑汇集而成,涉及的知识点包括变量定义提升、this指针指向、运算符优先级、原型、继承、全局变量污染、对象属性及原型属性优先级等等。
+题目如下：1234567891011121314151617function Foo() &amp;#123;    getName = function () &amp;#123; alert (1); &amp;#125;;    return this;&amp;#125;Foo.getName = function () &amp;#123; alert (2);&amp;#125;;Foo.prototype.getName = function () &amp;#123; alert (3);&amp;#125;;var getName = function () &amp;#123; alert (4);&amp;#125;;function getName() &amp;#123; alert (5);&amp;#125;//请写出以下输出结果：Foo.getName();getName();Foo().getName();getName();new Foo.getName();new Foo().getName();new new Foo().getName();">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="clearfix清除浮动进化史"/>
+    <meta property="og:title" content="前端面试题2"/>
     <meta property="og:site_name" content="前端小知识"/>
 
     
@@ -216,115 +215,91 @@
             <div class="article-title">
                 
     
-        <h1>clearfix清除浮动进化史</h1>
+        <h1>前端面试题2</h1>
     
 
 
             </div>
-            <time class="red-link-context" datetime="2015-03-17T05:51:04.000Z"><a href="/2015/03/17/clearfix清除浮动/">2015-03-17</a></time>
+            <time class="red-link-context" datetime="2016-01-04T09:02:30.000Z"><a href="/2016/01/04/前端面试题2/">2016-01-04</a></time>
 
             
     <div class="tags-row">
         
-            <a href="/tags/css/" class="chip red lighten-1">css</a>
-        
-            <a href="/tags/clearfix/" class="chip red lighten-1">clearfix</a>
+            <a href="/tags/面试题/" class="chip red lighten-1">面试题</a>
         
     </div>
 
 
             <div class="toc red-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#clearfix清除浮动"><span class="section table-of-contents-text">clearfix清除浮动</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#起源"><span class="section table-of-contents-text">起源</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#重构clearfix浮动"><span class="section table-of-contents-text">重构clearfix浮动</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#终极版一："><span class="section table-of-contents-text">终极版一：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#终极版二："><span class="section table-of-contents-text">终极版二：</span></a></li></ol></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#前言"><span class="section table-of-contents-text">前言</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#题目如下："><span class="section table-of-contents-text">题目如下：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#答案是"><span class="section table-of-contents-text">答案是:</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#解释"><span class="section table-of-contents-text">解释</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#第一题"><span class="section table-of-contents-text">第一题</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#第二题"><span class="section table-of-contents-text">第二题</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#变量声明提升"><span class="section table-of-contents-text">变量声明提升</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#函数表达式"><span class="section table-of-contents-text">函数表达式</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#第三题"><span class="section table-of-contents-text">第三题</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#第四题"><span class="section table-of-contents-text">第四题</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#第五题"><span class="section table-of-contents-text">第五题</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#js运算符优先级"><span class="section table-of-contents-text">js运算符优先级:</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#第六题"><span class="section table-of-contents-text">第六题</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#构造函数的返回值"><span class="section table-of-contents-text">构造函数的返回值</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#第七题"><span class="section table-of-contents-text">第七题</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry red-link-context">
-                <h2 id="clearfix清除浮动"><a href="#clearfix清除浮动" class="headerlink" title="clearfix清除浮动"></a>clearfix清除浮动</h2><p>首先在很多很多年以前我们常用的清除浮动是这样的。</p>
-<pre><code>.clear{clear:both;line-height:0;}
-</code></pre><p>现在可能还可以在很多老的站点上可以看到这样的代码，相当暴力有效的解决浮动的问题。</p>
-<p>但是这个用法有一个致命伤，就是每次清除浮动的时候都需要增加一个空标签来使用。这种做法如果在页面复杂的布局要经常清楚浮动的时候就会产生很多的空标签，增加了页面无用标签，不利于页面优化。<br><a id="more"></a><br>因此有很多大神就研究出了 clearfix 清除浮动的方法，直接解决了上面的缺陷，不需要增加空标签，直接在有浮动的外层加上这个样式就可以了，这也是我们今天要讨论的clearfix进化史。</p>
-<h3 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h3><pre><code>.clearfix:after { 
-       visibility: hidden; 
-        display: block; 
-    font-size: 0; 
-    content: &quot; &quot;; 
-    clear: both; 
-    height: 0; 
-} 
-.clearfix { display: inline-table; } 
-
-* html .clearfix { height: 1%; }        //Hides from IE-mac 
-.clearfix { display: block; }            //End hide from IE-mac
-</code></pre><p>解释一下以上的代码：</p>
-<ul>
-<li>对大多数符合标准的浏览器应用第一个声明块，目的是创建一个隐形的内容为空的块来为目标元素清除浮动。</li>
-<li>第二条为clearfix应用 inline-table 显示属性，仅仅针对IE/Mac。利用 * 对 IE/Mac 隐藏一些规则：</li>
-<li>height:1% 用来触发 IE6 下的haslayout。</li>
-<li><p>重新对 IE/Mac 外的IE应用 block 显示属性。</p>
-</li>
-<li><p>最后一行用于结束针对 IE/Mac 的hack。（是不是觉得很坑爹，Mac下还有IE）</p>
-</li>
-</ul>
-<p>起源代码可能也是很早期的时候了，再往后Mac下的IE5也发展到IE6了，各种浏览器开始向W3C这条标准慢慢靠齐了。所以就有了下面这个写法出现了。</p>
-<pre><code>.clearfix:after { 
-    visibility: hidden; 
-    display: block; 
-    font-size: 0; 
-    content: &quot; &quot;; 
-    clear: both; 
-    height: 0; 
-} 
-* html .clearfix { zoom: 1; }                  /* IE6 */
-*:first-child+html .clearfix { zoom: 1; }     /* IE7 */
-</code></pre><p>IE6 和 IE7 都不支持 :after 这个伪类，因此需要后面两条来触发IE6/7的haslayout，以清除浮动。幸运的是IE8支持 :after 伪类。因此只需要针对IE6/7的hack了。</p>
-<p>在一个有float 属性元素的外层增加一个拥有clearfix属性的div包裹，可以保证外部div的height，即清除”浮动元素脱离了文档流，包围图片和文本的 div 不占据空间”的问题。</p>
-<p>Jeff Starr 在这里针对IE6/7用了两条语句来触发haslayout。我在想作者为什么不直接用 * 来直接对 IE6/7 同时应用 zoom:1 或者直接就写成：</p>
-<pre><code>.clearfix:after { 
-    visibility: hidden; 
-    display: block; 
-    font-size: 0; 
-    content: &quot; &quot;; 
-    clear: both; 
-    height: 0; 
-} 
-.clearfix{*zoom:1;}
-</code></pre><p>　　但是对于很多同学这种优化程度代码还是不够给力，clearfix 发展到现在的两个终极版。</p>
-<h3 id="重构clearfix浮动"><a href="#重构clearfix浮动" class="headerlink" title="重构clearfix浮动"></a>重构clearfix浮动</h3><p>构成Block Formatting Context的方法有下面几种： </p>
-<ul>
-<li><p>float的值不为none。</p>
-</li>
-<li><p>overflow的值不为visible。</p>
-</li>
-<li><p>display的值为table-cell, table-caption, inline-block中的任何一个。 </p>
-</li>
-<li><p>position的值不为relative和static。 </p>
-</li>
-</ul>
-<p>很明显，float和position不合适我们的需求。那只能从overflow或者display中选取一个。</p>
-<p>因为是应用了.clearfix和.menu的菜单极有可能是多级的，所以overflow: hidden或overflow: auto也不满足需求（会把下拉的菜单隐藏掉或者出滚动条），那么只能从display下手。 </p>
-<p>我们可以将.clearfix的display值设为table-cell, table-caption, inline-block中的任何一个</p>
-<p>但是display: inline-block会产生多余空白，所以也排除掉。</p>
-<p>剩下的只有table-cell, table-caption，为了保证兼容可以用display: table来使.clearfix形成一个Block Formatting Context</p>
-<p>因为display: table会产生一些匿名盒子，这些匿名盒子的其中一个（display值为table-cell）会形成Block Formatting Context。</p>
-<p>这样我们新的.clearfix就会闭合内部元素的浮动。</p>
-<p>后面又有人对此进行了改良：</p>
-<h4 id="终极版一："><a href="#终极版一：" class="headerlink" title="终极版一："></a>终极版一：</h4><pre><code>.clearfix:after { 
-    content:&quot;\200B&quot;; 
-    display:block; 
-    height:0; 
-    clear:both; 
-} 
-.clearfix {*zoom:1;}    /*IE/7/6*/
-</code></pre><p>　　解释下:content:”\200B”;这个参数，Unicode字符里有一个“零宽度空格”，即 U+200B，代替原来的“.”，可以缩减代码量。而且不再使用visibility:hidden。</p>
-<h4 id="终极版二："><a href="#终极版二：" class="headerlink" title="终极版二："></a>终极版二：</h4><pre><code>.clearfix:before,.clearfix:after{ 
-    content:&quot;&quot;; 
-    display:table; 
-} 
-.clearfix:after{clear:both;} 
-.clearfix{ 
-    *zoom:1;    /*IE/7/6*/
-}
-</code></pre><p>　　这两个终极版代码都很简洁，终极版一和二都可以使用。<br>　　<br>　本文参考<a href="http://www.admin10000.com/document/6259.html" target="_blank" rel="external">http://www.admin10000.com/document/6259.html</a></p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>此题由JS的各种坑汇集而成,涉及的知识点包括变量定义提升、this指针指向、运算符优先级、原型、继承、全局变量污染、对象属性及原型属性优先级等等。</p>
+<h3 id="题目如下："><a href="#题目如下：" class="headerlink" title="题目如下："></a>题目如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function Foo() &#123;</span><br><span class="line">    getName = function () &#123; alert (1); &#125;;</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br><span class="line">Foo.getName = function () &#123; alert (2);&#125;;</span><br><span class="line">Foo.prototype.getName = function () &#123; alert (3);&#125;;</span><br><span class="line">var getName = function () &#123; alert (4);&#125;;</span><br><span class="line">function getName() &#123; alert (5);&#125;</span><br><span class="line"></span><br><span class="line">//请写出以下输出结果：</span><br><span class="line">Foo.getName();</span><br><span class="line">getName();</span><br><span class="line">Foo().getName();</span><br><span class="line">getName();</span><br><span class="line">new Foo.getName();</span><br><span class="line">new Foo().getName();</span><br><span class="line">new new Foo().getName();</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="答案是"><a href="#答案是" class="headerlink" title="答案是:"></a>答案是:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Foo.getName();//2</span><br><span class="line">getName();//4</span><br><span class="line">Foo().getName();//1</span><br><span class="line">getName();//1</span><br><span class="line">new Foo.getName();//2</span><br><span class="line">new Foo().getName();//3</span><br><span class="line">new new Foo().getName();//3</span><br></pre></td></tr></table></figure>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><hr>
+<h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>先看此题的上半部分做了什么，首先定义了一个叫Foo的函数，之后为Foo创建了一个叫getName的静态属性存储了一个匿名函数，之后为Foo的原型对象新创建了一个叫getName的匿名函数。之后又通过函数变量表达式创建了一个getName的函数，最后再声明一个叫getName函数。</p>
+<p>第一问的 Foo.getName 自然是访问Foo函数上存储的静态属性，自然是2，没什么可说的。</p>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>第二题，直接调用 getName 函数。既然是直接调用那么就是访问当前上文作用域内的叫getName的函数，所以跟1 2 3都没什么关系。此题有无数面试者回答为5。此处有两个坑，一是变量声明提升，二是函数表达式。</p>
+<h4 id="变量声明提升"><a href="#变量声明提升" class="headerlink" title="变量声明提升"></a>变量声明提升</h4><p>即所有声明变量或声明函数都会被提升到当前函数的顶部。</p>
+<p>例如下代码:</p>
+<pre><code>console.log(&apos;x&apos; in window);//true
+var x;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = 0;</span><br></pre></td></tr></table></figure>
+<p>代码执行时js引擎会将声明语句提升至代码最上方，变为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x;</span><br><span class="line">console.log(&apos;x&apos; in window);//true</span><br><span class="line">x = 0;</span><br></pre></td></tr></table></figure>
+<h4 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h4><p>var getName 与 function getName 都是声明语句，区别在于 var getName 是函数表达式，而 function getName 是函数声明。关于JS中的各种函数创建方式可以看 <a href="http://www.codeceo.com/article/javascript-closure-interview.html" target="_blank" rel="external">大部分人都会做错的经典JS闭包面试题</a> 这篇文章有详细说明。</p>
+<p>函数表达式最大的问题，在于js会将此代码拆分为两行代码分别执行</p>
+<p>例如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(x);//输出：function x()&#123;&#125;</span><br><span class="line">var x=1;</span><br><span class="line">function x()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>实际执行的代码为，先将 var x=1 拆分为 var x; 和 x = 1; 两行，再将 var x; 和 function x(){} 两行提升至最上方变成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var x;</span><br><span class="line">function x()&#123;&#125;</span><br><span class="line">console.log(x);</span><br><span class="line">x=1;</span><br></pre></td></tr></table></figure>
+<p>所以最终函数声明的x覆盖了变量声明的x，log输出为x函数。</p>
+<p>同理，原题中代码最终执行时的是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Foo() &#123;</span><br><span class="line">    getName = function () &#123; alert (1); &#125;;</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br><span class="line">var getName;//只提升变量声明</span><br><span class="line">function getName() &#123; alert (5);&#125;//提升函数声明，覆盖var的声明</span><br><span class="line"></span><br><span class="line">Foo.getName = function () &#123; alert (2);&#125;;</span><br><span class="line">Foo.prototype.getName = function () &#123; alert (3);&#125;;</span><br><span class="line">getName = function () &#123; alert (4);&#125;;//最终的赋值再次覆盖function getName声明</span><br><span class="line"></span><br><span class="line">getName();//最终输出4</span><br></pre></td></tr></table></figure>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>第三问的 Foo().getName(); 先执行了Foo函数，然后调用Foo函数的返回值对象的getName属性函数。</p>
+<p>Foo函数的第一句  getName = function () { alert (1); };  是一句函数赋值语句，注意它没有var声明，所以先向当前Foo函数作用域内寻找getName变量，没有。再向当前函数作用域上层，即外层作用域内寻找是否含有getName变量，找到了，也就是第二问中的alert(4)函数，将此变量的值赋值为 function(){alert(1)}。</p>
+<p>此处实际上是将外层作用域内的getName函数修改了。</p>
+<pre><code>注意：此处若依然没有找到会一直向上查找到window对象，若window对象中也没有getName属性，就在window对象中创建一个getName变量。
+</code></pre><p>之后Foo函数的返回值是this，而JS的this问题博客园中已经有非常多的文章介绍，这里不再多说。</p>
+<p>简单的讲，this的指向是由所在函数的调用方式决定的。而此处的直接调用方式，this指向window对象。</p>
+<p>遂Foo函数返回的是window对象，相当于执行 window.getName() ，而window中的getName已经被修改为alert(1)，所以最终会输出1</p>
+<p>此处考察了两个知识点，一个是变量作用域问题，一个是this指向问题。</p>
+<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>直接调用getName函数，相当于 window.getName() ，因为这个变量已经被Foo函数执行时修改了，遂结果与第三问相同，为1</p>
+<h3 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h3><p>第五问 new Foo.getName(); ,此处考察的是js的运算符优先级问题。</p>
+<h4 id="js运算符优先级"><a href="#js运算符优先级" class="headerlink" title="js运算符优先级:"></a>js运算符优先级:</h4><p>通过查上表可以得知点（.）的优先级高于new操作，遂相当于是:</p>
+<pre><code>new (Foo.getName)();
+</code></pre><p>所以实际上将getName函数作为了构造函数来执行，遂弹出2。</p>
+<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>第六问 new Foo().getName() ，首先看运算符优先级括号高于new，实际执行为</p>
+<pre><code>(new Foo()).getName()
+</code></pre><p>遂先执行Foo函数，而Foo此时作为构造函数却有返回值，所以这里需要说明下js中的构造函数返回值问题。</p>
+<h4 id="构造函数的返回值"><a href="#构造函数的返回值" class="headerlink" title="构造函数的返回值"></a>构造函数的返回值</h4><p>在传统语言中，构造函数不应该有返回值，实际执行的返回值就是此构造函数的实例化对象。</p>
+<p>而在js中构造函数可以有返回值也可以没有。</p>
+<p>1、没有返回值则按照其他语言一样返回实例化对象。</p>
+<pre><code>function fn(){}
+undefined
+new fn()
+fn{}
+</code></pre><p>2、若有返回值则检查其返回值是否为引用类型。如果是非引用类型，如基本类型（string,number,boolean,null,undefined）则与无返回值相同，实际返回其实例化对象。</p>
+<pre><code>function fn(){ return true }
+undefined
+new fn()
+fn{}
+</code></pre><p>3、若返回值是引用类型，则实际返回值为这个引用类型。</p>
+<pre><code>function fn(){ return {a:1}; }
+undefined
+new fn()
+Object {a:1}
+</code></pre><p>原题中，返回的是this，而this在构造函数中本来就代表当前实例化对象，遂最终Foo函数返回实例化对象。</p>
+<p>之后调用实例化对象的getName函数，因为在Foo构造函数中没有为实例化对象添加任何属性，遂到当前对象的原型对象（prototype）中寻找getName，找到了。遂最终输出3。</p>
+<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>第七问, new new Foo().getName(); 同样是运算符优先级问题。</p>
+<p>最终实际执行为：</p>
+<pre><code>new ((new Foo()).getName)();
+</code></pre><p>先初始化Foo的实例化对象，然后将其原型上的getName函数作为构造函数再次new。遂最终结果为3</p>
 
             </div>
         </div>
@@ -338,7 +313,7 @@
         <div class="card">
             <div class="card-content">
                 <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2015/03/17/clearfix清除浮动/" data-title="clearfix清除浮动进化史" data-url="http://yoursite.com/2015/03/17/clearfix清除浮动/"></div>
+                <div class="ds-thread" data-thread-key="2016/01/04/前端面试题2/" data-title="前端面试题2" data-url="http://yoursite.com/2016/01/04/前端面试题2/"></div>
 
                 <script type="text/javascript">
                     console.log(document.querySelector('.ds-thread'));
