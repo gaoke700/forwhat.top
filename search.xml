@@ -4,6 +4,120 @@
   
     
     <entry>
+      <title><![CDATA[前端面试题3]]></title>
+      <url>http://yoursite.com/2016/01/26/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%983/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>知乎上看的几道js面试题,鉴于我们伟大的讲师也被坑错了好几道,所以感觉有必要写篇博客记录一下,不费话了直接上题</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>1 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    return typeof arguments;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">A. &quot;object&quot;	  B. &quot;array&quot; 	C. &quot;arguments&quot;	 D. &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
+<p>2 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var f = function g()&#123; return 23; &#125;;</span><br><span class="line">typeof g();</span><br><span class="line"></span><br><span class="line">A. &quot;number&quot; 	B. &quot;undefined&quot;	 C. &quot;function&quot;	 D. Eorror</span><br></pre></td></tr></table></figure>
+<p>3 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(function(x)&#123;</span><br><span class="line">    delete x;</span><br><span class="line">    return x;</span><br><span class="line">&#125;)(1);</span><br><span class="line"></span><br><span class="line">A. 1	B. null	  C. undefined	 D. Error</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>4 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var y = 1, x = y = typeof x;</span><br><span class="line">x;</span><br><span class="line"></span><br><span class="line">A. 1	B. &quot;number&quot;		C. undefined	D. &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
+<p>5 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function f(f)&#123;</span><br><span class="line">    return typeof f();</span><br><span class="line">&#125;)(function()&#123; return 1; &#125;);</span><br><span class="line"></span><br><span class="line">A. &quot;number&quot;		B. &quot;undefined&quot;	 C. &quot;function&quot;	 D. Error</span><br></pre></td></tr></table></figure>
+<p>6 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var foo = &#123;</span><br><span class="line">  bar: function() &#123; return this.baz; &#125;,</span><br><span class="line">  baz: 1</span><br><span class="line">&#125;;</span><br><span class="line">(function()&#123;</span><br><span class="line">  return typeof arguments[0]();</span><br><span class="line">&#125;)(foo.bar);</span><br><span class="line"></span><br><span class="line">A. &quot;undefined&quot;	B. &quot;object&quot;	  C. &quot;number&quot;	  D. &quot;function&quot;</span><br></pre></td></tr></table></figure>
+<p>7 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var foo = &#123;</span><br><span class="line">  bar: function()&#123; return this.baz; &#125;,</span><br><span class="line">  baz: 1</span><br><span class="line">&#125;</span><br><span class="line">typeof (f = foo.bar)();</span><br><span class="line"></span><br><span class="line"> A. &quot;undefined&quot;	B. &quot;object&quot;	  C. &quot;number&quot;   D. &quot;function&quot;</span><br></pre></td></tr></table></figure>
+<p>8 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> var f = (function f()&#123; return &quot;1&quot;; &#125;, function g()&#123; return 2; &#125;)();</span><br><span class="line"> typeof f;</span><br><span class="line"> </span><br><span class="line">A. &quot;string&quot;   B. &quot;number&quot;   C. &quot;function&quot;  D. &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
+<p>9 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">if (function f()&#123;&#125;) &#123;</span><br><span class="line">  x += typeof f;</span><br><span class="line">&#125;</span><br><span class="line">x;</span><br><span class="line"></span><br><span class="line">A. 1	 B. &quot;1function&quot;   C. &quot;1undefined&quot;   D. NaN</span><br></pre></td></tr></table></figure>
+<p>10 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var x = [typeof x, typeof y][1];</span><br><span class="line">typeof typeof x;</span><br><span class="line"></span><br><span class="line">A. &quot;number&quot;	B. &quot;string&quot;	  C. &quot;undefined&quot;  D. &quot;object&quot;</span><br></pre></td></tr></table></figure>
+<p>11 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function(foo)&#123;</span><br><span class="line">   return typeof foo.bar;</span><br><span class="line"> &#125;)(&#123; foo: &#123; bar: 1 &#125; &#125;);</span><br><span class="line"> </span><br><span class="line"> A、“undefined”   B、“object”   C、“number”   D、Error</span><br></pre></td></tr></table></figure>
+<p>12 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(function f()&#123;</span><br><span class="line">    function f()&#123; return 1; &#125;</span><br><span class="line">    return f();</span><br><span class="line">    function f()&#123; return 2; &#125;</span><br><span class="line">  &#125;)();</span><br><span class="line">  </span><br><span class="line">  A、1	B、2	  C、Error (e.g. “Too much recursion”)  D、undefined</span><br></pre></td></tr></table></figure>
+<p>13 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123; return f; &#125;</span><br><span class="line">new f() instanceof f;</span><br><span class="line"></span><br><span class="line">A、true		B、false</span><br></pre></td></tr></table></figure>
+<p>14 .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with (function(x, undefined)&#123;&#125;) length;</span><br><span class="line"></span><br><span class="line">A、1		B、2		C、undefined		D、Error</span><br></pre></td></tr></table></figure>
+<h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><p>来来来,对对答案,看你对了几道:</p>
+<p>1.A 2.D 3.A 4.D 5.A 6.A 7.A 8.B 9.C 10.B 11.A 12.B 13.B 14.B</p>
+<p>如果还有不理解的,请看解释:</p>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><pre><code>(function(){
+    return typeof arguments;
+})();
+</code></pre><p>arguments是函数的参数(如果不在函数里面,那就跟普通变量一样),是一个对象,虽然像数组:</p>
+<pre><code>&gt;    (function(){
+        return arguments;
+      })();
+&lt;.    []                 //输出结果
+</code></pre><p>但不是数组:</p>
+<pre><code>&gt;    (function(){
+        return Array.isArray(arguments);
+      })();
+&lt;.    false                //输出结果
+</code></pre><p>此外，就算是数组,js里面数组也是对象类型,typeof 返回的也是 “object”,所以答案就是object    </p>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><pre><code>var f = function g(){ return 23; };
+typeof g();
+</code></pre><p>在 JS 里，声明函数只有 2 种方法：</p>
+<p>第 1 种： function f(){…} （函数声明）</p>
+<p>第 2 种： var f = function(){…} （等号后面必须是匿名函数，这句实质是函数表达式）</p>
+<p>除此之外，类似于 var f = function g(){…} 这样的东西统一按 2 方法处理，即在函数外部无法通过 g 访问到函数，因为这已经变成了一个表达式。</p>
+<p>但为什么不是 “undefined”？</p>
+<p>这里如果求 typeof g ，会返回 undefined，但求的是 g()，所以会去先去调用函数 g，这里就会直接抛出异常，所以是 Error。</p>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>delete 操作符用于删除对象的成员变量，不能删除函数的参数。</p>
+<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><pre><code>var y = 1, x = y = typeof x;
+  x;
+</code></pre><p>  赋值运算符是从右往左的,刚开始x未定义,typeof x 就是undefined,再赋值给y,再赋值给x</p>
+<h3 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function f(f)&#123;</span><br><span class="line">    return typeof f();</span><br><span class="line">&#125;)(function()&#123; return 1; &#125;);</span><br></pre></td></tr></table></figure>
+<p>此题故意搞个参数f误导大家,咱换个参数其实也就是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function f(obj)&#123;</span><br><span class="line">    return typeof obj();</span><br><span class="line">&#125;)(function()&#123; return 1; &#125;);</span><br></pre></td></tr></table></figure>
+<p>再看看,它把下面的function(){ return 1; }传给了obj,传参就相当于:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(function f()&#123;</span><br><span class="line">	var obj=function()&#123;</span><br><span class="line">		 return 1;</span><br><span class="line">	  &#125;</span><br><span class="line">    return typeof obj();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>这不就是typeof一下函数obj的运行结果嘛,那就number了</p>
+<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var foo = &#123;</span><br><span class="line">    bar: function() &#123; return this.baz; &#125;,</span><br><span class="line">    baz: 1</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  (function()&#123;</span><br><span class="line">    return typeof arguments[0]();</span><br><span class="line">  &#125;)(foo.bar)</span><br></pre></td></tr></table></figure>
+<p>这道题先把 <mark> foo.bar </mark> 传进去做参数,那 <code> arguments[0] </code> 就是 <mark> foo.bar </mark></p>
+<p>也就是返回里面这个函数的 运行结果 的类型,首先,在上个函数里 this 指向的是 foo ,我们要看在这个函数里 this 指向的是谁:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;	var foo = &#123;</span><br><span class="line">   	 	bar: function() &#123; return this &#125;,</span><br><span class="line">    	baz: 1</span><br><span class="line">  	&#125;;</span><br><span class="line">  	(function()&#123;</span><br><span class="line">    	return arguments[0]();</span><br><span class="line">  	&#125;)(foo.bar);</span><br><span class="line">&lt;.	[function foo.bar()]		//输出结果</span><br></pre></td></tr></table></figure>
+<p>经测试得知,这里的 this 指的是 arguments,原题中baz是foo的,不是foo.bar的,所以是undefined</p>
+<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><pre><code>var foo = {
+bar: function(){ return this.baz; },
+baz: 1
+  }
+  typeof (f = foo.bar)();
+</code></pre><p>如果是 foo.bar(),那结果就是1 , 而进行 f = foo.bar 赋值后,this的指向从foo变成了window,而window并没有baz这个属性,所以是undefined</p>
+<h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><pre><code>var f = (function f(){ return &quot;1&quot;; }, function g(){ return 2; })();
+typeof f;
+</code></pre><p>逗号操作符用于声明多个变量;除此之外,逗号操作符还可以用于赋值,在用于赋值时,逗号操作符总是返回表达式中的最后一项,如:</p>
+<pre><code>var num = (3,5,7,2,9,6)        //num的值为6
+</code></pre><p>所以本题只有最后面的函数会被执行,所以 f 的值是2</p>
+<h3 id="第九题"><a href="#第九题" class="headerlink" title="第九题"></a>第九题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">if (function f()&#123;&#125;) &#123;</span><br><span class="line"> 	x += typeof f;</span><br><span class="line">&#125;</span><br><span class="line">x;</span><br></pre></td></tr></table></figure>
+<p>注意判断条件里的function f(){}不是函数声明,会被转换成true(非0即真),因此f未定义</p>
+<p>如果在判断条件里赋值操作,比如上面换为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">if (f=function()&#123;&#125;) &#123;</span><br><span class="line"> 	x += typeof f;</span><br><span class="line">&#125;</span><br><span class="line">x;</span><br></pre></td></tr></table></figure>
+<p>那么,结果就是1function</p>
+<h3 id="第十题"><a href="#第十题" class="headerlink" title="第十题"></a>第十题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x = [typeof x, typeof y][1];</span><br><span class="line">typeof typeof x;</span><br></pre></td></tr></table></figure>
+<p>这题我们可以直接忽略上一行,下一行不管 x 是什么类型,typeof返回的是一个字符串, 也就是再次typeof的结果,也就是说两个typeof后面跟任何一个变量输出的结果都是string类型</p>
+<p>咱们再回头来看看第一行,也就是把typeof y 赋值给x , y未定义, 所以 x undefined</p>
+<h3 id="第十一题"><a href="#第十一题" class="headerlink" title="第十一题"></a>第十一题</h3><p>这题跟第五题类似,不赘言</p>
+<h3 id="第十二题"><a href="#第十二题" class="headerlink" title="第十二题"></a>第十二题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function f()&#123;</span><br><span class="line">    function f()&#123; return 1; &#125;</span><br><span class="line">    return f();</span><br><span class="line">    function f()&#123; return 2; &#125;</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
+<p>这个由于js解析的时候会将声明提前,也就是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function f()&#123;</span><br><span class="line">    function f()&#123; return 1; &#125;</span><br><span class="line">    function f()&#123; return 2; &#125;</span><br><span class="line">    return f();</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
+<p>因为函数名相同,会认为重新声明,后面的f()会覆盖前面的f(),所以结果为2 . 关于<code>变量声明提升</code>我前一篇博客里写过了,<a href="http://gaoke700.github.io/2016/01/04/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%982/" target="_blank" rel="external">点这里去看</a></p>
+<h3 id="第十三题"><a href="#第十三题" class="headerlink" title="第十三题"></a>第十三题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123; return f; &#125;</span><br><span class="line">new f() instanceof f;</span><br></pre></td></tr></table></figure>
+<p>When <code>new f()</code>  is called,javascript does four things:</p>
+<ul>
+<li>it creates a new object</li>
+<li>it sets the <code> constructor </code>property of the object to<code> f </code></li>
+<li>it sets up the object to delegate to<code>   f.prototype </code> </li>
+<li>it calls <code> f() </code>in the context of the new object </li>
+</ul>
+<p>the result of <code> new f() </code> is the new object</p>
+<p>补充:构造函数不需要显式声明返回值，默认返回this值。当显式声明了返回值时，如果返回值是非对象（数字、字符串等），这个返回值会被忽略，继续返回this值。但是如果返回值是对象，那么这个显式返回值会被返回。</p>
+<p>因为 f() 内部返回了自己，故此时 new f() 的结果和 f 相等。</p>
+<h3 id="第十四题"><a href="#第十四题" class="headerlink" title="第十四题"></a>第十四题</h3><pre><code>with (function(x, undefined){}) length;
+</code></pre><p>with 限定了作用域是这个函数，function.length 返回函数的参数个数，所以是 2。</p>
+<p>undefined 虽然是关键词，但可以被覆写。但 null 不能。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[前端面试题2]]></title>
       <url>http://yoursite.com/2016/01/04/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%982/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
