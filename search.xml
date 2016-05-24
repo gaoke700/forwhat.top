@@ -11,9 +11,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    return typeof arguments;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">A. &quot;object&quot;	  B. &quot;array&quot; 	C. &quot;arguments&quot;	 D. &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
 <p>2 .</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var f = function g()&#123; return 23; &#125;;</span><br><span class="line">typeof g();</span><br><span class="line"></span><br><span class="line">A. &quot;number&quot; 	B. &quot;undefined&quot;	 C. &quot;function&quot;	 D. Eorror</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>3 .</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(function(x)&#123;</span><br><span class="line">    delete x;</span><br><span class="line">    return x;</span><br><span class="line">&#125;)(1);</span><br><span class="line"></span><br><span class="line">A. 1	B. null	  C. undefined	 D. Error</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>4 .</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var y = 1, x = y = typeof x;</span><br><span class="line">x;</span><br><span class="line"></span><br><span class="line">A. 1	B. &quot;number&quot;		C. undefined	D. &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
 <p>5 .</p>
@@ -184,6 +184,40 @@ Object {a:1}
 <p>最终实际执行为：</p>
 <pre><code>new ((new Foo()).getName)();
 </code></pre><p>先初始化Foo的实例化对象，然后将其原型上的getName函数作为构造函数再次new。遂最终结果为3</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS中typeof与instanceof的区别]]></title>
+      <url>http://yoursite.com/2015/12/24/typeof/</url>
+      <content type="html"><![CDATA[<p>JavaScript 中 typeof 和 instanceof 常用来判断一个变量是否为空，或者是什么类型的。但它们之间还是有区别的：</p>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>它是一个一元运算，放在一个运算数之前，运算数可以是任意类型</p>
+<p>它返回值是一个字符串，该字符串说明运算数的类型。typeof 一般只能返回如下几个结果：</p>
+<pre><code>number,boolean,string,function,object,undefined。
+</code></pre><p>我们可以使用 typeof 来获取一个变量是否存在，如 </p>
+<pre><code>if(typeof a!=&quot;undefined&quot;){alert(&quot;ok&quot;)}
+</code></pre><p>而不要去使用 if(a) 因为如果 a 不存在（未声明）则会出错，对于 Array,Null 等特殊对象使用 typeof 一律返回 object，这正是 typeof 的局限性。</p>
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p>instanceof 用于判断一个变量是否某个对象的实例</p>
+<pre><code>a instanceof b?alert(&quot;true&quot;):alert(&quot;false&quot;); //a是b的实例？真:假
+</code></pre><p>如 </p>
+<pre><code>var a=new Array();
+alert(a instanceof Array);         //会返回 true
+alert(a instanceof Object)         //也会返回 true;这是因为 Array 是 object 的子类
+</code></pre><p>再如:</p>
+<pre><code>function test(){};
+var a=new test();
+alert(a instanceof test)    //返回true
+</code></pre><p>注1:</p>
+<p>谈到 instanceof 我们要多插入一个问题，就是 function 的 arguments，我们大家也许都认为 arguments 是一个 Array，但如果使用 instaceof 去测试会发现 arguments 不是一个 Array 对象，尽管看起来很像。</p>
+<p>注2:</p>
+<pre><code>var a=new Array();
+if (a instanceof Object){ alert(&apos;Y&apos;);}
+else alert(&apos;N&apos;);     //弹出y
+</code></pre><p>但:</p>
+<pre><code>if (window instanceof Object) alert(&apos;Y&apos;);
+else alert(&apos;N&apos;);    //弹出n
+</code></pre><p>所以，这里的 instanceof 测试的 object 是指 js 语法中的 object，不是指 dom 模型对象。</p>
+<p>使用 typeof 会有些区别,alert(typeof(window)) 会得 object</p>
 ]]></content>
     </entry>
     

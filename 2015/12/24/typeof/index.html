@@ -7,13 +7,18 @@
 
     
 
-    <title>Archives: 2015/12 | </title>
+    <title>JS中typeof与instanceof的区别 | </title>
     <meta name="author" content="gaoke">
+    
+    <meta name="description" content="JavaScript 中 typeof 和 instanceof 常用来判断一个变量是否为空，或者是什么类型的。但它们之间还是有区别的：
+typeof它是一个一元运算，放在一个运算数之前，运算数可以是任意类型
+它返回值是一个字符串，该字符串说明运算数的类型。typeof 一般只能返回如下几个结果：
+">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="JS中typeof与instanceof的区别"/>
     <meta property="og:site_name" content="前端小知识"/>
 
     
@@ -191,46 +196,111 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper green">
-        <span class="breadcrumb">Current page(Archives)</span>
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>JS中typeof与instanceof的区别</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="red-link-context" datetime="2015-12-24T09:02:30.000Z"><a href="/2015/12/24/typeof/">2015-12-24</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/js/" class="chip red lighten-1">js</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2015
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2015/12/24/typeof/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-12-24T09:02:30.000Z">2015-12-24</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                JS中typeof与instanceof的区别
-                            </a>
-                        
-                            <a href="/2015/12/06/前端面试题1/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-12-06T09:02:30.000Z">2015-12-06</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题1
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
-        
-    </ul>
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#typeof"><span class="section table-of-contents-text">typeof</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#instanceof"><span class="section table-of-contents-text">instanceof</span></a></li></ol>
+</div>
+
+
+            <div class="entry red-link-context">
+                <p>JavaScript 中 typeof 和 instanceof 常用来判断一个变量是否为空，或者是什么类型的。但它们之间还是有区别的：</p>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>它是一个一元运算，放在一个运算数之前，运算数可以是任意类型</p>
+<p>它返回值是一个字符串，该字符串说明运算数的类型。typeof 一般只能返回如下几个结果：</p>
+<pre><code>number,boolean,string,function,object,undefined。
+</code></pre><p>我们可以使用 typeof 来获取一个变量是否存在，如 </p>
+<pre><code>if(typeof a!=&quot;undefined&quot;){alert(&quot;ok&quot;)}
+</code></pre><p>而不要去使用 if(a) 因为如果 a 不存在（未声明）则会出错，对于 Array,Null 等特殊对象使用 typeof 一律返回 object，这正是 typeof 的局限性。</p>
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p>instanceof 用于判断一个变量是否某个对象的实例</p>
+<pre><code>a instanceof b?alert(&quot;true&quot;):alert(&quot;false&quot;); //a是b的实例？真:假
+</code></pre><p>如 </p>
+<pre><code>var a=new Array();
+alert(a instanceof Array);         //会返回 true
+alert(a instanceof Object)         //也会返回 true;这是因为 Array 是 object 的子类
+</code></pre><p>再如:</p>
+<pre><code>function test(){};
+var a=new test();
+alert(a instanceof test)    //返回true
+</code></pre><p>注1:</p>
+<p>谈到 instanceof 我们要多插入一个问题，就是 function 的 arguments，我们大家也许都认为 arguments 是一个 Array，但如果使用 instaceof 去测试会发现 arguments 不是一个 Array 对象，尽管看起来很像。</p>
+<p>注2:</p>
+<pre><code>var a=new Array();
+if (a instanceof Object){ alert(&apos;Y&apos;);}
+else alert(&apos;N&apos;);     //弹出y
+</code></pre><p>但:</p>
+<pre><code>if (window instanceof Object) alert(&apos;Y&apos;);
+else alert(&apos;N&apos;);    //弹出n
+</code></pre><p>所以，这里的 instanceof 测试的 object 是指 js 语法中的 object，不是指 dom 模型对象。</p>
+<p>使用 typeof 会有些区别,alert(typeof(window)) 会得 object</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2015/12/24/typeof/" data-title="JS中typeof与instanceof的区别" data-url="http://yoursite.com/2015/12/24/typeof/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'true'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
