@@ -62,7 +62,7 @@ function foo(){
     
     <entry>
       <title><![CDATA[前端面试题3]]></title>
-      <url>http://yoursite.com/2016/01/26/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%984/</url>
+      <url>http://yoursite.com/2016/01/29/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%984/</url>
       <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>1 . 如果你显示中使用的是Google Chrome，如何让input元素默认情况下显示”HiCling Team”，而在光标一入后显示空白？</p>
 <p>2 . 如果你显示中使用的是Google Chrome，如何让input元素默认情况下显示”HiCling Team”，而在光标一入后显示空白？</p>
 <p>3 . 创建一个显示含有本地时间的日历的input<br><a id="more"></a><br>4 . 判断下面字符串中出现次数最多的字符，同级这个次数。</p>
@@ -2462,6 +2462,37 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript中with语句优缺点]]></title>
+      <url>http://yoursite.com/2014/02/11/with/</url>
+      <content type="html"><![CDATA[<p>对于开发,优化始终应该是我需要努力的方向,今天来讲讲JavaScript中with语句:</p>
+<p>with语句的作用是暂时改变作用域链、减少的重复输入</p>
+<p>其语法结构为：</p>
+<pre><code>with(object){
+    //statements
+}
+</code></pre><!--with-->
+<p>例如:</p>
+<pre><code>with(document.forms[0]){  
+   name.value = &quot;lee king&quot;;  
+   address.value = &quot;Peking&quot;;  
+   zipcode.value = &quot;10000&quot;;  
+}  
+</code></pre><p>与之对应的传统的写法是：</p>
+<pre><code>document.forms[0].name.value = &quot;lee king&quot;;  
+document.forms[0].address.value = &quot;Peking&quot;;  
+document.forms[0].zipcode.value = &quot;10000&quot;; 
+</code></pre><p>可以看出with语句的简洁明了.</p>
+<p>不过在代码的世界里是很难找到真正的完美。js的解释器需要检查with块中的变量是否属于with包含的对象，这将使with语句执行速度大大下降，并且导致js语句很难被优化。</p>
+<p>为了兼顾速度与代码量可以找到一个比较折衷的方案：</p>
+<pre><code>var  form = document.forms[0];  
+form.name.value = &quot;lee king&quot;;  
+form.address.value = &quot;Peking&quot;;  
+form.zipcode.value = &quot;10000&quot;;
+</code></pre><p>讲这个知识点只是为了让我们能看懂别人的代码,个人建议在以后的高效代码开发中我们应该尽可能的避免使用with语句。</p>
 ]]></content>
     </entry>
     

@@ -7,13 +7,24 @@
 
     
 
-    <title>Archives: 2016 | </title>
+    <title>JavaScript中with语句优缺点 | </title>
     <meta name="author" content="gaoke">
+    
+    <meta name="description" content="对于开发,优化始终应该是我需要努力的方向,今天来讲讲JavaScript中with语句:
+with语句的作用是暂时改变作用域链、减少的重复输入
+其语法结构为：
+with(object){
+    //statements
+}
+
+例如:
+with(document.forms[0]){  
+   na">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="JavaScript中with语句优缺点"/>
     <meta property="og:site_name" content="前端小知识"/>
 
     
@@ -191,58 +202,110 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper green">
-        <span class="breadcrumb">Current page(Archives)</span>
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>JavaScript中with语句优缺点</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="red-link-context" datetime="2014-02-10T16:00:00.000Z"><a href="/2014/02/11/with/">2014-02-11</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/js/" class="chip red lighten-1">js</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2016
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2016/02/04/call/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-02-04T09:02:30.000Z">2016-02-04</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                javascript中的apply()和call()方法
-                            </a>
-                        
-                            <a href="/2016/01/29/前端面试题4/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-01-29T09:02:30.000Z">2016-01-29</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题3
-                            </a>
-                        
-                            <a href="/2016/01/26/前端面试题3/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-01-26T09:02:30.000Z">2016-01-26</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题3
-                            </a>
-                        
-                            <a href="/2016/01/04/前端面试题2/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-01-04T09:02:30.000Z">2016-01-04</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题2
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
+            <a href="/tags/with/" class="chip red lighten-1">with</a>
         
-    </ul>
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry red-link-context">
+                <p>对于开发,优化始终应该是我需要努力的方向,今天来讲讲JavaScript中with语句:</p>
+<p>with语句的作用是暂时改变作用域链、减少的重复输入</p>
+<p>其语法结构为：</p>
+<pre><code>with(object){
+    //statements
+}
+</code></pre><!--with-->
+<p>例如:</p>
+<pre><code>with(document.forms[0]){  
+   name.value = &quot;lee king&quot;;  
+   address.value = &quot;Peking&quot;;  
+   zipcode.value = &quot;10000&quot;;  
+}  
+</code></pre><p>与之对应的传统的写法是：</p>
+<pre><code>document.forms[0].name.value = &quot;lee king&quot;;  
+document.forms[0].address.value = &quot;Peking&quot;;  
+document.forms[0].zipcode.value = &quot;10000&quot;; 
+</code></pre><p>可以看出with语句的简洁明了.</p>
+<p>不过在代码的世界里是很难找到真正的完美。js的解释器需要检查with块中的变量是否属于with包含的对象，这将使with语句执行速度大大下降，并且导致js语句很难被优化。</p>
+<p>为了兼顾速度与代码量可以找到一个比较折衷的方案：</p>
+<pre><code>var  form = document.forms[0];  
+form.name.value = &quot;lee king&quot;;  
+form.address.value = &quot;Peking&quot;;  
+form.zipcode.value = &quot;10000&quot;;
+</code></pre><p>讲这个知识点只是为了让我们能看懂别人的代码,个人建议在以后的高效代码开发中我们应该尽可能的避免使用with语句。</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2014/02/11/with/" data-title="JavaScript中with语句优缺点" data-url="http://yoursite.com/2014/02/11/with/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'true'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
