@@ -4,6 +4,185 @@
   
     
     <entry>
+      <title><![CDATA[javascript中的apply()和call()方法]]></title>
+      <url>http://yoursite.com/2016/02/04/call/</url>
+      <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>JavaScrtipt动态变换上下文相关对象时,主要运用apply, call两个方法.</p>
+<p>call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内在实现的,因为属于Function.prototype,所以每个Function对象实例,也就是每个方法都有call, apply属性.</p>
+<p>既然作为方法的属性,那它们的使用就当然是针对方法的了,这两个方法是容易混淆的,因为它们的作用一样,只是使用方式不同.<br><a id="more"></a><br>区分apply,call就一句话:</p>
+<pre><code>foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg2, arg3)
+</code></pre><p>相同点:两个方法产生的作用是完全一样的</p>
+<p>不同点:方法传递的参数不同</p>
+<p>上面代码中,foo是一个方法,this是方法执行时上下文相关对象,arg1, arg2, arg3是传给foo方法的参数.这里所谓的方法执行时上下文相关对象, 如果有面向对象的编程基础,那很好理解,就是在类实例化后对象中的this.</p>
+<h2 id="作用相同"><a href="#作用相同" class="headerlink" title="作用相同"></a>作用相同</h2><p>在JavaScript中,代码总是有一个上下文对象,代码处于该对象之内. 上下文对象是通过this变量来体现的, 这个this变量永远指向当前代码所处的对象中.</p>
+<p>为了更好的领会这this是什么,举个例子:</p>
+<pre><code>function A(){
+    this.message = &quot;我A的是消息&quot;
+    this.getMessage = function(){
+        return this.message
+    }
+}
+function B(){
+    this.message = &quot;我B的是消息&quot;
+    this.setMessage = function(newMessage){
+        this.message = newMessage
+    }
+}
+</code></pre><p>可见,A, B类都有一个message属性(面向对象中所说的成员),A有获取消息的getMessage方法,B有设置消息的setMessage方法,下面来显示call的威力.</p>
+<pre><code>var a = new A();
+var b = new B();
+b.setMessage.call(a, &quot;a的消息&quot;);        //给对象a动态指派b的setMessage方法,注意,a本身是没有这方法的!
+alert(a.getMessage());                //显示&quot;a的消息&quot;
+alert(a.getMessage.call(b))    ;        //给对象b动态指派a的getMessage方法,结果显示&quot;我B的是消息&quot;
+</code></pre><p>简直是”无中生有”,对象的方法可以任意指派,而对象本身一直都是没有这方法的,注意是指派,通俗点就是,方法是借给另一个对象的调用去完成任务,原理上是方法执行时上下文对象改变了.</p>
+<p>所以 b.setMessage.call(a, “a的消息”); 就等于用 a 作执行时上下文对象调用b对象的 setMessage 方法,而这过程中与 b 一点关系都没有, 作用等效于 a.setMessage( “a的消息”);</p>
+<p>因为 apply 与 call 产生的作用是一样的,可以说 call, apply 作用就是借用别人的方法来调用,就像调用自己的一样    </p>
+<h2 id="传参区别"><a href="#传参区别" class="headerlink" title="传参区别"></a>传参区别</h2><p>理解了call, apply相同处—–作用后,再来看看它们的区别,看过上面例子,相信您大概知道了,从 b.setMessage.call(a, “a的消息”) 等效于 a.setMessage( “a的消息”) 可以看出, “a的消息”在call中作为一个参数传递.</p>
+<p>那么在apply中是怎么表示的呢,直接解释说不清楚,apply要结合应用场景才一目了然.我们来设计一个应用场景:</p>
+<pre><code>function print(a, b, c, d){
+    alert(a + b + c + d);
+}
+function example(a, b , c , d){
+    print.call(this, a, b, c, d);        //用call方式借用print,参数显式打散传递
+    print.apply(this, arguments);        //用apply方式借用print, 参数作为一个数组传递
+                    //这里直接用JavaScript方法内本身有的arguments数组
+    print.apply(this, [a, b, c, d]);    //或者封装成数组
+}
+example(”背” , “光” , “脚”, “本”);        //弹出三次”背光脚本”
+</code></pre><p>在这场景中, example方法内,a, b, c, d作为方法传递的参数, 方法分别运用了apply, call去借print方法来调用,</p>
+<p>最后一句由于直接调用example方法, 所以在该方法中的上下文对象this就是window对象.</p>
+<p>所以,call, apply方法它们除了第一个参数,即执行时上下文对象相同外,call方法的其它参数将依次传递给借用的方法作参数,而apply就两个参数,第二个参数为一个数组传递.所以可以说成:</p>
+<pre><code>call, apply方法区别是,从第二个参数起, call方法参数将依次传递给借用的方法作参数, 而apply直接将这些参数放到一个数组中再传递, 最后借用方法的参数列表是一样的.    
+</code></pre><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>当参数明确时可用 call , 当参数不明确时可用 apply 给合 arguments ,例:</p>
+<pre><code>print.call(window, “背” , “光” , “脚”, “本”);                            
+function foo(){
+    print.apply(window, arguments);            //foo参数可能为多个
+}
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[前端面试题3]]></title>
+      <url>http://yoursite.com/2016/01/26/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%984/</url>
+      <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>1 . 如果你显示中使用的是Google Chrome，如何让input元素默认情况下显示”HiCling Team”，而在光标一入后显示空白？</p>
+<p>2 . 如果你显示中使用的是Google Chrome，如何让input元素默认情况下显示”HiCling Team”，而在光标一入后显示空白？</p>
+<p>3 . 创建一个显示含有本地时间的日历的input<br><a id="more"></a><br>4 . 判断下面字符串中出现次数最多的字符，同级这个次数。</p>
+<p>   var str = ‘asdfssaaaasasasasaa’</p>
+<p>5 . 超链接访问过后 hover 样式就不出现的问题是什么?如何解决？</p>
+<p>6 . 如何垂直居中一个元素？（1.已知高度100X100；2.位置高度的）</p>
+<p>7 . var foo=0,bar=1; foo=foo || bar; 这段代码运行后的 foo 的值是什么？</p>
+<p>8 . 如何判断 JavaScript 变量的数据类型？</p>
+<p>9 . 编码实现：获取页面中 id 为 test 的元素并添加时间处理函数，处理函数用来取消事件冒泡和阻止对象默认行为</p>
+<p>10 . 跨域请求数据的解决方案有哪些？</p>
+<p>11 . 写出你所知道的所有 JavaScript 函数的定义方法</p>
+<p>12 . 简单实现 jQuery 的 $ ，用JS原生</p>
+<p>13 . 说说下面两个表达的区别</p>
+<pre><code>$.extend();
+$.fn.extend();
+</code></pre><p>14 . 移动端屏幕的物理分辨率和逻辑分辨率的区别？</p>
+<p>15 . 你做的页面在哪些浏览器测试过？这些浏览器的内核分别是什么？</p>
+<p>16 . 解释css sprites作用是什么</p>
+<p>17 . Html5响应式设计框架有哪些？</p>
+<p>18 . JS中如何阻止时间冒泡和默认事件？</p>
+<p>19 . JS的ajax请求出现跨域问题有什么解决办法？</p>
+<p>20 . $(this)和this关键字在jQuery中有何不同？</p>
+<p>21 . 当项目的某个模块发生问题了，你是怎么定位错误的？你用的调试工具是什么？</p>
+<p>22 . 在和后端进行异步请求时，很容易陷入嵌套太深的陷阱？</p>
+<p>23 . 一个正则表达式匹配所有二级域名是9game.cn和其目录下的网址，比如<a href="http://abc.9game.cn/web/非常重要的时候，怎么保护他呢？" target="_blank" rel="external">http://abc.9game.cn/web/非常重要的时候，怎么保护他呢？</a></p>
+<p>24 . 项目在本地没问题，但是放到线上就有问题了，你是怎么解决的？<br>答：</p>
+<p>25 . 在项目开发完成后，根据雅虎性能优化规则，需要对html,js,css,图片做出怎么的处理？是否可以借助构建工具实现自动化？</p>
+<p>26 . 常用布局的实现（两列布局、三列适应布局、两列等高适应布局）</p>
+<p>27 . JS如何改变元素属性及CSS值</p>
+<p>28 . 常用的DOM操作，新建、添加、删除、移动</p>
+<p>29 . jQuery的bind、live、on、delegate的区别</p>
+<p>30 . JS变量提升、匿名函数、原型继承、作用域、闭包机制</p>
+<p>31 . 对HTML协议的理解</p>
+<p>32 . 盒模型介绍（可以画图说明）</p>
+<p>33 . 块级元素和行内元素的区别以及如何清除浮动</p>
+<p>34 . CSS中position属性有哪几个值，区别是什么？</p>
+<p>35 . CSS选择器的种类及优先级</p>
+<p>36 . 浏览器兼容问题以及常用的css hack</p>
+<p>37 . 请举例 HTML5新增的标签（10个以上）</p>
+<p>38 . “abc123”.slice(2,-1)的结果是</p>
+<p>39 . “abc123”.substring(2,-1)的结果是</p>
+<p>40 . 以下代码执行结果分别是什么？</p>
+<pre><code>1.  3+&quot;3&quot;
+
+2.  &quot;23&quot;&gt;&quot;3&quot;
+
+3.  ture &amp;&amp; 2
+
+4.  var a={};
+    a.name=&apos;hello aladdin&apos;;
+    alert(a.length)
+
+5.    (function(){
+        var a=b=“hello aladdin&quot;
+    })();
+    alert(b)
+
+6.    var a=&apos;hello&apos;;
+    (function(){
+        var b=&apos;aladdin&apos;;
+        alert(a+b)
+    })();
+    alert(a+b)
+
+7.    var b=1;
+    function a(b){
+        b=2;
+        alert(b);
+    };
+    a(b);
+    alert(b);
+
+8.    for(var i=1;i&lt;=3;i++){
+        setTimeout(function(){
+            console.log(i);
+        },0)
+    };
+</code></pre><p>41 . 下面的写法有没有问题？</p>
+<pre><code>;(function(){
+    console.log(“123&quot;)
+})();
+
+!function(){
+    console.log(“123”);
+}();
++function(){}();
+~function(){}();
+</code></pre><p>42 . 说说下面的值，为什么？</p>
+<pre><code>var someone={
+    name:”Bob”,
+    showName:function(){
+        alert(this.name);
+    }
+}
+
+var other={
+    name:Tom”,
+    showName:someone.showName
+}
+other.showName();
+</code></pre><p>43 . 说说下面两个函数执行后的结果:</p>
+<p>代码片段一:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var name=“The Window”;</span><br><span class="line">var object=&#123;</span><br><span class="line">	name:”My Object”,</span><br><span class="line">	getNameFunc:function()&#123;</span><br><span class="line">		return function()&#123;</span><br><span class="line">			return this.name;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">alert(object.get NameFunc()())</span><br></pre></td></tr></table></figure>
+<p>代码片段二:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var name “The Window”;</span><br><span class="line">var object=&#123;</span><br><span class="line">	name:”My Pbject”,</span><br><span class="line">	getNameFunc:function()&#123;</span><br><span class="line">		var that=this;</span><br><span class="line">		return function()&#123;</span><br><span class="line">			return that.name;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>44 . 简述Jquery中,以下两句的区别:</p>
+<pre><code>var $wwe = $(&quot;#w3c div.id&quot;);
+var $wwe = $(&quot;#w3c&quot;).find(&quot;div.id&quot;)
+</code></pre><p>45 . ajax是否能跨域请求,解决的办法</p>
+<p>46 . http和https的区别</p>
+<p>47 . attr和prop的区别</p>
+<p>48 . HTML标记里,行元素和块元素分别有哪些,有什么区别</p>
+<p>49 . 什么是闭包(closure),为什么要用</p>
+<p>50 . js中的 call() 和 apply() 方法的区别</p>
+<p>51 . 下面这段javascript代码,alert的输出结果是什么?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var msg =&quot;hello&quot;</span><br><span class="line">for (var i=0;i&lt;10;i++)&#123;</span><br><span class="line">	var msg =&quot;hello&quot;+i*2+i;</span><br><span class="line">&#125;</span><br><span class="line">alert(msg);</span><br></pre></td></tr></table></figure>
+<h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><h3 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h3><h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><h3 id="第九题"><a href="#第九题" class="headerlink" title="第九题"></a>第九题</h3><h3 id="第十题"><a href="#第十题" class="headerlink" title="第十题"></a>第十题</h3><h3 id="第十一题"><a href="#第十一题" class="headerlink" title="第十一题"></a>第十一题</h3><h3 id="第十二题"><a href="#第十二题" class="headerlink" title="第十二题"></a>第十二题</h3><h3 id="第十三题"><a href="#第十三题" class="headerlink" title="第十三题"></a>第十三题</h3><h3 id="第十四题"><a href="#第十四题" class="headerlink" title="第十四题"></a>第十四题</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[前端面试题3]]></title>
       <url>http://yoursite.com/2016/01/26/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%983/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>知乎上看的几道js面试题,鉴于我们伟大的讲师也被坑错了好几道,所以感觉有必要写篇博客记录一下,不费话了直接上题</p>
@@ -194,7 +373,8 @@ Object {a:1}
 <h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>它是一个一元运算，放在一个运算数之前，运算数可以是任意类型</p>
 <p>它返回值是一个字符串，该字符串说明运算数的类型。typeof 一般只能返回如下几个结果：</p>
 <pre><code>number,boolean,string,function,object,undefined。
-</code></pre><p>我们可以使用 typeof 来获取一个变量是否存在，如 </p>
+</code></pre><a id="more"></a>
+<p>我们可以使用 typeof 来获取一个变量是否存在，如 </p>
 <pre><code>if(typeof a!=&quot;undefined&quot;){alert(&quot;ok&quot;)}
 </code></pre><p>而不要去使用 if(a) 因为如果 a 不存在（未声明）则会出错，对于 Array,Null 等特殊对象使用 typeof 一律返回 object，这正是 typeof 的局限性。</p>
 <h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p>instanceof 用于判断一个变量是否某个对象的实例</p>

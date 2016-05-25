@@ -7,13 +7,17 @@
 
     
 
-    <title>Archives | </title>
+    <title>javascript中的apply()和call()方法 | </title>
     <meta name="author" content="gaoke">
+    
+    <meta name="description" content="概述:JavaScrtipt动态变换上下文相关对象时,主要运用apply, call两个方法.
+call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内在实现的,因为属于Function.prototype,所以每个Function对象实例,也就是每个方法都有call, apply属性.
+既然作为方法的属性,那它们的使用就当然是针对方法的了,这两个方法是容易混淆的,因为它们的作用一样,只是使用方式不同.">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="javascript中的apply()和call()方法"/>
     <meta property="og:site_name" content="前端小知识"/>
 
     
@@ -191,105 +195,138 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper green">
-        <span class="breadcrumb">Current page(Archives)</span>
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>javascript中的apply()和call()方法</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="red-link-context" datetime="2016-02-04T09:02:30.000Z"><a href="/2016/02/04/call/">2016-02-04</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/js/" class="chip red lighten-1">js</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2016
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2016/02/04/call/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-02-04T09:02:30.000Z">2016-02-04</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                javascript中的apply()和call()方法
-                            </a>
-                        
-                            <a href="/2016/01/26/前端面试题4/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-01-26T09:02:30.000Z">2016-01-26</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题3
-                            </a>
-                        
-                            <a href="/2016/01/26/前端面试题3/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-01-26T09:02:30.000Z">2016-01-26</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题3
-                            </a>
-                        
-                            <a href="/2016/01/04/前端面试题2/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-01-04T09:02:30.000Z">2016-01-04</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题2
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
+            <a href="/tags/call/" class="chip red lighten-1">call()</a>
         
-            <li>
-                <div class="collapsible-header ">
-                    <i class="fa fa-archive"></i>2015
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2015/12/24/typeof/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-12-24T09:02:30.000Z">2015-12-24</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                JS中typeof与instanceof的区别
-                            </a>
-                        
-                            <a href="/2015/12/06/前端面试题1/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-12-06T09:02:30.000Z">2015-12-06</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                前端面试题1
-                            </a>
-                        
-                            <a href="/2015/11/17/jade的使用/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-11-17T09:01:38.000Z">2015-11-17</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                jade的使用
-                            </a>
-                        
-                            <a href="/2015/11/17/jade的基础语法/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-11-17T06:47:56.000Z">2015-11-17</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                jade的基础语法
-                            </a>
-                        
-                            <a href="/2015/10/16/自动化构建工具gulp/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-10-16T10:00:00.000Z">2015-10-16</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                自动化构建工具gulp
-                            </a>
-                        
-                            <a href="/2015/09/18/hexo博客搭建/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2015-09-18T11:18:05.000Z">2015-09-18</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                hexo博客搭建
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
+            <a href="/tags/apply/" class="chip red lighten-1">apply()</a>
         
-    </ul>
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#概述"><span class="section table-of-contents-text">概述:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#作用相同"><span class="section table-of-contents-text">作用相同</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传参区别"><span class="section table-of-contents-text">传参区别</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#应用场景"><span class="section table-of-contents-text">应用场景</span></a></li></ol>
+</div>
+
+
+            <div class="entry red-link-context">
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>JavaScrtipt动态变换上下文相关对象时,主要运用apply, call两个方法.</p>
+<p>call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内在实现的,因为属于Function.prototype,所以每个Function对象实例,也就是每个方法都有call, apply属性.</p>
+<p>既然作为方法的属性,那它们的使用就当然是针对方法的了,这两个方法是容易混淆的,因为它们的作用一样,只是使用方式不同.<br><a id="more"></a><br>区分apply,call就一句话:</p>
+<pre><code>foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg2, arg3)
+</code></pre><p>相同点:两个方法产生的作用是完全一样的</p>
+<p>不同点:方法传递的参数不同</p>
+<p>上面代码中,foo是一个方法,this是方法执行时上下文相关对象,arg1, arg2, arg3是传给foo方法的参数.这里所谓的方法执行时上下文相关对象, 如果有面向对象的编程基础,那很好理解,就是在类实例化后对象中的this.</p>
+<h2 id="作用相同"><a href="#作用相同" class="headerlink" title="作用相同"></a>作用相同</h2><p>在JavaScript中,代码总是有一个上下文对象,代码处于该对象之内. 上下文对象是通过this变量来体现的, 这个this变量永远指向当前代码所处的对象中.</p>
+<p>为了更好的领会这this是什么,举个例子:</p>
+<pre><code>function A(){
+    this.message = &quot;我A的是消息&quot;
+    this.getMessage = function(){
+        return this.message
+    }
+}
+function B(){
+    this.message = &quot;我B的是消息&quot;
+    this.setMessage = function(newMessage){
+        this.message = newMessage
+    }
+}
+</code></pre><p>可见,A, B类都有一个message属性(面向对象中所说的成员),A有获取消息的getMessage方法,B有设置消息的setMessage方法,下面来显示call的威力.</p>
+<pre><code>var a = new A();
+var b = new B();
+b.setMessage.call(a, &quot;a的消息&quot;);        //给对象a动态指派b的setMessage方法,注意,a本身是没有这方法的!
+alert(a.getMessage());                //显示&quot;a的消息&quot;
+alert(a.getMessage.call(b))    ;        //给对象b动态指派a的getMessage方法,结果显示&quot;我B的是消息&quot;
+</code></pre><p>简直是”无中生有”,对象的方法可以任意指派,而对象本身一直都是没有这方法的,注意是指派,通俗点就是,方法是借给另一个对象的调用去完成任务,原理上是方法执行时上下文对象改变了.</p>
+<p>所以 b.setMessage.call(a, “a的消息”); 就等于用 a 作执行时上下文对象调用b对象的 setMessage 方法,而这过程中与 b 一点关系都没有, 作用等效于 a.setMessage( “a的消息”);</p>
+<p>因为 apply 与 call 产生的作用是一样的,可以说 call, apply 作用就是借用别人的方法来调用,就像调用自己的一样    </p>
+<h2 id="传参区别"><a href="#传参区别" class="headerlink" title="传参区别"></a>传参区别</h2><p>理解了call, apply相同处—–作用后,再来看看它们的区别,看过上面例子,相信您大概知道了,从 b.setMessage.call(a, “a的消息”) 等效于 a.setMessage( “a的消息”) 可以看出, “a的消息”在call中作为一个参数传递.</p>
+<p>那么在apply中是怎么表示的呢,直接解释说不清楚,apply要结合应用场景才一目了然.我们来设计一个应用场景:</p>
+<pre><code>function print(a, b, c, d){
+    alert(a + b + c + d);
+}
+function example(a, b , c , d){
+    print.call(this, a, b, c, d);        //用call方式借用print,参数显式打散传递
+    print.apply(this, arguments);        //用apply方式借用print, 参数作为一个数组传递
+                    //这里直接用JavaScript方法内本身有的arguments数组
+    print.apply(this, [a, b, c, d]);    //或者封装成数组
+}
+example(”背” , “光” , “脚”, “本”);        //弹出三次”背光脚本”
+</code></pre><p>在这场景中, example方法内,a, b, c, d作为方法传递的参数, 方法分别运用了apply, call去借print方法来调用,</p>
+<p>最后一句由于直接调用example方法, 所以在该方法中的上下文对象this就是window对象.</p>
+<p>所以,call, apply方法它们除了第一个参数,即执行时上下文对象相同外,call方法的其它参数将依次传递给借用的方法作参数,而apply就两个参数,第二个参数为一个数组传递.所以可以说成:</p>
+<pre><code>call, apply方法区别是,从第二个参数起, call方法参数将依次传递给借用的方法作参数, 而apply直接将这些参数放到一个数组中再传递, 最后借用方法的参数列表是一样的.    
+</code></pre><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>当参数明确时可用 call , 当参数不明确时可用 apply 给合 arguments ,例:</p>
+<pre><code>print.call(window, “背” , “光” , “脚”, “本”);                            
+function foo(){
+    print.apply(window, arguments);            //foo参数可能为多个
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/02/04/call/" data-title="javascript中的apply()和call()方法" data-url="http://yoursite.com/2016/02/04/call/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'true'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>

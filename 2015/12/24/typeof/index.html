@@ -13,7 +13,7 @@
     <meta name="description" content="JavaScript 中 typeof 和 instanceof 常用来判断一个变量是否为空，或者是什么类型的。但它们之间还是有区别的：
 typeof它是一个一元运算，放在一个运算数之前，运算数可以是任意类型
 它返回值是一个字符串，该字符串说明运算数的类型。typeof 一般只能返回如下几个结果：
-">
+number,boolean,string,function,object,undefined。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -228,6 +228,10 @@ typeof它是一个一元运算，放在一个运算数之前，运算数可以�
         
             <a href="/tags/js/" class="chip red lighten-1">js</a>
         
+            <a href="/tags/typeof/" class="chip red lighten-1">typeof</a>
+        
+            <a href="/tags/instanceof/" class="chip red lighten-1">instanceof</a>
+        
     </div>
 
 
@@ -241,7 +245,8 @@ typeof它是一个一元运算，放在一个运算数之前，运算数可以�
 <h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>它是一个一元运算，放在一个运算数之前，运算数可以是任意类型</p>
 <p>它返回值是一个字符串，该字符串说明运算数的类型。typeof 一般只能返回如下几个结果：</p>
 <pre><code>number,boolean,string,function,object,undefined。
-</code></pre><p>我们可以使用 typeof 来获取一个变量是否存在，如 </p>
+</code></pre><a id="more"></a>
+<p>我们可以使用 typeof 来获取一个变量是否存在，如 </p>
 <pre><code>if(typeof a!=&quot;undefined&quot;){alert(&quot;ok&quot;)}
 </code></pre><p>而不要去使用 if(a) 因为如果 a 不存在（未声明）则会出错，对于 Array,Null 等特殊对象使用 typeof 一律返回 object，这正是 typeof 的局限性。</p>
 <h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p>instanceof 用于判断一个变量是否某个对象的实例</p>
