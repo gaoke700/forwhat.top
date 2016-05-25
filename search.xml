@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript中with语句优缺点]]></title>
+      <url>http://yoursite.com/2016/02/11/with/</url>
+      <content type="html"><![CDATA[<p>对于开发,优化始终应该是我需要努力的方向,今天来讲讲JavaScript中with语句:</p>
+<p>with语句的作用是暂时改变作用域链、减少的重复输入</p>
+<p>其语法结构为：</p>
+<pre><code>with(object){
+    //statements
+}
+</code></pre><a id="more"></a>
+<p>例如:</p>
+<pre><code>with(document.forms[0]){  
+   name.value = &quot;lee king&quot;;  
+   address.value = &quot;Peking&quot;;  
+   zipcode.value = &quot;10000&quot;;  
+}  
+</code></pre><p>与之对应的传统的写法是：</p>
+<pre><code>document.forms[0].name.value = &quot;lee king&quot;;  
+document.forms[0].address.value = &quot;Peking&quot;;  
+document.forms[0].zipcode.value = &quot;10000&quot;; 
+</code></pre><p>可以看出with语句的简洁明了.</p>
+<p>不过在代码的世界里是很难找到真正的完美。js的解释器需要检查with块中的变量是否属于with包含的对象，这将使with语句执行速度大大下降，并且导致js语句很难被优化。</p>
+<p>为了兼顾速度与代码量可以找到一个比较折衷的方案：</p>
+<pre><code>var  form = document.forms[0];  
+form.name.value = &quot;lee king&quot;;  
+form.address.value = &quot;Peking&quot;;  
+form.zipcode.value = &quot;10000&quot;;
+</code></pre><p>讲这个知识点只是为了让我们能看懂别人的代码,个人建议在以后的高效代码开发中我们应该尽可能的避免使用with语句。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[javascript中的apply()和call()方法]]></title>
       <url>http://yoursite.com/2016/02/04/call/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>JavaScrtipt动态变换上下文相关对象时,主要运用apply, call两个方法.</p>
@@ -2038,9 +2069,9 @@ gulp.task(&apos;watch&apos;, function() {
 <p>Node.js<a href="https://nodejs.org/en/" target="_blank" rel="external">下载地址</a> 建议安装LTS稳定版<br><a id="more"></a><br>该文件属于系统文件，安装后没有自己的图标进口，可通过在终端输入以下命令查看是否安装成功：</p>
 <pre><code>$ node -v
 </code></pre><p>该命令是打印Node.js的版本,如果显示版本号（version），表示安装成功。</p>
-<h4 id="2-git账号以及本地环境搭建"><a href="#2-git账号以及本地环境搭建" class="headerlink" title="2.git账号以及本地环境搭建"></a>2.git账号以及本地环境搭建</h4><p>这个教程大家可以参考我上一篇博客<a href="http://gaoke700.github.io/2015/09/17/%E6%9C%AC%E5%9C%B0git%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">http://gaoke700.github.io/2015/09/17/%E6%9C%AC%E5%9C%B0git%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</a>;</p>
+<h4 id="2-git账号以及本地环境搭建"><a href="#2-git账号以及本地环境搭建" class="headerlink" title="2.git账号以及本地环境搭建"></a>2.git账号以及本地环境搭建</h4><p>这个教程大家可以参考我上一篇博客 <a href="http://gaoke700.github.io/2015/09/17/%E6%9C%AC%E5%9C%B0git%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="blank">[点此打开]</a></p>
 <p>新建一个仓库，仓库名（即博客地址）设置为yourgitname.github.io</p>
-<p>比如我的git账号是gaoke700，那我的这个博客域名就是<a href="http://gaoke700.github.io" target="_blank" rel="external">gaoke700.github.io</a></p>
+<p>比如我的git账号是gaoke700，那我的这个博客域名就是 <a href="http://gaoke700.github.io" target="_blank" rel="external">gaoke700.github.io</a></p>
 <h3 id="安装hexo插件"><a href="#安装hexo插件" class="headerlink" title="安装hexo插件"></a>安装hexo插件</h3><p>下载安装hexo<br>Node.js的第三方模块托管地址是<a href="https://www.npmjs.com/" target="_blank" rel="external">https://www.npmjs.com/</a>在这里我们能找到数以万计的Node.js第三方模块，node在安装的时候默认安装npm环境，这样我们就可以直接使用npm命令安装hexo</p>
 <pre><code>npm install hexo
 </code></pre><p>如果需要权限，在命令前面加上 sudo ,如果要全局安装，再加个 -g</p>
@@ -2064,7 +2095,7 @@ gulp.task(&apos;watch&apos;, function() {
 <h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><pre><code>hexo g
 </code></pre><p>g:generate 该命令将md文件和相关的配置文件生成浏览器可以解析的HTML和CSS以及js文件，并放到一个自动新建的public文件夹下</p>
 <h3 id="本地查看"><a href="#本地查看" class="headerlink" title="本地查看"></a>本地查看</h3><pre><code>hexo s
-</code></pre><p>或者 hexo server 运行本地服务器，运行完成后，下面会出现服务器地址 一般为 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> ,只要将这个地址在浏览器中打开就可以看到效果了，退出服务器运行环境 按 ctrl + c 就可以了</p>
+</code></pre><p>或者 hexo server 运行本地服务器，运行完成后，下面会出现服务器地址 一般为<pre> <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> </pre>只要将这个地址在浏览器中打开就可以看到效果了，退出服务器运行环境 按 ctrl + c 就可以了</p>
 <h3 id="将本地文件上线"><a href="#将本地文件上线" class="headerlink" title="将本地文件上线"></a>将本地文件上线</h3><h4 id="deployer"><a href="#deployer" class="headerlink" title="deployer"></a>deployer</h4><p>将hexo的本地文件上传到线上git，我们需要安装一个插件：hexo-deployer-git</p>
 <pre><code>npm install hexo-deployer-git --save
 </code></pre><p>通过–save 安装成功后 会在package.json文件里多出一行”hexo-deployer-git”: “^0.1.0”,的记录信息。 “^0.1.0”为版本号</p>
@@ -2076,6 +2107,11 @@ gulp.task(&apos;watch&apos;, function() {
 <h4 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h4><p>安装好后，执行：</p>
 <pre><code>hexo d
 </code></pre><p>通过该命令会把生成好的静态文件上传到你的github，完成后，登入你的yourname.github.io就可以看到你的博客页面了</p>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>在上面运行的过程中如果出现如下类似错误:</p>
+<pre><code>ERROR Process failed: layout/.DS_Store
+</code></pre><p>进入主题里面的layout和_partial目录下,使用删除命令:</p>
+<pre><code>rm -rf .DS_Store
+</code></pre><p>强制移除此文件即可</p>
 <h3 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h3><p>如果你觉得自己的主题不够漂亮，你可以在 theme 文件夹下 你的主题文件里做更改。</p>
 <p>你也可以直接在网上下载你喜欢的 hexo 主题，直接放到 theme 目录下，然后将_config.yml文件下 “theme: themeName”的themeName更改为你的主题文件夹名字，注意冒号后面有空格。</p>
 <p>当然如果你够牛，你可以自己写自己的主题。</p>
@@ -2462,37 +2498,6 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JavaScript中with语句优缺点]]></title>
-      <url>http://yoursite.com/2014/02/11/with/</url>
-      <content type="html"><![CDATA[<p>对于开发,优化始终应该是我需要努力的方向,今天来讲讲JavaScript中with语句:</p>
-<p>with语句的作用是暂时改变作用域链、减少的重复输入</p>
-<p>其语法结构为：</p>
-<pre><code>with(object){
-    //statements
-}
-</code></pre><!--with-->
-<p>例如:</p>
-<pre><code>with(document.forms[0]){  
-   name.value = &quot;lee king&quot;;  
-   address.value = &quot;Peking&quot;;  
-   zipcode.value = &quot;10000&quot;;  
-}  
-</code></pre><p>与之对应的传统的写法是：</p>
-<pre><code>document.forms[0].name.value = &quot;lee king&quot;;  
-document.forms[0].address.value = &quot;Peking&quot;;  
-document.forms[0].zipcode.value = &quot;10000&quot;; 
-</code></pre><p>可以看出with语句的简洁明了.</p>
-<p>不过在代码的世界里是很难找到真正的完美。js的解释器需要检查with块中的变量是否属于with包含的对象，这将使with语句执行速度大大下降，并且导致js语句很难被优化。</p>
-<p>为了兼顾速度与代码量可以找到一个比较折衷的方案：</p>
-<pre><code>var  form = document.forms[0];  
-form.name.value = &quot;lee king&quot;;  
-form.address.value = &quot;Peking&quot;;  
-form.zipcode.value = &quot;10000&quot;;
-</code></pre><p>讲这个知识点只是为了让我们能看懂别人的代码,个人建议在以后的高效代码开发中我们应该尽可能的避免使用with语句。</p>
 ]]></content>
     </entry>
     
