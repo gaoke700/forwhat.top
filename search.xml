@@ -92,9 +92,9 @@ function foo(){
     </entry>
     
     <entry>
-      <title><![CDATA[前端面试题3]]></title>
+      <title><![CDATA[前端面试题4]]></title>
       <url>http://yoursite.com/2016/01/29/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%984/</url>
-      <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>1 . 如果你显示中使用的是Google Chrome，如何让input元素默认情况下显示”HiCling Team”，而在光标一入后显示空白？</p>
+      <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>1 . HTML5中的datalist是什么？并且写出Datalist功能的HTML代码</p>
 <p>2 . 如果你显示中使用的是Google Chrome，如何让input元素默认情况下显示”HiCling Team”，而在光标一入后显示空白？</p>
 <p>3 . 创建一个显示含有本地时间的日历的input<br><a id="more"></a><br>4 . 判断下面字符串中出现次数最多的字符，同级这个次数。</p>
 <p>   var str = ‘asdfssaaaasasasasaa’</p>
@@ -210,6 +210,7 @@ var $wwe = $(&quot;#w3c&quot;).find(&quot;div.id&quot;)
 <p>50 . js中的 call() 和 apply() 方法的区别</p>
 <p>51 . 下面这段javascript代码,alert的输出结果是什么?</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var msg =&quot;hello&quot;</span><br><span class="line">for (var i=0;i&lt;10;i++)&#123;</span><br><span class="line">	var msg =&quot;hello&quot;+i*2+i;</span><br><span class="line">&#125;</span><br><span class="line">alert(msg);</span><br></pre></td></tr></table></figure>
+<p>52 . eval是什么?</p>
 <h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><h3 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h3><h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><h3 id="第九题"><a href="#第九题" class="headerlink" title="第九题"></a>第九题</h3><h3 id="第十题"><a href="#第十题" class="headerlink" title="第十题"></a>第十题</h3><h3 id="第十一题"><a href="#第十一题" class="headerlink" title="第十一题"></a>第十一题</h3><h3 id="第十二题"><a href="#第十二题" class="headerlink" title="第十二题"></a>第十二题</h3><h3 id="第十三题"><a href="#第十三题" class="headerlink" title="第十三题"></a>第十三题</h3><h3 id="第十四题"><a href="#第十四题" class="headerlink" title="第十四题"></a>第十四题</h3>]]></content>
     </entry>
     
