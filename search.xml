@@ -213,12 +213,7 @@ alert(a instanceof test)    //返回true
 <pre><code>var a=new Array();
 if (a instanceof Object){ alert(&apos;Y&apos;);}
 else alert(&apos;N&apos;);     //弹出y
-</code></pre><p>但:</p>
-<pre><code>if (window instanceof Object) alert(&apos;Y&apos;);
-else alert(&apos;N&apos;);    //弹出n
-</code></pre><p>所以，这里的 instanceof 测试的 object 是指 js 语法中的 object，不是指 dom 模型对象。</p>
-<p>使用 typeof 会有些区别,alert(typeof(window)) 会得 object</p>
-]]></content>
+</code></pre>]]></content>
     </entry>
     
     <entry>
