@@ -4,6 +4,59 @@
   
     
     <entry>
+      <title><![CDATA[JS逻辑运算符及优先级]]></title>
+      <url>http://yoursite.com/2016/02/17/jsPriority/</url>
+      <content type="html"><![CDATA[<h2 id="js中的真假"><a href="#js中的真假" class="headerlink" title="js中的真假"></a>js中的真假</h2><p>js中的假: <mark> false </mark>毋庸置疑  , 空<mark> null </mark> , 数字<mark> 0 </mark> , 空字符串 <mark> “” </mark> , 非数字<mark> NaN </mark> , 还有<mark> undefined </mark></p>
+<p>js中的真: 除了上面的假之外都是真,包括字符串 “false” , 对象 等<br><a id="more"></a></p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>a &amp;&amp; b :如果 a 为true，直接返回b，而不管 b 为 true 或者 false 。如果 a 为false 那么直接返回 a</p>
+<p>a || b :如果 a 为true，直接返回a，而不会继续往下执行。如果 a 为 false，直接返回b，而不管 b为 true 或者false</p>
+<p>先看个例1:</p>
+<pre><code>var a = 1 &amp;&amp; 2 &amp;&amp; 3; 
+var b = 0 &amp;&amp; 1 &amp;&amp; 2; 
+var c = 1 &amp;&amp; 0 &amp;&amp; 2;
+alert(a)                    //3 
+alert(b)                    //0 
+alert(c);                    //0  
+</code></pre><p>上面例子中第一个: 因为1 &amp;&amp; 2，1为真，返回2；2&amp;&amp;3， 2为真，返回3 , <mark>&amp;&amp;(逻辑与)运算一假即假</mark> ,遇到false就返回</p>
+<p>再看个例2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = 0 || 1 || 2;</span><br><span class="line">var b = 1 || 0 || 3; </span><br><span class="line">alert(a)						//1  </span><br><span class="line">alert(b);						//1</span><br></pre></td></tr></table></figure>
+<p>上面第一个: 0 || 1 , 0为假,返回 1,  1||2 , 1 为真 返回 1 不再执行了 , <mark>||(逻辑或)运算一真即真</mark> ,遇到true就返回</p>
+<p>&amp;&amp;(逻辑与)和||(逻辑或)混合使用的时候要注意他们的优先级：<mark> &amp;&amp;(逻辑与)优先级高于||(逻辑或） </mark></p>
+<p>再看个例3:</p>
+<pre><code>var a = 3 &amp;&amp; 0 || 2;    
+var b = 3 || 0 &amp;&amp; 2; 
+var c = 0 || 2 &amp;&amp; 3;   
+alert(a)                    //2 
+alert(b)                     //3  
+alert(c);                    //3
+</code></pre><p>上面第三个: 注意先算的是后面的逻辑与, 2 &amp;&amp; 3 返回 3  , 再 0 || 3 ,返回 3 ;<br>每个逻辑表达式都是有返回值的，但这个值并不一定是布尔变量，下面分别介绍：</p>
+<h3 id="与操作符（-amp-amp-）"><a href="#与操作符（-amp-amp-）" class="headerlink" title="与操作符（&amp;&amp;）"></a>与操作符（&amp;&amp;）</h3><p>javascript依次获取每一个操作数，将它们转换为布尔变量，如果是false，则直接返回这个操作数的值（注意，返回的是转换前的原值，不一定是布尔类型），中断后面操作数的处理；否则继续处理下一个操作数。如果直到最后一个操作数仍然对应布尔变量true，则返回最后这个操作数的值。</p>
+<p>下面的代码演示了其执行原理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;1&quot; &amp;&amp; true &amp;&amp; 0 &amp;&amp; false &amp;&amp; &quot;abc&quot;;  </span><br><span class="line">alert(a);  						//可见a的值是0  </span><br><span class="line">var b = &quot;abc&quot; &amp;&amp; true &amp;&amp; &quot;123&quot;;  </span><br><span class="line">alert(b);  						//可见b的值是&quot;123&quot;;</span><br><span class="line">```	</span><br><span class="line">### 或操作符（||）</span><br><span class="line"></span><br><span class="line">javascript依次获取每一个操作数，将它们转换为布尔变量，如果是true，则直接返回这个操作数的值，中断后面操作数的处理；否则继续下一个操作数。如果知道最后一个操作数仍然对应布尔变量false，则返回这个操作数的值。</span><br><span class="line"></span><br><span class="line">下面的代码演示了其执行原理：	</span><br><span class="line"></span><br><span class="line">```	</span><br><span class="line">var a = &quot;abc&quot; || &quot;123&quot;;  </span><br><span class="line">alert(a);  						//可见a的值是&quot;abc&quot;  </span><br><span class="line">var b = false || &quot;&quot; || 0;  </span><br><span class="line">alert(b); 						//可见a的值是0  </span><br><span class="line">```	</span><br><span class="line">### 非操作符（!）</span><br><span class="line"></span><br><span class="line">和前两种操作符不同，非操作符始终返回布尔类型的变量 ，例如：</span><br><span class="line">	</span><br><span class="line">	var a = ! &quot;abc&quot;;  </span><br><span class="line">	alert(a); 					//显示a的值为false</span><br><span class="line">	</span><br><span class="line">## js运算优先级</span><br><span class="line">JScript 中的运算符优先级是一套规则。该规则在计算表达式时控制运算符执行的顺序。具有较高优先级的运算符先于较低优先级的运算符执行。例如，乘法的执行先于加法。</span><br><span class="line"></span><br><span class="line">下表按从最高到最低的优先级列出 JScript 运算符。 &lt;mark&gt; 具有相同优先级的运算符按从左至右的顺序求值&lt;/mark&gt; 。</span><br></pre></td></tr></table></figure>
+<p>运算符                                        描述</p>
+<p>.      []     ()                            字段访问、数组下标、函数调用以及表达式分组<br>++ – - ~ ! delete new typeof void            一元运算符、返回数据类型、对象创建、未定义值</p>
+<ul>
+<li>/       %                            乘法、除法、取模</li>
+</ul>
+<ul>
+<li><ul>
+<li><ul>
+<li>加法、减法、字符串连接<br>&lt;&lt;     &gt;&gt;     &gt;&gt;&gt;                            移位<br>&lt;   &lt;=   &gt;   &gt;=   instanceof                小于、小于等于、大于、大于等于、instanceof<br>==    !=    ===    !==                        等于、不等于、严格相等、非严格相等<br>&amp;                                            按位与<br>^                                            按位异或<br>|                                            按位或<br>&amp;&amp;                                            逻辑与<br>||                                            逻辑或<br>?:                                            条件<br>=      oP=                                    赋值、运算赋值<br>,                                            多重求值<br>```<br>圆括号可用来改变运算符优先级所决定的求值顺序。这意味着圆括号中的表达式应在其用于表达式的其余部分之前全部被求值。    </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>例如：</p>
+<pre><code>z = 78 * (96 + 3 + 45)
+</code></pre><p>在该表达式中有五个运算符： =, <em>, (), +, 以及另一个 +。根据运算符优先级的规则，它们将按下面的顺序求值： (), +, +, </em>, =。</p>
+<p>首先对圆括号内的表达式求值。圆括号中有两个加法运算符。因为两个加法运算符具有相同的优先级，从左到右求值。先将 96 和 3 相加，然后将其和与 45 相加，得到的结果为 144。</p>
+<p>然后是乘法运算。78 乘以 144，得到结果为 11232。</p>
+<p>最后是赋值运算。将 11232 赋给 z。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript中with语句优缺点]]></title>
       <url>http://yoursite.com/2016/02/11/with/</url>
       <content type="html"><![CDATA[<p>对于开发,优化始终应该是我需要努力的方向,今天来讲讲JavaScript中with语句:</p>
@@ -93,7 +146,7 @@ function foo(){
     
     <entry>
       <title><![CDATA[前端面试题4]]></title>
-      <url>http://yoursite.com/2016/01/29/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%984/</url>
+      <url>http://yoursite.com/2016/01/29/interview4/</url>
       <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>1 . HTML5中的datalist是什么？并且写出Datalist功能的HTML代码</p>
 <p>2 . 如果你显示中使用的是Google Chrome，如何让input元素默认情况下显示”HiCling Team”，而在光标一入后显示空白？</p>
 <p>3 . 创建一个显示含有本地时间的日历的input<br><a id="more"></a><br>4 . 判断下面字符串中出现次数最多的字符，同级这个次数。</p>
@@ -216,7 +269,7 @@ var $wwe = $(&quot;#w3c&quot;).find(&quot;div.id&quot;)
     
     <entry>
       <title><![CDATA[前端面试题3]]></title>
-      <url>http://yoursite.com/2016/01/26/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%983/</url>
+      <url>http://yoursite.com/2016/01/26/interview3/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>知乎上看的几道js面试题,鉴于我们伟大的讲师也被坑错了好几道,所以感觉有必要写篇博客记录一下,不费话了直接上题</p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h2><p>1 .</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    return typeof arguments;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">A. &quot;object&quot;	  B. &quot;array&quot; 	C. &quot;arguments&quot;	 D. &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
@@ -330,7 +383,7 @@ typeof f;
     
     <entry>
       <title><![CDATA[前端面试题2]]></title>
-      <url>http://yoursite.com/2016/01/04/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%982/</url>
+      <url>http://yoursite.com/2016/01/04/interview2/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
 <p>此题由JS的各种坑汇集而成,涉及的知识点包括变量定义提升、this指针指向、运算符优先级、原型、继承、全局变量污染、对象属性及原型属性优先级等等。</p>
 <h3 id="题目如下："><a href="#题目如下：" class="headerlink" title="题目如下："></a>题目如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function Foo() &#123;</span><br><span class="line">    getName = function () &#123; alert (1); &#125;;</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br><span class="line">Foo.getName = function () &#123; alert (2);&#125;;</span><br><span class="line">Foo.prototype.getName = function () &#123; alert (3);&#125;;</span><br><span class="line">var getName = function () &#123; alert (4);&#125;;</span><br><span class="line">function getName() &#123; alert (5);&#125;</span><br><span class="line"></span><br><span class="line">//请写出以下输出结果：</span><br><span class="line">Foo.getName();</span><br><span class="line">getName();</span><br><span class="line">Foo().getName();</span><br><span class="line">getName();</span><br><span class="line">new Foo.getName();</span><br><span class="line">new Foo().getName();</span><br><span class="line">new new Foo().getName();</span><br></pre></td></tr></table></figure>
@@ -430,7 +483,7 @@ else alert(&apos;N&apos;);     //弹出Y
     
     <entry>
       <title><![CDATA[前端面试题1]]></title>
-      <url>http://yoursite.com/2015/12/06/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%981/</url>
+      <url>http://yoursite.com/2015/12/06/interview1/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
 <p>前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。<br><a id="more"></a><br>面试有几点需注意：(来源寒冬winter 老师，github:@wintercn)</p>
 <ul>
@@ -947,7 +1000,7 @@ JavaScript：
     
     <entry>
       <title><![CDATA[jade的使用]]></title>
-      <url>http://yoursite.com/2015/11/17/jade%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      <url>http://yoursite.com/2015/11/17/useJade/</url>
       <content type="html"><![CDATA[<p>Jade是一个基于javascript，可以运行与node与浏览器环境的一个前端模板引擎</p>
 <h2 id="tag标签"><a href="#tag标签" class="headerlink" title="tag标签"></a>tag标签</h2><p>通过缩进关系，代替以往html的层级包含关系，如一个简单的静态页面可以表达为<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032309283997.png" alt=""><br><a id="more"></a><br>内联书写层级<br>   a: img<br>   通过分号区分元素内内容<br>自闭合标签<br>   img、meta、link 等自闭合会自动识别<br>可通过在标签后添加” / “强制输出自闭合元素<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032309514383.png" alt=""><br>style属性<br>style属性可以想上面的格式传入一个文本包含所有样式内容，或者传入一个类似js中的对象，达到同样的效果<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310010255.png" alt=""></p>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>使用” = “号输出变量值到元素内<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310126718.png" alt=""><br>通过 #{variable} 插入相应的变量值<br><img src="http://fs.powereasy.net/summarize/2015/11/201511032310227714.png" alt=""></p>
@@ -962,7 +1015,7 @@ JavaScript：
     
     <entry>
       <title><![CDATA[jade的基础语法]]></title>
-      <url>http://yoursite.com/2015/11/17/jade%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+      <url>http://yoursite.com/2015/11/17/jadeGrammar/</url>
       <content type="html"><![CDATA[<p>如果你熟悉 Sublime Text 和 Emmet 的组合，那么 Jade 也会是你的菜。<code>模板引擎</code>这个术语听起来太过于高大上了，私下里我更喜欢称它们是 HTML 预处理语言，非常类似 Sass 之于 CSS —— 不过相比起 Sass 操纵 CSS 的强大力量，Jade 对 HTML 的影响只能说本本分分，没有什么激进之处，当然，这并不是坏事。</p>
 <p>Jade 中省略了大量的尖括号，给我的感觉就是简洁和高效。这里不会讨论各种模板引擎的优劣，技术和工具的好坏向来都是不死不休的伪命题，还是花更多的时间来创造有价值的东西更有意思。</p>
 <p>本文主要参考了 <a href="http://jade-lang.com/reference/" target="_blank" rel="external">Jade 官方的英文文档</a>，并根据自己的经验缩减了部分内容——求全求精不是本文的目的，希望本文能够让你快速入门。即使做了部分精简，掌握之后也可以应对百分之九十以上的需求。此外，官方文档的各个小节是按字典序排列的，这并不适合第一次接触 Jade 的开发者，所以你懂得，我又给它改了……</p>
@@ -1595,7 +1648,7 @@ block prepend content
     
     <entry>
       <title><![CDATA[自动化构建工具gulp]]></title>
-      <url>http://yoursite.com/2015/10/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7gulp/</url>
+      <url>http://yoursite.com/2015/10/16/gulp/</url>
       <content type="html"><![CDATA[<h2 id="What-Is-Gulp"><a href="#What-Is-Gulp" class="headerlink" title="What Is Gulp?"></a>What Is Gulp?</h2><p>Gulp是一个构建系统，它能通过自动执行常见任务，比如编译预处理CSS，压缩JavaScript和刷新浏览器，来改进网站开发的过程。</p>
 <p>Gulp是基于Node.js构建的，因此Gulp源文件和你用来定义任务的Gulp文件都被写进了JavaScript（或者CoffeeScript）里。</p>
 <p>Gulp本身虽然不能完成很多任务，但它有大量插件可用，开发者可以访问插件页面或者在npm搜索gulpplugin就能看到。例如，有些插件可以用来执行JSHint、编译CoffeeScript，执行Mocha测试，甚至更新版本号。</p>
@@ -2065,7 +2118,7 @@ gulp.task(&apos;watch&apos;, function() {
     
     <entry>
       <title><![CDATA[hexo博客搭建]]></title>
-      <url>http://yoursite.com/2015/09/18/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+      <url>http://yoursite.com/2015/09/18/hexoBlog/</url>
       <content type="html"><![CDATA[<h2 id="本文将教大家怎么搭建hexo博客"><a href="#本文将教大家怎么搭建hexo博客" class="headerlink" title="本文将教大家怎么搭建hexo博客"></a>本文将教大家怎么搭建hexo博客</h2><h3 id="准备工作（本文所有操作均在mac系统下执行）："><a href="#准备工作（本文所有操作均在mac系统下执行）：" class="headerlink" title="准备工作（本文所有操作均在mac系统下执行）："></a>准备工作（本文所有操作均在mac系统下执行）：</h3><h4 id="1-搭建Node-js运行环境"><a href="#1-搭建Node-js运行环境" class="headerlink" title="1.搭建Node.js运行环境"></a>1.搭建Node.js运行环境</h4><p>hexo是一个基于Node.js的第三方模块，能够生成一个<code>静态</code>博客框架，所以要搭建hexo需要先安装node.js</p>
 <p>Node.js<a href="https://nodejs.org/en/" target="_blank" rel="external">下载地址</a> 建议安装LTS稳定版<br><a id="more"></a><br>该文件属于系统文件，安装后没有自己的图标进口，可通过在终端输入以下命令查看是否安装成功：</p>
 <pre><code>$ node -v
@@ -2121,7 +2174,7 @@ gulp.task(&apos;watch&apos;, function() {
     
     <entry>
       <title><![CDATA[github的下载与上传]]></title>
-      <url>http://yoursite.com/2015/09/17/github%E7%9A%84%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0/</url>
+      <url>http://yoursite.com/2015/09/17/github/</url>
       <content type="html"><![CDATA[<h2 id="1-申请git账号"><a href="#1-申请git账号" class="headerlink" title="1.申请git账号"></a>1.申请git账号</h2><p>这个大家自己去git官网申请，申请地址：<a href="https://github.com/join?source=header-home" target="_blank" rel="external">https://github.com/join?source=header-home</a></p>
 <h2 id="2-搭建本地环境"><a href="#2-搭建本地环境" class="headerlink" title="2.搭建本地环境"></a>2.搭建本地环境</h2><p>mac下通过安装Xcode来搭建git环境，xcode自带git环境。安装完成后，通过终端输入以下命令检测git环境：</p>
 <pre><code>git --version 
@@ -2226,7 +2279,7 @@ Connection to github.com closed.
     
     <entry>
       <title><![CDATA[jquery中attr和prop的区别]]></title>
-      <url>http://yoursite.com/2015/08/26/jquery%E4%B8%ADattr%E5%92%8Cprop%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <url>http://yoursite.com/2015/08/26/attrANDprop/</url>
       <content type="html"><![CDATA[<p>在高版本的jquery引入prop方法后，什么时候该用prop？什么时候用attr？它们两个之间有什么区别？这些问题就出现了。</p>
 <p>关于它们两个的区别，网上的答案很多。这里谈谈我的心得，我的心得很简单：</p>
 <ul>
@@ -2253,7 +2306,7 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
     
     <entry>
       <title><![CDATA[sublime text3快捷键]]></title>
-      <url>http://yoursite.com/2015/04/14/sublime-text3%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <url>http://yoursite.com/2015/04/14/sublimeText3/</url>
       <content type="html"><![CDATA[<h3 id="选择类"><a href="#选择类" class="headerlink" title="选择类"></a>选择类</h3><p>Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</p>
 <p>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</p>
 <p>Ctrl+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</p>
@@ -2319,7 +2372,7 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
     
     <entry>
       <title><![CDATA[clearfix清除浮动进化史]]></title>
-      <url>http://yoursite.com/2015/03/17/clearfix%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</url>
+      <url>http://yoursite.com/2015/03/17/clearfix/</url>
       <content type="html"><![CDATA[<h2 id="clearfix清除浮动"><a href="#clearfix清除浮动" class="headerlink" title="clearfix清除浮动"></a>clearfix清除浮动</h2><p>首先在很多很多年以前我们常用的清除浮动是这样的。</p>
 <pre><code>.clear{clear:both;line-height:0;}
 </code></pre><p>现在可能还可以在很多老的站点上可以看到这样的代码，相当暴力有效的解决浮动的问题。</p>
@@ -2411,7 +2464,7 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
     
     <entry>
       <title><![CDATA[我的主题配置]]></title>
-      <url>http://yoursite.com/2015/02/24/%E6%88%91%E7%9A%84%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
+      <url>http://yoursite.com/2015/02/24/themeSet/</url>
       <content type="html"><![CDATA[<h2 id="hexo-theme-raytaylorism-v2"><a href="#hexo-theme-raytaylorism-v2" class="headerlink" title="hexo-theme-raytaylorism v2"></a>hexo-theme-raytaylorism v2</h2><p>raytaylorism是一款清新的的响应式Material Design风格的<a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>主题。该主题支持最新的Hexo 3.1版本。</p>
 <p><strong>本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。</strong></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd yourblog</span><br><span class="line">git clone https://github.com/raytaylorlin/hexo-theme-raytaylorism.git themes/raytaylorism</span><br></pre></td></tr></table></figure>

@@ -1,0 +1,1177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>jade的基础语法 | </title>
+    <meta name="author" content="gaoke">
+    
+    <meta name="description" content="如果你熟悉 Sublime Text 和 Emmet 的组合，那么 Jade 也会是你的菜。模板引擎这个术语听起来太过于高大上了，私下里我更喜欢称它们是 HTML 预处理语言，非常类似 Sass 之于 CSS —— 不过相比起 Sass 操纵 CSS 的强大力量，Jade 对 HTML 的影响只能说本本分分，没有什么激进之处，当然，这并不是坏事。
+Jade 中省略了大量的尖括号，给我的感觉就是简洁和高效。这里不会讨论各种模板引擎的优劣，技术和工具的好坏向来都是不死不休的伪命题，还是花更多的时间来创造有价值的东西更有意思。
+本文主要参考了 Jade 官方的英文文档，并根据自己的经验缩减了部分内容——求全求精不是本文的目的，希望本文能够让你快速入门。即使做了部分精简，掌握之后也可以应对百分之九十以上的需求。此外，官方文档的各个小节是按字典序排列的，这并不适合第一次接触 Jade 的开发者，所以你懂得，我又给它改了……
+古语有云：工欲善其事，必先利其器。利用 npm 安装 Jade 的过程这里就不介绍了，一方面是因为 mac 下安装太简单；另一方面是因为 windows 下给了我太多阴影……所以，这里直接附上在线测试页面，即开即用。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="jade的基础语法"/>
+    <meta property="og:site_name" content="前端小知识"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="前端小知识" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="green">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">前端小知识</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            Home
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            Archives
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            Reading
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            About
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            Search
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav green darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://i2.buimg.com/d5ffe6bd89f580dd.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">gaoke</p>
+                        <p class="desc">Web前端/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    Home
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    Archives
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    Categories
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    Reading
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    About
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    Search
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav green darken-1" id="category-menu">
+    
+
+            
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">Search</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper green">
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>jade的基础语法</h1>
+    
+
+
+            </div>
+            <time class="red-link-context" datetime="2015-11-17T06:47:56.000Z"><a href="/2015/11/17/jadeGrammar/">2015-11-17</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/工具/" class="chip red lighten-1">工具</a>
+        
+            <a href="/tags/jade/" class="chip red lighten-1">jade</a>
+        
+    </div>
+
+
+            <div class="toc red-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Doctype"><span class="section table-of-contents-text">Doctype</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#标签"><span class="section table-of-contents-text">标签</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#注释"><span class="section table-of-contents-text">注释</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#属性"><span class="section table-of-contents-text">属性</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#文本"><span class="section table-of-contents-text">文本</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#代码嵌入"><span class="section table-of-contents-text">代码嵌入</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#插值语法"><span class="section table-of-contents-text">插值语法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#条件语句"><span class="section table-of-contents-text">条件语句</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#分支语句"><span class="section table-of-contents-text">分支语句</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#遍历语句"><span class="section table-of-contents-text">遍历语句</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#循环语句"><span class="section table-of-contents-text">循环语句</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#mixins"><span class="section table-of-contents-text">mixins</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#includes"><span class="section table-of-contents-text">includes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#继承"><span class="section table-of-contents-text">继承</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#总结"><span class="section table-of-contents-text">总结</span></a></li></ol>
+</div>
+
+
+            <div class="entry red-link-context">
+                <p>如果你熟悉 Sublime Text 和 Emmet 的组合，那么 Jade 也会是你的菜。<code>模板引擎</code>这个术语听起来太过于高大上了，私下里我更喜欢称它们是 HTML 预处理语言，非常类似 Sass 之于 CSS —— 不过相比起 Sass 操纵 CSS 的强大力量，Jade 对 HTML 的影响只能说本本分分，没有什么激进之处，当然，这并不是坏事。</p>
+<p>Jade 中省略了大量的尖括号，给我的感觉就是简洁和高效。这里不会讨论各种模板引擎的优劣，技术和工具的好坏向来都是不死不休的伪命题，还是花更多的时间来创造有价值的东西更有意思。</p>
+<p>本文主要参考了 <a href="http://jade-lang.com/reference/" target="_blank" rel="external">Jade 官方的英文文档</a>，并根据自己的经验缩减了部分内容——求全求精不是本文的目的，希望本文能够让你快速入门。即使做了部分精简，掌握之后也可以应对百分之九十以上的需求。此外，官方文档的各个小节是按字典序排列的，这并不适合第一次接触 Jade 的开发者，所以你懂得，我又给它改了……</p>
+<p>古语有云：工欲善其事，必先利其器。利用 npm 安装 Jade 的过程这里就不介绍了，一方面是因为 mac 下安装太简单；另一方面是因为 windows 下给了我太多阴影……所以，这里直接附上<a href="http://naltatis.github.io/jade-syntax-docs/" target="_blank" rel="external">在线测试页面</a>，即开即用。<br><a id="more"></a></p>
+<h2 id="Doctype"><a href="#Doctype" class="headerlink" title="Doctype"></a>Doctype</h2><p>那年，某位学长来介绍 HTML 入门，上来第一个操作就是复制了这么一串，复制了这么一串……</p>
+<pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&gt;
+</code></pre><p>幸好现在是 HTML5 流行的新时代，文档类型精简掉了那个冗长拖沓的尾巴，即使手工编写也不费劲：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+</code></pre><p>Jade 对此做的更彻底：不用尖括号，不用大小写……</p>
+<pre><code>doctype html
+</code></pre><p>其他常用类型还有：</p>
+<ul>
+<li><code>doctype xml</code></li>
+<li><code>doctype transitional</code></li>
+<li><code>doctype strict</code></li>
+<li>自定义文档类型以及其他类型，可以<a href="http://jade-lang.com/reference/doctype/" target="_blank" rel="external">参考这里</a>。</li>
+</ul>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>标签是 HTML 的核心元素，所以我们就从这里入手。不知道大家有没有接触过 python，如果接触过，那下面就很好理解了；如果没接触过，那么就需要培养一种意识——缩进意识。Jade 和 python 都是对缩进敏感的语法形式。在其他语言中，缩进可能是一种表面功夫，是用来提高可读性的，但在 jade 和 pyhton 中还兼具划分层次结构的作用。这种强制缩进的好处是提高了可读性，省略了一些界定符号（大括号、尖括号……）。</p>
+<p>在 Jade 中创建一个列表：</p>
+<pre><code>ul
+  li Item A
+  li Item B
+  li Item C
+</code></pre>
+
+<p>生成的 HTML：</p>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;Item A&lt;/li&gt;
+  &lt;li&gt;Item B&lt;/li&gt;
+  &lt;li&gt;Item C&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>就是这么简单，再也不用顾虑<code>标签闭合了吗</code>、<code>shift 键在哪啊</code>，全程无压力高速输出！唯一需要记住的就是用统一的缩进来嵌套标签。</p>
+<p>虽然 jade 还提供了另一种嵌套形式，但这里并不推荐。此外，jade 还有关于自闭和标签（<code>img</code> 等）的介绍，这里也不作介绍。之所以精简掉它们，主要是避免用法混乱导致的错误。建议使用上述创建列表的方法创建其他标签。有关标签的更多信息，请<a href="http://jade-lang.com/reference/tags/" target="_blank" rel="external">参考这里</a>。</p>
+
+<blockquote><br>  <p>提示：如果环境已经正确安装，那么大多数情况下的错误都是缩进惹的祸，一定一定要保持一致的缩进格式，建议统一将 <code>tab</code> 键输出为空格，并采用 4 个空格作为标准缩进。</p><br></blockquote>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Jade 支持两种注释：单行注释和多行注释。每种注释支持两种模式：输出到源文件和不输出到源文件。</p>
+
+<p>在 Jade 中创建一个单行输出注释和单行不输出注释：</p>
+
+<pre><code>// 这个单行注释会输出到编译后的文件中
+p 单行输出注释
+//- 这个单行注释不会输出到编译后的文件中
+p 单行不输出注释
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;!-- 这个单行注释会输出到编译后的文件中--&gt;
+&lt;p&gt;单行输出注释&lt;/p&gt;
+&lt;p&gt;单行不输出注释&lt;/p&gt;
+</code></pre>
+
+<p>由上可见，输出和不输出的差别就在于多了一个 <code>-</code>，谨记！</p>
+
+<p>相比起单行注释，多行注释的内容要在注释符号的下一行，以相同的缩进来编写。多行注释的输出和不输出模式和单行注释相同，需要使用 <code>-</code> 标记：</p>
+
+<pre><code>// 
+    这个多行注释会输出到编译后的文件中
+    这个多行注释会输出到编译后的文件中
+p 多行输出注释
+//- 
+    这个多行注释不会输出到编译后的文件中
+    这个多行注释不会输出到编译后的文件中
+p 多行不输出注释
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;!-- 
+这个多行注释会输出到编译后的文件中
+这个多行注释会输出到编译后的文件中
+--&gt;
+&lt;p&gt;多行输出注释&lt;/p&gt;
+&lt;p&gt;多行不输出注释&lt;/p&gt;
+</code></pre>
+
+<p>有关注释的更多信息，可以<a href="http://jade-lang.com/reference/comments/" target="_blank" rel="external">参考这里</a>。</p>
+
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>在 Jade 中填写属性，基本上和 HTML 保持了一致：</p>
+
+<pre><code>input(type='checkbox', checked)
+input(
+  type='checkbox'
+  name='agreement'
+  checked
+)
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;input type="checkbox" checked&gt;
+&lt;input type="checkbox" name="agreement" checked&gt;
+</code></pre>
+
+<p>但是，你见过可以根据条件设置属性的语法形式吗？这里就有：</p>
+
+<pre><code>- var authenticated = true
+body(class=authenticated ? 'authed' : 'anon')
+- var currentUrl = '/about'
+a(class={active: currentUrl === '/'} href='/') Home
+a(class={active: currentUrl === '/about'} href='/about') About
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;body class="authed"&gt;&lt;/body&gt;
+&lt;a href="/"&gt;Home&lt;/a&gt;&lt;a href="/about" class="active"&gt;
+</code></pre>
+
+<p>对于频繁使用到的类名和 ID 名，Jade 提供了两种字面量：类名字面量和 ID 字面量——非常类似 Emmet 的用法。如果不在字面量前边指定标签名，则默认使用 <code>div</code>:</p>
+
+<pre><code>.link
+a.link
+#button
+a#button
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;div class="link"&gt;&lt;/div&gt;
+&lt;a class="link"&gt;&lt;/a&gt;
+&lt;div id="button"&gt;&lt;/div&gt;
+&lt;a id="button"&gt;&lt;/a&gt;
+</code></pre>
+
+<p>另一个常常会被 JavaScript 修改的属性就是 <code>style</code>。为了更方便地修改该属性，Jade 接收一个类似 JavaScript 对象类型的参数：</p>
+
+<pre><code>a(style={color: 'red', background: 'green'})
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;a style="color:red;background:green"&gt;&lt;/a&gt;
+</code></pre>
+
+<p>为了更方便地添加其他自定义属性，jade 特意增加了一个语法格式 <code>&amp;attributes</code>：</p>
+
+<pre><code>- var attributes = {'data-foo': 'bar'};
+div#foo(data-bar="foo")&amp;attributes(attributes)
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;div id="foo" data-bar="foo" data-foo="bar"&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><p>Jade 支持三种文本输出方式：单行文本、管道文本和多行文本：</p>
+
+<pre><code>// 单行文本内容直接跟在标签名后面
+p 这里是单行文本内容
+// 管道文本使用管道符
+p 
+    | 这是一行管道文本，行数无限制
+    | 这是一行管道文本，行数无限制
+    | 这是一行管道文本，行数无限制
+    | ……
+// 多行文本需要在标签名后添加点号
+p.
+    这是多行文本，注意缩进
+    这是多行文本，注意缩进
+    这是多行文本，注意缩进
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;!-- 单行文本内容直接跟在标签名后面--&gt;
+&lt;p&gt;这里是单行文本内容&lt;/p&gt;
+&lt;!-- 管道文本使用管道符--&gt;
+&lt;p&gt;
+  这是一行管道文本，行数无限制
+  这是一行管道文本，行数无限制
+  这是一行管道文本，行数无限制
+  ……
+&lt;/p&gt;
+&lt;!-- 多行文本需要在标签名后添加点号--&gt;
+&lt;p&gt;
+  这是多行文本，注意缩进
+  这是多行文本，注意缩进
+  这是多行文本，注意缩进
+&lt;/p&gt;
+</code></pre>
+
+<h2 id="代码嵌入"><a href="#代码嵌入" class="headerlink" title="代码嵌入"></a>代码嵌入</h2><p>将 JavaScript 嵌入到 Jade 中，一共有三种方法。第一种方式是使用 <code>-</code>，代码中的特殊字符不会被转义：</p>
+
+<pre><code>- for (var x = 0; x &lt; 3; x++)
+  li &lt;a&gt;&lt;/a&gt;
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+
+<p>第二种方法是使用 <code>=</code>，代码中的特殊字符将会被转义：</p>
+
+<pre><code>p
+  = 'This code is &lt;escaped&gt;!'
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;p&gt;This code is &amp;lt;escaped&amp;gt;!&lt;/p&gt;
+</code></pre>
+
+<p>第三种方法是使用 <code>!=</code>，代码中的特殊字符不会被转义：</p>
+
+<pre><code>p
+  = 'This code is &lt;escaped&gt;!'
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;p&gt;This code is &lt;escaped&gt;!&lt;/p&gt;
+</code></pre>
+
+<h2 id="插值语法"><a href="#插值语法" class="headerlink" title="插值语法"></a>插值语法</h2><p>这是我第二次听说插值的概念，但其实很好理解：使用插值语法，预先指定一个位置，方便以后插入一个新值，简称插值。这段话是我大半夜随性而发，意思到了即可，官方文档里可没有。</p>
+
+<p>Jade 提供了字符串插值和标签插值。其中，字符串插值由于要考虑到安全性问题，所以又分成了转义和不转义两种情况：</p>
+
+<pre><code>// 转义字符串插值 `#{}`
+- var theGreat = "&lt;span&gt;escape!&lt;/span&gt;";
+p This will be safe: #{theGreat}
+// 不转义字符串插值 `!{}`
+- var theGreat = "&lt;span&gt;escape!&lt;/span&gt;";
+p This will be safe: !{theGreat}
+// 标签插值
+p #[a(href="jade-lang.com") Jade]
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;!-- 转义字符串插值 `#{}`--&gt;
+&lt;p&gt;This will be safe: &amp;lt;span&amp;gt;escape!&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;!-- 不转义字符串插值 `!{}`--&gt;
+&lt;p&gt;This will be safe: &lt;span&gt;escape!&lt;/span&gt;&lt;/p&gt;
+&lt;!-- 标签插值--&gt;
+&lt;p&gt;&lt;a href="jade-lang.com"&gt;Jade&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+
+<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><p>说起条件语句，就必须谈到 <code>if … else if … else</code> 这个经典的条件判断，它也是 Jade 最基本的条件语句：</p>
+
+<pre><code>- var user = { description: 'foo bar baz' }
+- var authorised = false
+#user
+  if user.description
+    h2 Description
+    p.description= user.description
+  else if authorised
+    h2 Description
+    p.description.
+      User has no description,
+      why not add one...
+  else
+    h1 Description
+    p.description User has no description
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;div id="user"&gt;
+  &lt;h2&gt;Description&lt;/h2&gt;
+  &lt;p class="description"&gt;foo bar baz&lt;lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>此外，Jade 还提供了一个 <code>unless</code> 条件语句。如果说 <code>if</code> 可以通过判断<code>给定条件是否符合要求</code>来执行下一步，那么 <code>unless</code> 完全是相反的一件事，它会判断<code>给定条件是否不符合要求</code>，如果不符合，就执行下一步。</p>
+
+<pre><code>- var con = false
+unless con
+  p Hello, World
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;p&gt;Hello, World&lt;/p&gt;
+</code></pre>
+
+<p>上面的逻辑结构看起来比生成的 HTML 繁琐多了，但这并不影响它是一种高效的解决方案，尤其是当你复用这段代码的时候。</p>
+
+<h2 id="分支语句"><a href="#分支语句" class="headerlink" title="分支语句"></a>分支语句</h2><p>当需要 <code>if</code> 判断的条件过多时，其他语言会提供类似 <code>switch</code> 的分支判断语句。在 Jade 中，也提供了类似的语法——<code>case</code>：</p>
+
+<pre><code>- var friends = 10
+case friends
+  when 0
+    p you have no friends
+  when 1
+    p you have a friend
+  default
+    p you have #{friends} friends
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;p&gt;you have 10 friends&lt;/p&gt;
+</code></pre>
+
+<p>在 Jade 中并没有提供类似 <code>break</code> 的语法，对于所有的条件默认只有一种输出结果，如果没有符合条件的就输出 <code>defualt</code> 中的内容。但是，有一个特例：</p>
+
+<pre><code>- var friends = 0
+case friends
+  when 0
+  when 1
+  default
+    p you have #{friends} friends
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;p&gt;you have very 0 friends&lt;/p&gt;
+</code></pre>
+
+<p>从上面的示例可以看出，当没有可输出内容时，就会执行向下查找可执行语句，一直查找到 <code>default</code>。</p>
+
+<h2 id="遍历语句"><a href="#遍历语句" class="headerlink" title="遍历语句"></a>遍历语句</h2><p>Jade 使用 <code>each</code> 对数组和对象遍历，用法与 JavaScript 大同小异。</p>
+
+<pre><code>// 遍历数组
+ul
+  each val, index in ['zero', 'one', 'two']
+    li= index + ': ' + val
+
+// 遍历对象
+ul
+  each val, index in {1:'one',2:'two',3:'three'}
+    li= index + ': ' + val
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;!-- 遍历数组--&gt;
+&lt;ul&gt;
+  &lt;li&gt;0: zero&lt;/li&gt;
+  &lt;li&gt;1: one&lt;/li&gt;
+  &lt;li&gt;2: two&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- 遍历对象--&gt;
+&lt;ul&gt;
+  &lt;li&gt;1: one&lt;/li&gt;
+  &lt;li&gt;2: two&lt;/li&gt;
+  &lt;li&gt;3: three&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>Jade 使用 <code>while</code> 实现循环，用法还是中规中矩的与 JavaScript 相似：</p>
+
+<pre><code>- var n = 0
+ul
+  while n &lt; 4
+    li= n++
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+  &lt;li&gt;3&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h2 id="mixins"><a href="#mixins" class="headerlink" title="mixins"></a>mixins</h2><p>在 Scss 和 Jade 中，混合宏（mixins）都是举足轻重的语法。混合宏具有复用、解耦、可读、可扩。可维护等等优势。创建混合宏需要使用 <code>mixin</code> 标识符，创建混合宏实例时，需要使用 <code>+</code> 标识符：</p>
+
+<pre><code>//- Declaration
+mixin list
+  ul
+    li foo
+    li bar
+    li baz
+//- Use
++list
++list
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;foo&lt;/li&gt;
+  &lt;li&gt;bar&lt;/li&gt;
+  &lt;li&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+  &lt;li&gt;foo&lt;/li&gt;
+  &lt;li&gt;bar&lt;/li&gt;
+  &lt;li&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>上面是最基本的混合宏，此时它还不具有诸多优势，除非我们给它传递参数，才能让它具有非凡活力：</p>
+
+<pre><code>mixin pet(name)
+  li.pet= name
+ul
+  +pet('cat')
+  +pet('dog')
+  +pet('pig')
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li class="pet"&gt;cat&lt;/li&gt;
+  &lt;li class="pet"&gt;dog&lt;/li&gt;
+  &lt;li class="pet"&gt;pig&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>此外，还可以使用 <code>…</code> 标识符表示不定数量的参数：</p>
+
+<pre><code>mixin list(id, ...items)
+  ul(id=id)
+    each item in items
+      li= item
+
++list('my-list', 1, 2, 3, 4)
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;ul id="my-list"&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+  &lt;li&gt;3&lt;/li&gt;
+  &lt;li&gt;4&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>有时候，我们需要替换混合宏的某个部分，那么就可以使用 <code>block</code> 标识符来占位：</p>
+
+<pre><code>mixin article(title)
+  .article
+    .article-wrapper
+      h1= title
+      if block
+        block
+      else
+        p No content provided
+
++article('Hello world')
+
++article('Hello world')
+  p This is my
+  p Amazing article
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;div class="article"&gt;
+  &lt;div class="article-wrapper"&gt;
+    &lt;h1&gt;Hello world&lt;/h1&gt;
+    &lt;p&gt;No content provided&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="article"&gt;
+  &lt;div class="article-wrapper"&gt;
+    &lt;h1&gt;Hello world&lt;/h1&gt;
+    &lt;p&gt;This is my&lt;/p&gt;
+    &lt;p&gt;Amazing article&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>这种可替代语法，进一步提高了 Jade 的灵活性。</p>
+
+<p>最后，我们谈谈有关属性的混合宏，官方文档中列举了两种用法，这里只介绍一种：</p>
+
+<pre><code>mixin link(href, name)
+  a(href=href)&amp;attributes(attributes)= name
+
++link('/foo', 'foo')(class="btn")
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;a href="/foo" class="btn"&gt;foo&lt;/a&gt;
+</code></pre>
+
+<p>上面混合宏中并没有声明 <code>attributes</code>，是因为 Jade 已经隐式为其引用了所有传递给 <code>&amp;attributes</code> 的参数。</p>
+
+<h2 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h2><p>实现高度复用的另一种方式就是将代码片段保存到不同文件中，然后在需要的地方导入这些片段，为此，Jade 提供了 <code>include</code> 指令，下面是一个 <code>index</code> 页面：</p>
+
+<pre><code>//- index.jade
+doctype html
+html
+  include ./includes/head.jade
+  body
+    h1 My Site
+    p Welcome to my super lame site.
+    include ./includes/foot.jade
+</code></pre>
+
+<p><code>head</code> 代码片段：</p>
+
+<pre><code>//- includes/head.jade
+head
+  title My Site
+  script(src='/javascripts/jquery.js')
+  script(src='/javascripts/app.js')
+</code></pre>
+
+<p><code>footer</code> 代码片段：</p>
+
+<pre><code>//- includes/foot.jade
+#footer
+  p Copyright (c) foobar
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Site&lt;/title&gt;
+    &lt;script src='/javascripts/jquery.js'&gt;&lt;/script&gt;
+    &lt;script src='/javascripts/app.js'&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My Site&lt;/h1&gt;
+    &lt;p&gt;Welcome to my super lame site.&lt;/p&gt;
+    &lt;div id="footer"&gt;
+      &lt;p&gt;Copyright (c) foobar&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>Jade 中使用 <code>extends</code> 来继承代码片段，与 <code>include</code> 本本分分地引用代码段不同，继承可以修改代码片段。</p>
+
+<p>首先，在 <code>layout</code> 页面使用 <code>block</code> 标识符，设置一个可修改的代码片段，紧跟 <code>block</code> 标识符之后的是该代码片段的名字：</p>
+
+<pre><code>//- layout.jade
+doctype html
+html
+  head
+    block title
+      title Default title
+  body
+    block content
+</code></pre>
+
+<p>然后，在 <code>index</code> 页面继承 <code>layout</code>，并可以根据代码片段的名字修改相关代码：</p>
+
+<pre><code>//- index.jade
+extends ./layout.jade
+
+block title
+  title Article Title
+
+block content
+  h1 My Article
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Article Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My Article&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>上述这种继承方式，会抹除原来代码片段的部分，如果想要追加代码片段，可以使用 <code>append</code> 和 <code>prepend</code> 指令。<code>append</code> 用于在原有代码片段之后追加，<code>prepend</code> 用于在原有代码片段之前追加。一个初始页面：</p>
+
+<pre><code>//- layout.jade
+html
+  head
+    title Layout
+  body
+    block content
+      p Hello
+</code></pre>
+
+<p>使用 <code>append</code> ：</p>
+
+<pre><code>extend layout
+
+block append content
+    p World
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &llt;script src="/vendor/jquery.js"&gt;&lt;/script&gt;
+    &lt;script src="/vendor/caustic.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello&lt;/p&gt;
+    &lt;p&gt;World&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>使用 <code>prepend</code>：</p>
+
+<pre><code>extend layout
+
+block prepend content
+    p World
+</code></pre>
+
+<p>生成的 HTML：</p>
+
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src="/vendor/jquery.js"&gt;&lt;/script&gt;
+    &lt;script src="/vendor/caustic.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;World&lt;/p&gt;
+    &lt;p&gt;Hello&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你还没有接触过模板引擎，那么就来试试 Jade 吧，它一定会有让你愉悦的一面。一直有一个梦想：三分钟敲完代码，简洁优美，剩下的人生尽情地去玩……</p>
+
+<p></p><p>本文转自：<a href="http://www.w3cplus.com/html/jade.html" target="_blank" rel="external">http://www.w3cplus.com/html/jade.html</a></p><br>  <p></p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2015/11/17/jadeGrammar/" data-title="jade的基础语法" data-url="http://yoursite.com/2015/11/17/jadeGrammar/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'true'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large red">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect cyan" title="Return to top"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse light-green"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer green darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">Social</h5>
+                
+                    <a class="social-link" href="" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/gaoke700" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">Links</h5>
+                
+                    <a class="social-link" href="https://github.com/gaoke700" target="_blank">我的github</a>
+                
+                    <a class="social-link" href="http://jazzh5.github.io" target="_blank">曹神的博客</a>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism作者博客</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright red-link-context">
+        <div class="container">
+            © 2014 All rights reserved.
+            <p class="right" style="margin-top: 0;">Blog powered by <a href="https://hexo.io">Hexo</a> | Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('red lighten-2');
+
+            
+            // 添加new标签
+            $('').append('<span class="new badge red"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal();
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword red lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword red lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
