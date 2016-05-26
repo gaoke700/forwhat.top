@@ -273,7 +273,7 @@ gulp.task(&apos;minjs&apos;, function () {    //定义一个名为minjs的任务
 <h2 id="STREAMS"><a href="#STREAMS" class="headerlink" title="STREAMS"></a>STREAMS</h2><p>数据流能够通过一系列的小函数来传递数据，这些函数会对数据进行修改，然后把修改后的数据传递给下一个函数。</p>
 <p>在上面的例子中，gulp.src()函数用字符串匹配一个文件或者文件的编号（被称为“glob”）,然后创建一个对象流来代表这些文件，接着传递给uglify()函数，它接受文件对象之后返回有新压缩源文件的文件对象，最后那些输出的文件被输入gulp.dest()函数，并保存下来。</p>
 <p>整个数据流动过程如下图所示：</p>
-<p><img src="http://i2.buimg.com/0c5a49801aa7c3e9.png"></p>
+<p><img src="http://o7scv88yl.bkt.clouddn.com/gulp1.png"></p>
 <p>当只有一个任务的时候，函数并不会起太大的作用。然而，仔细思考下面的代码：</p>
 <pre><code>gulp.task(&apos;js&apos;, function () {
    return gulp.src(&apos;js/*.js&apos;)
@@ -285,7 +285,7 @@ gulp.task(&apos;minjs&apos;, function () {    //定义一个名为minjs的任务
 });
 </code></pre><p>在运行这段程序之前，你需要先安装gulp,gulp-jshint,gulp-uglify和gulp-concat。</p>
 <p>这个任务会让所有的文件匹配js/*.js（比如js目录下的所有JavaScript文件），并且执行JSHint，然后打印输出结果，取消文件缩进，最后把他们合并起来，保存为build/app.js，整个过程如下图所示： </p>
-<p><img src="http://i2.buimg.com/9dbaac7541b9cabe.png"></p>
+<p><img src="http://o7scv88yl.bkt.clouddn.com/gulp2.png"></p>
 <p>如果你对Grunt 足够熟悉，就会注意到，Gulp和Grunt的工作方式很不一样。Grunt不使用数据流，而是使用文件，对文件执行单个任务然后保存到新的文件中，每个任务都会重复执行所有进程，文件系统频繁的处理任务会导致Grunt的运行速度比Gulp慢。</p>
 <p>如果想要获取更加全面的数据流知识，请查看<a href="https://github.com/substack/stream-handbook" target="_blank" rel="external">“Stream Handbook”</a>.</p>
 <h2 id="GULP-SRC"><a href="#GULP-SRC" class="headerlink" title="GULP.SRC()"></a>GULP.SRC()</h2><p>gulp.src()方法输入一个glob(比如匹配一个或多个文件的字符串)或者glob数组，然后返回一个可以传递给插件的数据流。</p>
@@ -412,10 +412,10 @@ gulp.task(&apos;less&apos;, function() {
 </code></pre><p>这会监听到所有与less/*.less相匹配的文件的变化。一旦监测到变化，就会生成css并保存，然后重新加载网页.</p>
 <h2 id="BROWSERSYNC"><a href="#BROWSERSYNC" class="headerlink" title="BROWSERSYNC"></a>BROWSERSYNC</h2><p>BroserSync在浏览器中展示变化的功能与LiveReload非常相似，但是它有更多的功能。</p>
 <p>当你改变代码的时候，BrowserSync会重新加载页面，或者如果是css文件，会直接添加进css中，页面并不需要再次刷新。这项功能在网站是禁止刷新的时候是很有用的。假设你正在开发单页应用的第4页，刷新页面就会导致你回到开始页。使用LiveReload的话，你就需要在每次改变代码之后还需要点击四次，而当你修改CSS时，插入一些变化时，BrowserSync会直接将需要修改的地方添加进CSS，就不用再点击回退。</p>
-<p><img src="http://i3.buimg.com/2174531c24103470.gif"></p>
+<p><img src="http://o7scv88yl.bkt.clouddn.com/gulp3.gif"></p>
 <p>BrowserSync提供了一种在多个浏览器里测试网页的很好方式。</p>
 <p>BrowserSync也可以在不同浏览器之间同步点击翻页、表单操作、滚动位置。你可以在电脑和iPhone上打开不同的浏览器然后进行操作。所有设备上的链接将会随之变化，当你向下滚动页面时，所有设备上页面都会向下滚动（通常还很流畅！）。当你在表单中输入文本时，每个窗口都会有输入。当你不想要这种行为时，也可以把这个功能关闭。</p>
-<p><img src="http://i3.buimg.com/052906772c511f81.gif"></p>
+<p><img src="http://o7scv88yl.bkt.clouddn.com/gulp4.gif"></p>
 <p>BrowserSync不需要使用浏览器插件，因为它本身就可以给你提供文件。</p>
 <p>BrowserSync不需要使用浏览器插件，因为它本身就可以为你提供文件服务（如果文件是动态的，则为他们提供代理服务）和用来开启浏览器和服务器之间的socket的脚本服务。到目前为止这个功能的使用都十分顺畅。</p>
 <p>实际上BrowserSync对于Gulp并不算一种插件，因为BrowserSync并不像一个插件一样操作文件。然而，npm上的BrowserSync模块能在Gulp上被直接调用。</p>

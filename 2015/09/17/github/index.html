@@ -226,9 +226,9 @@ git --version
             
     <div class="tags-row">
         
-            <a href="/tags/git/" class="chip red lighten-1">git</a>
-        
             <a href="/tags/工具/" class="chip red lighten-1">工具</a>
+        
+            <a href="/tags/git/" class="chip red lighten-1">git</a>
         
     </div>
 
@@ -266,7 +266,7 @@ git --version
 <p>（2）树（tree）</p>
 <p>（3）原文（blob）</p>
 <p>先看一张图：</p>
-<p><img src="http://i2.buimg.com/869623a5e85e030e.png"></p>
+<p><img src="http://o7sbm264p.bkt.clouddn.com/git1.png"></p>
 <p>git的每一次提交是一个commit对象，这个对象中又包括这几个内容：</p>
 <ul>
 <li>tree对象：真正记录文件改变的记录，是tree的地址，指向真正的记录地址</li>
@@ -281,7 +281,7 @@ git --version
 <p>上面这就是一次提交的commit操作的结果。是不是关系也搞懂了，概念也搞懂了。</p>
 <p>每次提交git都会生成一个快照（snapshot），每提交一次生成一个快照，这次的快照是上次的快照基础上生成的。</p>
 <p>请看下图：</p>
-<p><img src="http://i2.buimg.com/3e0515e2afd84579.jpg"></p>
+<p><img src="http://o7sbm264p.bkt.clouddn.com/git2.jpg"></p>
 <p>一共提交了三次，生成了三次快照，这次快照将会完整的保存下来。每次快照都是在上一次快照的基础上生成的，第一次入仓库时也会提供一个快照。</p>
 <p>这些生成的一个链条，就可以理解为一个分支。</p>
 <p>git仓库存放在哪呢？就是在当前工作目录的.git文件夹（可能为隐藏文件夹）下。</p>
