@@ -32,15 +32,29 @@ alert(c);                    //3
 </code></pre><p>上面第三个: 注意先算的是后面的逻辑与, 2 &amp;&amp; 3 返回 3  , 再 0 || 3 ,返回 3 ;<br>每个逻辑表达式都是有返回值的，但这个值并不一定是布尔变量，下面分别介绍：</p>
 <h3 id="与操作符（-amp-amp-）"><a href="#与操作符（-amp-amp-）" class="headerlink" title="与操作符（&amp;&amp;）"></a>与操作符（&amp;&amp;）</h3><p>javascript依次获取每一个操作数，将它们转换为布尔变量，如果是false，则直接返回这个操作数的值（注意，返回的是转换前的原值，不一定是布尔类型），中断后面操作数的处理；否则继续处理下一个操作数。如果直到最后一个操作数仍然对应布尔变量true，则返回最后这个操作数的值。</p>
 <p>下面的代码演示了其执行原理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;1&quot; &amp;&amp; true &amp;&amp; 0 &amp;&amp; false &amp;&amp; &quot;abc&quot;;  </span><br><span class="line">alert(a);  						//可见a的值是0  </span><br><span class="line">var b = &quot;abc&quot; &amp;&amp; true &amp;&amp; &quot;123&quot;;  </span><br><span class="line">alert(b);  						//可见b的值是&quot;123&quot;;</span><br><span class="line">```	</span><br><span class="line">### 或操作符（||）</span><br><span class="line"></span><br><span class="line">javascript依次获取每一个操作数，将它们转换为布尔变量，如果是true，则直接返回这个操作数的值，中断后面操作数的处理；否则继续下一个操作数。如果知道最后一个操作数仍然对应布尔变量false，则返回这个操作数的值。</span><br><span class="line"></span><br><span class="line">下面的代码演示了其执行原理：	</span><br><span class="line"></span><br><span class="line">```	</span><br><span class="line">var a = &quot;abc&quot; || &quot;123&quot;;  </span><br><span class="line">alert(a);  						//可见a的值是&quot;abc&quot;  </span><br><span class="line">var b = false || &quot;&quot; || 0;  </span><br><span class="line">alert(b); 						//可见a的值是0  </span><br><span class="line">```	</span><br><span class="line">### 非操作符（!）</span><br><span class="line"></span><br><span class="line">和前两种操作符不同，非操作符始终返回布尔类型的变量 ，例如：</span><br><span class="line">	</span><br><span class="line">	var a = ! &quot;abc&quot;;  </span><br><span class="line">	alert(a); 					//显示a的值为false</span><br><span class="line">	</span><br><span class="line">## js运算优先级</span><br><span class="line">JScript 中的运算符优先级是一套规则。该规则在计算表达式时控制运算符执行的顺序。具有较高优先级的运算符先于较低优先级的运算符执行。例如，乘法的执行先于加法。</span><br><span class="line"></span><br><span class="line">下表按从最高到最低的优先级列出 JScript 运算符。 &lt;mark&gt; 具有相同优先级的运算符按从左至右的顺序求值&lt;/mark&gt; 。</span><br></pre></td></tr></table></figure>
-<p>运算符                                        描述<br>.      []     ()                            字段访问、数组下标、函数调用以及表达式分组<br>++ – - ~ ! delete new typeof void            一元运算符、返回数据类型、对象创建、未定义值</p>
+<pre><code>var a = &quot;1&quot; &amp;&amp; true &amp;&amp; 0 &amp;&amp; false &amp;&amp; &quot;abc&quot;;  
+alert(a);                          //可见a的值是0  
+var b = &quot;abc&quot; &amp;&amp; true &amp;&amp; &quot;123&quot;;  
+alert(b);                          //可见b的值是&quot;123&quot;;
+</code></pre><h3 id="或操作符（-）"><a href="#或操作符（-）" class="headerlink" title="或操作符（||）"></a>或操作符（||）</h3><p>javascript依次获取每一个操作数，将它们转换为布尔变量，如果是true，则直接返回这个操作数的值，中断后面操作数的处理；否则继续下一个操作数。如果知道最后一个操作数仍然对应布尔变量false，则返回这个操作数的值。</p>
+<p>下面的代码演示了其执行原理：    </p>
+<pre><code>var a = &quot;abc&quot; || &quot;123&quot;;  
+alert(a);                          //可见a的值是&quot;abc&quot;  
+var b = false || &quot;&quot; || 0;  
+alert(b);                         //可见a的值是0
+</code></pre><h3 id="非操作符（-）"><a href="#非操作符（-）" class="headerlink" title="非操作符（!）"></a>非操作符（!）</h3><p>和前两种操作符不同，非操作符始终返回布尔类型的变量 ，例如：</p>
+<pre><code>var a = ! &quot;abc&quot;;  
+alert(a);                     //显示a的值为false
+</code></pre><h2 id="js运算优先级"><a href="#js运算优先级" class="headerlink" title="js运算优先级"></a>js运算优先级</h2><p>JScript 中的运算符优先级是一套规则。该规则在计算表达式时控制运算符执行的顺序。具有较高优先级的运算符先于较低优先级的运算符执行。例如，乘法的执行先于加法。</p>
+<p>下表按从最高到最低的优先级列出 JScript 运算符。 <mark> 具有相同优先级的运算符按从左至右的顺序求值</mark> 。</p>
+<p><pre><br>运算符                                        描述<br>.      []     ()                            字段访问、数组下标、函数调用以及表达式分组<br>++ – - ~ ! delete new typeof void            一元运算符、返回数据类型、对象创建、未定义值</pre></p>
 <ul>
 <li>/       %                            乘法、除法、取模</li>
 </ul>
 <ul>
 <li><ul>
 <li><ul>
-<li>加法、减法、字符串连接<br>&lt;&lt;     &gt;&gt;     &gt;&gt;&gt;                            移位<br>&lt;   &lt;=   &gt;   &gt;=   instanceof                小于、小于等于、大于、大于等于、instanceof<br>==    !=    ===    !==                        等于、不等于、严格相等、非严格相等<br>&amp;                                            按位与<br>^                                            按位异或<br>|                                            按位或<br>&amp;&amp;                                            逻辑与<br>||                                            逻辑或<br>?:                                            条件<br>=      oP=                                    赋值、运算赋值<br>,                                            多重求值<br>```<br>圆括号可用来改变运算符优先级所决定的求值顺序。这意味着圆括号中的表达式应在其用于表达式的其余部分之前全部被求值。    </li>
+<li>加法、减法、字符串连接<br>&lt;&lt;     &gt;&gt;     &gt;&gt;&gt;                            移位<br>&lt;   &lt;=   &gt;   &gt;=   instanceof                小于、小于等于、大于、大于等于、instanceof<br>==    !=    ===    !==                        等于、不等于、严格相等、非严格相等<br>&amp;                                            按位与<br>^                                            按位异或<br>|                                            按位或<br>&amp;&amp;                                            逻辑与<br>||                                            逻辑或<br>?:                                            条件<br>=      oP=                                    赋值、运算赋值<br>,                                            多重求值<br><br>圆括号可用来改变运算符优先级所决定的求值顺序。这意味着圆括号中的表达式应在其用于表达式的其余部分之前全部被求值。    </li>
 </ul>
 </li>
 </ul>
@@ -48,8 +62,7 @@ alert(c);                    //3
 </ul>
 <p>例如：</p>
 <pre><code>z = 78 * (96 + 3 + 45)
-</code></pre><p>在该表达式中有五个运算符： = ,  <em> , () , + , 以及另一个 +。根据运算符优先级的规则，它们将按下面的顺序求值： () , + , + , </em> , =。</p>
-<p>首先对圆括号内的表达式求值。圆括号中有两个加法运算符。因为两个加法运算符具有相同的优先级，从左到右求值。先将 96 和 3 相加，然后将其和与 45 相加，得到的结果为 144。</p>
+</code></pre><p>根据运算符优先级的规则，首先对圆括号内的表达式求值。圆括号中有两个加法运算符。因为两个加法运算符具有相同的优先级，从左到右求值。先将 96 和 3 相加，然后将其和与 45 相加，得到的结果为 144。</p>
 <p>然后是乘法运算。78 乘以 144，得到结果为 11232。</p>
 <p>最后是赋值运算。将 11232 赋给 z。</p>
 ]]></content>
