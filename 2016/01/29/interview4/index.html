@@ -546,6 +546,8 @@ var $wwe = $(&quot;#w3c&quot;).find(&quot;div.id&quot;)
                     if ($('#search').is(":visible")) {
                     	
                         $('#search-input').val('').focus();
+                        var $resultContent = document.getElementById(content_id);
+                        $resultContent.innerHTML = str;
                     }
                 }
             });

@@ -458,6 +458,8 @@ else alert(&apos;N&apos;);     //弹出Y
                     if ($('#search').is(":visible")) {
                     	
                         $('#search-input').val('').focus();
+                        var $resultContent = document.getElementById(content_id);
+                        $resultContent.innerHTML = str;
                     }
                 }
             });

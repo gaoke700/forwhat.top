@@ -480,6 +480,8 @@ Node.js下载地址 建议安装LTS稳定版">
                     if ($('#search').is(":visible")) {
                     	
                         $('#search-input').val('').focus();
+                        var $resultContent = document.getElementById(content_id);
+                        $resultContent.innerHTML = str;
                     }
                 }
             });

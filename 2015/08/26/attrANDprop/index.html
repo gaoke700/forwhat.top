@@ -461,6 +461,8 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
                     if ($('#search').is(":visible")) {
                     	
                         $('#search-input').val('').focus();
+                        var $resultContent = document.getElementById(content_id);
+                        $resultContent.innerHTML = str;
                     }
                 }
             });

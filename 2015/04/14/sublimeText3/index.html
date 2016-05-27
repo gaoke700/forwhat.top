@@ -491,6 +491,8 @@ Ctrl+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子�
                     if ($('#search').is(":visible")) {
                     	
                         $('#search-input').val('').focus();
+                        var $resultContent = document.getElementById(content_id);
+                        $resultContent.innerHTML = str;
                     }
                 }
             });
