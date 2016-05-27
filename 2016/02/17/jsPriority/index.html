@@ -491,13 +491,10 @@ alert(a);                     //显示a的值为false
 
             // 搜索功能
             $('.modal-trigger').leanModal({
-            	// 打开搜索框时自动聚焦
+            	// 打开搜索框时清空搜索框并自动聚焦
                 ready: function() {
                     if ($('#search').is(":visible")) {
-                    	
                         $('#search-input').val('').focus();
-                        var $resultContent = document.getElementById(content_id);
-                        $resultContent.innerHTML = str;
                     }
                 }
             });
