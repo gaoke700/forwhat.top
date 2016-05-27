@@ -1057,7 +1057,8 @@ block prepend content
             	// 打开搜索框时自动聚焦
                 ready: function() {
                     if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
+                    	
+                        $('#search-input').val('').focus();
                     }
                 }
             });

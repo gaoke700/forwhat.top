@@ -494,7 +494,8 @@ alert(a);                     //显示a的值为false
             	// 打开搜索框时自动聚焦
                 ready: function() {
                     if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
+                    	
+                        $('#search-input').val('').focus();
                     }
                 }
             });

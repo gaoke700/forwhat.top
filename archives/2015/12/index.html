@@ -203,7 +203,7 @@
 
 <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper green">
-        <span class="breadcrumb">Current page(Categories)</span>
+        <span class="breadcrumb">Current page(Archives)</span>
         
 
         
@@ -386,7 +386,8 @@
             	// 打开搜索框时自动聚焦
                 ready: function() {
                     if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
+                    	
+                        $('#search-input').val('').focus();
                     }
                 }
             });

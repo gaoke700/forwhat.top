@@ -478,7 +478,8 @@ Node.js下载地址 建议安装LTS稳定版">
             	// 打开搜索框时自动聚焦
                 ready: function() {
                     if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
+                    	
+                        $('#search-input').val('').focus();
                     }
                 }
             });

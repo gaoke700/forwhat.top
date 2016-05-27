@@ -462,7 +462,8 @@ ECMAScript 5（ES5，2009 年发布），是 JavaScript 最新的官方版本。
             	// 打开搜索框时自动聚焦
                 ready: function() {
                     if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
+                    	
+                        $('#search-input').val('').focus();
                     }
                 }
             });
