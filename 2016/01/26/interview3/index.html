@@ -191,16 +191,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/其他/">
-                    其他 <span class="right">2</span></a>
+                <a class="no-padding" href="/categories/面试题/">
+                    面试题 <span class="right">4</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/面试题/">
-                    面试题 <span class="right">4</span></a>
+                <a class="no-padding" href="/categories/其他/">
+                    其他 <span class="right">2</span></a>
                 </a>
             </li>
 
@@ -369,7 +369,7 @@ typeof f;
 <h3 id="第十二题"><a href="#第十二题" class="headerlink" title="第十二题"></a>第十二题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function f()&#123;</span><br><span class="line">    function f()&#123; return 1; &#125;</span><br><span class="line">    return f();</span><br><span class="line">    function f()&#123; return 2; &#125;</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
 <p>这个由于js解析的时候会将声明提前,也就是:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function f()&#123;</span><br><span class="line">    function f()&#123; return 1; &#125;</span><br><span class="line">    function f()&#123; return 2; &#125;</span><br><span class="line">    return f();</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
-<p>因为函数名相同,会认为重新声明,后面的f()会覆盖前面的f(),所以结果为2 . 关于<code>变量声明提升</code>我前一篇博客里写过了,<a href="http://gaoke700.github.io/2016/01/04/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%982/" target="_blank" rel="external">点这里去看</a></p>
+<p>因为函数名相同,会认为重新声明,后面的f()会覆盖前面的f(),所以结果为2 . 关于<code>变量声明提升</code>我前一篇博客里写过了,<a href="http://gaoke700.github.io/2016/01/04/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%982/">点这里去看</a></p>
 <h3 id="第十三题"><a href="#第十三题" class="headerlink" title="第十三题"></a>第十三题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123; return f; &#125;</span><br><span class="line">new f() instanceof f;</span><br></pre></td></tr></table></figure>
 <p>When <code>new f()</code>  is called,javascript does four things:</p>
 <ul>
@@ -410,7 +410,7 @@ window.func()
         <div class="card">
             <div class="card-content">
                 <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2016/01/26/interview3/" data-title="前端面试题3" data-url="http://yoursite.com/2016/01/26/interview3/"></div>
+                <div class="ds-thread" data-thread-key="2016/01/26/interview3/" data-title="前端面试题3" data-url="http://gaoke700.github.io/2016/01/26/interview3/"></div>
 
                 <script type="text/javascript">
                     console.log(document.querySelector('.ds-thread'));
