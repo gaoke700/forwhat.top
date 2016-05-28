@@ -279,7 +279,7 @@
 
             <div class="entry red-link-context">
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于前端开发者来讲，玩js的你们肯定对nodejs和npm并不陌生，现在npm已经集成到了node里，所以当你安装了node之后也就默认安装了npm，npm的全称是node package manager : node 包管理器，你只要注册一个npm账号，就可是使用npm进行包管理了，比如发布，安装，更新…等等。<br><a id="more"></a><br>某公司内部框架的重构，准备使用npm开发一套命令行工具，管理核心代码，只输出业务目录给框架使用者，一方面减轻了项目体积，另一方面给开发者一个更好的开发体验，同时保证了核心代码的安全，这篇文章记录了使用npm进行包管理的事项、已经使用npm和node开发命令行工具的方法。</p>
-<p>想要使用npm进行包管理，有两种方案，一种是使用npm官方，即<a href="https://www.npmjs.com/，注册你自己的账号然后进行管理，但是如果不使用私有包的话，你的代码是暴露的，如果是企业内部的私有包，不想对外暴露，避免潜在的风险，那么就必须使用私有包管理，不过，是要交保护费的，虽然也不多，如果你连保护费都不想交的话，那么也有办法，搭建私有npm服务，国内比如cnpm，或者使用npm官方提供的" target="_blank" rel="external">https://www.npmjs.com/，注册你自己的账号然后进行管理，但是如果不使用私有包的话，你的代码是暴露的，如果是企业内部的私有包，不想对外暴露，避免潜在的风险，那么就必须使用私有包管理，不过，是要交保护费的，虽然也不多，如果你连保护费都不想交的话，那么也有办法，搭建私有npm服务，国内比如cnpm，或者使用npm官方提供的</a> On-Site，都可以搭建企业内部的私有npm服务，但是我可以在这里给大家提个醒，如果你真的要自己搭建私有npm服务，那么你准备好接受各种折磨，让我偷乐一会儿……</p>
+<p>想要使用npm进行包管理，有两种方案，一种是使用npm官方，即 <a href="https://www.npmjs.com/" target="_blank" rel="external">https://www.npmjs.com/</a> ，注册你自己的账号然后进行管理，但是如果不使用私有包的话，你的代码是暴露的，如果是企业内部的私有包，不想对外暴露，避免潜在的风险，那么就必须使用私有包管理，不过，是要交保护费的，虽然也不多，如果你连保护费都不想交的话，那么也有办法，搭建私有npm服务，国内比如cnpm，或者使用npm官方提供的 On-Site，都可以搭建企业内部的私有npm服务，但是我可以在这里给大家提个醒，如果你真的要自己搭建私有npm服务，那么你准备好接受各种折磨，让我偷乐一会儿……</p>
 <p>为了给大家讲解，我这里就采用npm官方registry进行npm包管理的操作:</p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>1.首先系统没有安装nodejs的请自行前往 <a href="http://nodejs.org/" target="_blank" rel="external">http://nodejs.org/</a> 这里安装！</p>
 <p>2.没有npm账号的去注册个账号 <a href="https://www.npmjs.com/" target="_blank" rel="external">https://www.npmjs.com/</a>  </p>
