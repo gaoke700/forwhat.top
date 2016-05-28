@@ -601,48 +601,6 @@ a.social-link:hover {
 #category-menu.side-nav li {
   line-height: 36px;
 }
-.category-list {
-  font-size: 0.9em;
-  padding: 15px 20px;
-}
-.category-list .category-list-count {
-  margin-left: 8px;
-  font-size: 0.8em;
-  color: color-meta;
-}
-.category-list .category-list-count:before {
-  content: '(';
-}
-.category-list .category-list-count:after {
-  content: ')';
-}
-ul,
-ol,
-dl {
-  list-style: none;
-}
-ul ul,
-ol ul,
-dl ul,
-ul ol,
-ol ol,
-dl ol,
-ul dl,
-ol dl,
-dl dl {
-  margin-left: 20px;
-}
-ul ul li:before,
-ol ul li:before,
-dl ul li:before,
-ul ol li:before,
-ol ol li:before,
-dl ol li:before,
-ul dl li:before,
-ol dl li:before,
-dl dl li:before {
-  content: '> ';
-}
 .toc {
   position: fixed;
   top: 15%;
