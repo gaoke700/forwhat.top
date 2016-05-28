@@ -4,9 +4,350 @@
   
     
     <entry>
+      <title><![CDATA[使用npm管理你的包]]></title>
+      <url>http://yoursite.com/2016/03/04/npm/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于前端开发者来讲，玩js的你们肯定对nodejs和npm并不陌生，现在npm已经集成到了node里，所以当你安装了node之后也就默认安装了npm，npm的全称是node package manager : node 包管理器，你只要注册一个npm账号，就可是使用npm进行包管理了，比如发布，安装，更新…等等。<br><a id="more"></a><br>某公司内部框架的重构，准备使用npm开发一套命令行工具，管理核心代码，只输出业务目录给框架使用者，一方面减轻了项目体积，另一方面给开发者一个更好的开发体验，同时保证了核心代码的安全，这篇文章记录了使用npm进行包管理的事项、已经使用npm和node开发命令行工具的方法。</p>
+<p>想要使用npm进行包管理，有两种方案，一种是使用npm官方，即<a href="https://www.npmjs.com/，注册你自己的账号然后进行管理，但是如果不使用私有包的话，你的代码是暴露的，如果是企业内部的私有包，不想对外暴露，避免潜在的风险，那么就必须使用私有包管理，不过，是要交保护费的，虽然也不多，如果你连保护费都不想交的话，那么也有办法，搭建私有npm服务，国内比如cnpm，或者使用npm官方提供的" target="_blank" rel="external">https://www.npmjs.com/，注册你自己的账号然后进行管理，但是如果不使用私有包的话，你的代码是暴露的，如果是企业内部的私有包，不想对外暴露，避免潜在的风险，那么就必须使用私有包管理，不过，是要交保护费的，虽然也不多，如果你连保护费都不想交的话，那么也有办法，搭建私有npm服务，国内比如cnpm，或者使用npm官方提供的</a> On-Site，都可以搭建企业内部的私有npm服务，但是我可以在这里给大家提个醒，如果你真的要自己搭建私有npm服务，那么你准备好接受各种折磨，让我偷乐一会儿……</p>
+<p>为了给大家讲解，我这里就采用npm官方registry进行npm包管理的操作:</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>1.首先系统没有安装nodejs的请自行前往 <a href="http://nodejs.org/" target="_blank" rel="external">http://nodejs.org/</a> 这里安装！</p>
+<p>2.没有npm账号的去注册个账号 <a href="https://www.npmjs.com/" target="_blank" rel="external">https://www.npmjs.com/</a>  </p>
+<p>当然你也可以在终端创建账户:</p>
+<pre><code>npm adduser 
+</code></pre><h2 id="编写模块"><a href="#编写模块" class="headerlink" title="编写模块"></a>编写模块</h2><p>下面我们写一个简单的模块,在任意你喜欢的地方建立一个工作目录！比如我在桌面新建一个test目录,<br>并通过终端进入到当前目录</p>
+<p>再新建一个js文件，命名为a.js ,输入如下代码</p>
+<pre><code>function add(a,b){
+      console.log(a + b);
+}
+exports.he=add;
+</code></pre><p>第一个普通函数不想解释</p>
+<p>exports.hi=hello; 使用exports将hello函数暴漏出去(hi是随便取的名,也可以是hello),上面的代码也就是:</p>
+<pre><code>exports.he = function (a,b){
+      console.log(a + b)
+}
+</code></pre><p>关于exports,本文下面有讲.</p>
+<p>接下来在目录里再建一个b.js文件！ 代码如下:</p>
+<pre><code>var h = require(&apos;./a&apos;);        // 使用 require(文件名) 导入刚才的模块
+h.he(2,4);            // 然后我们调用模块中的 hello 方法
+</code></pre><p>特别注意    require(‘./a.js’) 里的 “./“虽然代表当前目录,但跟不写是有区别的,不写可能会出错.<br>还可以:require(__dirname’/a.js’); 两个下划线加dirname表示绝对目录;</p>
+<p>接下来我们运行一下:</p>
+<pre><code>node b.js                //打印出6
+</code></pre><p>测试成功后,我们来进行下一步;</p>
+<h2 id="初始化npm"><a href="#初始化npm" class="headerlink" title="初始化npm"></a>初始化npm</h2><p>在终端输入:</p>
+<pre><code>npm init
+</code></pre><p>该命令可以帮助我们建立一个发布到npm所必须的 package.json 文件，该文件包含了你所建立模块的相关信息，你可以按照它的提示一步步输入即可，最后会在你的目录中发先一个 package.json的文件，建立完成之后的内容大概如下:</p>
+<pre><code>{
+      &quot;name&quot;: &quot;hiname&quot;,
+      &quot;version&quot;: &quot;1.0.2&quot;,
+      &quot;description&quot;: &quot;a nodejs module&quot;,
+      &quot;main&quot;: &quot;b.js&quot;,
+      &quot;scripts&quot;: {
+        &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+      },
+      &quot;repository&quot;: &quot;&quot;,
+      &quot;keywords&quot;: [
+        &quot;mcore&quot;
+      ],
+      &quot;author&quot;: &quot;gaoke&quot;,
+      &quot;license&quot;: &quot;BSD&quot;
+  ｝    
+</code></pre><p>好了，有了配置之后我们可以将模块发布到npm了</p>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>如果没登录,先登一下:</p>
+<pre><code>npm login
+</code></pre><p>根据提示输入相关信息即可</p>
+<p>一般上传的文件里最好有一个说明文件,方便别人使用,更方便自己以后复用.这里我就不演示了,直接:</p>
+<pre><code>npm publish
+</code></pre><p>这条命令的意思是发布我们的包;请确保你已经使用了正确的账号登陆;如果还有报错,这可能是你所要发布的包的名字，已经有人使用并发布了，编辑你的package.json文件，找到name字段，修改一个独一无二的名字,再重新发布.</p>
+<p>成功后出现:</p>
+<pre><code>+ hiname@1.0.2
+</code></pre><p>hiname是我的包的名字    1.0.2是我的包的版本</p>
+<h2 id="使用和维护"><a href="#使用和维护" class="headerlink" title="使用和维护"></a>使用和维护</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>发布成功后，在npm官网登陆你的账号，你是可以看到你自己的包的.别人也可以通过搜索你的包包名找到你的包包.</p>
+<p>发布了包之后，你就可以像安装其他第三方包一下来安装你的包了：</p>
+<pre><code>npm install hiname
+</code></pre><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>如果你的本地包有更新，需要再次发布的话，直接执行 npm publish 是不可以的，你还要更新一下包的版本号，然后再执行发布命令才行，也就是修改一下package.json文件的 version 字段，不过，不需要手动修改，执行：</p>
+<pre><code>npm version &lt;update_type&gt;    
+</code></pre><p>update_type 可以取三个值：major minor patch</p>
+<p>我们知道，版本号的格式是这样的 1.0.0</p>
+<p>其中 1 是主要版本，只有重大的更新才会修改它的值（major），第二个位置是次要的(minor)，第三个位置是补丁(patch)，根据包修改的程度来定你要修改那个位置的数字，为了测试，我们就执行如下命令：</p>
+<pre><code>npm version patch
+</code></pre><p>出现</p>
+<pre><code>v1.0.3
+</code></pre><p>版本有刚开始我设置的 v1.0.2 变成了 v1.0.3 。这时，我们就可以执行 npm publish 命令更新我们的包了。</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>如果我们想删除线上的包包:</p>
+<pre><code>npm unpublish &lt;package_name&gt;@&lt;version&gt;
+</code></pre><p>上面那个例子就是:</p>
+<pre><code>npm unpublish hiname@1.0.0            
+</code></pre><p>注意名字和版本之间没有空格</p>
+<p>出现以下说明成功:</p>
+<pre><code>- hiname@1.0.0
+</code></pre><h2 id="exports与module-exports"><a href="#exports与module-exports" class="headerlink" title="exports与module.exports"></a>exports与module.exports</h2><p>nodejs模块中的exports对象可以用来创建你的模块,例如,有一个a.js文件,代码如下:</p>
+<pre><code>exports.name = function() { 
+    console.log(&apos;My name is gaoke&apos;); 
+}; 
+</code></pre><p>在另一个文件中你这样引用:</p>
+<pre><code>var iam = require(&apos;./a.js&apos;); 
+iam.name();              // &apos;My name is gaoke&apos; 
+</code></pre><p>那到底Module.exports是什么呢？</p>
+<p>其实，Module.exports才是真正的接口，exports只不过是它的一个辅助工具。　最终返回给调用的是Module.exports而不是exports。</p>
+<p>所有的exports收集到的属性和方法，都赋值给了Module.exports。当然，这有个前提，就是Module.exports本身不具备任何属性和方法。如果，Module.exports已经具备一些属性和方法，那么exports收集来的信息将被忽略。</p>
+<p>修改b.js如下:</p>
+<pre><code>module.exports = &apos;ROCK IT!&apos;; 
+exports.name = function() { 
+    console.log(&apos;My name is gaoke&apos;); 
+}; 
+</code></pre><p>再次引用执行b.js:</p>
+<pre><code> var iam = require(&apos;./b.js&apos;); 
+iam.name();                     // TypeError: Object ROCK IT! has no method &apos;name&apos; 
+</code></pre><p>发现报错：对象“ROCK IT!”没有name方法 </p>
+<p>rocker模块忽略了exports收集的name方法，返回了一个字符串“ROCK IT!”。由此可知，你的模块并不一定非得返回“实例化对象”。你的模块可以是任何合法的javascript对象–boolean, number, date, JSON, string, function, array等等。</p>
+<p>你的模块可以是任何你设置给它的东西。如果你没有显式的给Module.exports设置任何属性和方法，那么你的模块就是exports设置给Module.exports的属性。</p>
+<p>下面例子中，你的模块是一个类：</p>
+<pre><code>module.exports = function(name, age) { 
+    this.name = name; 
+    this.age = age; 
+    this.about = function() { 
+        console.log(this.name +&apos; is &apos;+ this.age +&apos; years old&apos;); 
+    }; 
+}; 
+</code></pre><p>可以这样应用它：</p>
+<pre><code>var iam = require(&apos;./b.js&apos;); 
+var r = new iam(&apos;gaoke&apos;, 62); 
+r.about();                         // gaoke is 62 years old 
+</code></pre><p>下面例子中，你的模块是一个数组：         </p>
+<pre><code>module.exports = [&apos;Lemmy Kilmister&apos;, &apos;Ozzy Osbourne&apos;, &apos;Ronnie James Dio&apos;, &apos;Steven Tyler&apos;, &apos;Mick Jagger&apos;]; 
+</code></pre><p>可以这样应用它：</p>
+<pre><code>var iam = require(&apos;./b.js&apos;); 
+console.log(&apos;Rockin in heaven: &apos; + rocker[2]); //Rockin in heaven: Ronnie James Dio 
+</code></pre><p>现在你明白了，如果你想你的模块是一个特定的类型就用Module.exports。如果你想的模块是一个典型的“实例化对象”就用exports。</p>
+<p>给Module.exports添加属性类似于给exports添加属性。例如：</p>
+<pre><code>module.exports.name = function() { 
+    console.log(&apos;My name is gaoke&apos;); 
+}; 
+</code></pre><p>同样，exports是这样的</p>
+<pre><code>exports.name = function() { 
+    console.log(&apos;My name is gaoke&apos;); 
+}; 
+</code></pre><p>请注意，这两种结果并不想同。前面已经提到module.exports是真正的接口，exports只不过是它的辅助工具。推荐使用exports导出，除非你打算从原来的“实例化对象”改变成一个类型。    </p>
+<h2 id="用npm和node开发命令行工具"><a href="#用npm和node开发命令行工具" class="headerlink" title="用npm和node开发命令行工具"></a>用npm和node开发命令行工具</h2><p>什么是命令行工具？最通俗的解释就是，敲一串字符，命令行能够识别，并做一些事。比如 ls 查看文件， cd 切换目录等等，都是命令行工具，及可执行的文件。</p>
+<p>我们还继续使用上面的例子:</p>
+<h3 id="第一步：编写一个nodejs文件"><a href="#第一步：编写一个nodejs文件" class="headerlink" title="第一步：编写一个nodejs文件"></a>第一步：编写一个nodejs文件</h3><p>名字你随便起，这里我们就叫 test.js，在package.json的同级目录新建一个test.js文件，并编辑如下内容：</p>
+<pre><code>#! /usr/bin/env node
+console.log(&apos;test command line!&apos;);
+</code></pre><p>注意，第一行的 #! /usr/bin/env node 不可以省略，这是告诉机器，这个文件要在node环境下运行，当我们直接执行这个文件的时候，相当于使用node去执行它，即：</p>
+<pre><code>./test.js
+</code></pre><p>相当于</p>
+<pre><code>node ./test.js
+</code></pre><h3 id="第二步：在package-json文件中添加bin字段"><a href="#第二步：在package-json文件中添加bin字段" class="headerlink" title="第二步：在package.json文件中添加bin字段"></a>第二步：在package.json文件中添加bin字段</h3><pre><code>&quot;bin&quot;: {
+    &quot;hcy-cmd&quot;: &quot;./test.js&quot;
+}
+</code></pre><p>bin字段是一个json对象，键是命令的名称，即我们可以在终端执行的命令名称，值是该命令对应的可执行文件，在我们这个例子中，就是当前目录下的 test.js 文件，其中，命令的名称你自己随便定义。</p>
+<p>至此，我们还没有结束，如果现在就在终端敲 hcy-cmd 的话，是不行的，还需要最后一步。</p>
+<h3 id="第三步：连接到全局"><a href="#第三步：连接到全局" class="headerlink" title="第三步：连接到全局"></a>第三步：连接到全局</h3><p>如何连接到全局，很简单，只需一条命令，执行：</p>
+<pre><code>npm link
+</code></pre><p>这是在终端敲入我们自定义的命令，查看结果：</p>
+<pre><code>-&gt;test    hcy-cmd
+test command line!
+</code></pre><p>这样，我们就可以发挥我们的创造力，利用它做一些有趣的事情，快去实现你的想象吧，另外推荐两个库，配合它们，我们可以开发出很强大的命令行工具：</p>
+<p><a href="https://www.npmjs.com/package/shelljs" target="_blank" rel="external">shelljs - 强大的执行unix系统命令的npm包</a></p>
+<p><a href="https://www.npmjs.com/package/yargs" target="_blank" rel="external">yargs - 命令行参数的处理</a>    </p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js中setTimeout()时间参数设置为0的探讨]]></title>
+      <url>http://yoursite.com/2016/02/28/setTimeout0/</url>
+      <content type="html"><![CDATA[<p>起因源于一道前端笔试题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var fuc = [1,2,3];</span><br><span class="line">for(var i in fuc)&#123;</span><br><span class="line">  setTimeout(function()&#123;console.log(fuc[i])&#125;,0);</span><br><span class="line">  console.log(fuc[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>且看控制台打印结果:</p>
+<pre><code>    1
+    2
+    3 
+3次 3
+</code></pre><p>如果需要简单的解释:setTimeout是个异步定时函数，js是单线程，所以就算延时为0，它也是要等到for循环执行完了，才到它执行，每执行一次for语句就会就会产生一个异步执行，放在等待队列里，所以最后执行时就是输出4个4了.</p>
+<p>如果你非要复杂的那来吧:</p>
+<p>虽然setTimeout函数在每次循环的开始就调用了，但是却被放到循环结束才执行，循环结束，i=3,接连打印了3次3。</p>
+<p>这里涉及到javascript单线程执行的问题：javascript在浏览器中是单线程执行的，必须在完成当前任务后才执行队列中的下一个任务。</p>
+<p>另外，对于javascript还维护着一个setTimeout队列，未执行的setTimeout任务就按出现的顺序放到setTimeout队列，等待普通的任务队列中的任务执行完才开始按顺序执行积累在setTimeout中的任务。</p>
+<p>所以在这个问题里，会先打印1 2 3，而将setTimeout任务放到setTimeout任务队列，等循环中的打印任务执行完了，才开始执行setTimeout队列中的函数，所以在最后会接着打印3次3。</p>
+<p>由此，可以知道虽然设置为0秒后执行任务，实际上是大于0秒才执行的, <a href="http://www.cnblogs.com/fullhouse/archive/2012/10/10/2718542.html" target="_blank" rel="external">这里插播一个setTimeout设置0的真正时间</a> . 可是这有什么用呢？</p>
+<p>用处就在于我们可以改变任务的执行顺序！因为浏览器会在执行完当前任务队列中的任务，再执行setTimeout队列中积累的的任务。</p>
+<p>通过设置任务在延迟到0s后执行，就能改变任务执行的先后顺序，延迟该任务发生，使之异步执行。</p>
+<p>网上有个比较有意思的案例：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+   &lt;head&gt;
+         &lt;title&gt; 图 &lt;/title&gt;
+      &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;p&gt;
+            &lt;input type=&quot;text&quot; id=&quot;input&quot; value=&quot;&quot;/&gt;
+            &lt;span id=&quot;preview&quot;&gt;&lt;/span&gt;
+      &lt;/p&gt;
+  &lt;/body&gt;   
+  &lt;script type=&quot;text/javascript&quot;&gt;
+    (function(){
+          function $(id){
+                return document.getElementById(id);
+          }
+         $(‘input‘).onkeypress = function(){
+            $(‘preview‘).innerHTML = this.value;
+          }
+    })();
+  &lt;/script&gt;
+&lt;/html&gt;
+</code></pre><p>这个keypress函数原意是监听到用户输入字符串就将其完整的显示出来，但是奇怪的是最后一个字符串总是没能显示出来:</p>
+<p><input type="text" value="123456" disabled> 12345</p>
+<p>但是只要改下onkeypress函数就好：</p>
+<pre><code>$(‘input‘).onkeypress = function(){
+    setTimeout(function(){$(‘preview‘).innerHTML = $(‘input‘).value;},0);
+  }
+</code></pre><p>将onkeypress里面的事件延迟到浏览器更新相关DOM元素的状态之后执行，这是就能显示出所有字符串了，如下：</p>
+<p><input type="text" value="123456abc" disabled> 123456abc</p>
+<p>setTimeout()是用来改变任务执行顺序的，难道就没有其他代替的方法了吗？答案是有的。</p>
+<p>将监听keypress事件改为监听keyup事件，一样能达到同样的效果:</p>
+<pre><code>$(‘input‘).onkeyup = function(){
+      $(‘preview‘).innerHTML = $(‘input‘).value;
+}
+</code></pre><p>这里跟key事件的执行顺序有关:</p>
+<pre><code>(function(){
+      function $(id){
+        return document.getElementById(id);
+      }
+      function log(a){
+        console.log(a);
+      }
+      $(‘input‘).onkeypress = function(){
+        log(&quot;keypress: &quot;+this.value);
+      }
+      $(‘input‘).onkeyup = function(){
+        log(&quot;keyup: &quot;+this.value);
+      }
+      $(‘input‘).onkeydown=function(){
+        log(&quot;keydown: &quot;+this.value);
+      }
+})();
+</code></pre><p>当用键盘输入1后，控制台打印结果如下：</p>
+<pre><code>keydown:
+keypress:
+keyup: 1
+</code></pre><p>也就是先执行keydown事件，再执行keypress事件，执行keypress事件之后改变dom元素的状态（这里是input的value改变了），再执行keyup。</p>
+<p>这也解释了为什么通过监听keyup事件就能正确且及时的打印出input的值。</p>
+<p>而keypress事件发生时，dom元素的状态还未改变，keypress事件之后dom元素的状态才发生改变，通过setTimeout延迟执行就能达到期望的结果了。</p>
+<p>测试过chrome，firefox，ie表现一致。</p>
+<p>再来看看另一个例子，稍微有些改动，来自<a href="http://blog.csdn.net/lsk_jd/article/details/6080772：" target="_blank" rel="external">http://blog.csdn.net/lsk_jd/article/details/6080772：</a></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+    &lt;head&gt;
+    &lt;meta name=&quot;generator&quot; content=&quot;HTML Tidy for HTML5 (experimental) for Windows             https://github.com/w3c/tidy-html5/tree/c63cc39&quot;&gt;
+    &lt;title&gt; 图 &lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;Description&quot; content=&quot;SUperman&quot;&gt;
+    &lt;style type=&quot;text/css&quot;&gt;    &lt;/style&gt;
+  &lt;/head&gt;
+     &lt;body&gt;
+    &lt;h2&gt;1、未使用 &lt;code&gt;setTimeout&lt;/code&gt;&lt;/h2&gt;
+    &lt;button id=&quot;makeinput&quot;&gt;生成 input&lt;/button&gt;
+    &lt;p id=&quot;inpwrapper&quot;&gt;&lt;/p&gt;
+    &lt;h2&gt;2、使用 &lt;code&gt;setTimeout&lt;/code&gt;&lt;/h2&gt;
+    &lt;button id=&quot;makeinput2&quot;&gt;生成 input&lt;/button&gt;&lt;/h2&gt;
+    &lt;p id=&quot;inpwrapper2&quot;&gt;&lt;/p&gt;
+    &lt;/body&gt;   
+  &lt;script type=&quot;text/javascript&quot;&gt;
+    (function(){
+          function get(id){
+           return document.getElementById(id);
+         }
+          function log(a){
+            console.log(a)
+          }
+          window.onload = function(){
+            get(‘makeinput‘).onmousedown=function(){
+                  var input = document.createElement(‘input‘);
+                  input.setAttribute(‘type‘, ‘text‘);
+                  input.setAttribute(‘value‘, ‘test1‘);
+                  get(‘inpwrapper‘).appendChild(input);
+                  input.focus();
+            }
+            get(‘makeinput2‘).onmousedown = function(){
+                  var input = document.createElement(‘input‘);
+                  input.setAttribute(‘type‘, ‘text‘);
+                  input.setAttribute(‘value‘, ‘test1‘);
+                  get(‘inpwrapper2‘).appendChild(input);
+                  setTimeout(function(){input.focus();},0);
+            }
+           }
+    })();
+  &lt;/script&gt;
+&lt;/html&gt;
+</code></pre><p>该例子中，未使用setTimeout生成的input没有获得focus，而使用了setTimeout的input可以获得focus，这也是和setTimeout改变任务执行顺序有关。</p>
+<p>可是生成的input为什么不会focus呢？是这个focus没执行吗，通过给focus绑定一个事件就可以知道事实是怎样：</p>
+<pre><code>get(‘makeinput‘).onmousedown=function(){
+  var input = document.createElement(‘input‘);
+  input.setAttribute(‘type‘, ‘text‘);
+  input.setAttribute(‘value‘, ‘test1‘);
+  get(‘inpwrapper‘).appendChild(input);
+  input.onfocus=function(){    //给生成的input绑定focus事件
+    log(&quot;focused&quot;);
+  }
+  input.focus();
+}
+</code></pre><p>结果发现控制台有打印”focused”的，进一步猜测未使用setTimeout生成的input获取了focus又失去focus，改下代码看看mouse事件和focus事件的执行顺序:</p>
+<pre><code>get(‘makeinput‘).onmousedown=function(){
+  var input = document.createElement(‘input‘);
+  input.setAttribute(‘type‘, ‘text‘);
+  input.setAttribute(‘value‘, ‘test1‘);
+  get(‘inpwrapper‘).appendChild(input);
+  input.onfocus=function(){
+    log(&quot;focused&quot;);
+  }
+  input.focus();
+  log(&quot;down&quot;);
+}
+get(‘makeinput‘).onfocus = function(){
+  log(&quot;focus&quot;);
+}
+get(‘makeinput‘).onclick = function(){
+ log(&quot;click&quot;);
+}
+get(‘makeinput‘).onmouseup=function(){
+  log(&quot;up&quot;);
+}
+</code></pre><p>结果如下：</p>
+<pre><code>focused
+down
+focus
+up
+click
+</code></pre><p>可见先执行mousedown事件，然后生成的input获得focus，接着按钮获得focus，接着执行mouseup事件，再执行click事件，和key的3个事件的执行顺序有些不同。</p>
+<p>看到这里恍然大悟，这个生成的input确实是获得了focus，但是随之失去focus，因为按钮的mousedown事件紧跟着按钮的focus事件，被按钮夺取了focus。</p>
+<p>将 input.focus(); 改为 setTimeout(function(){input.focus();},0);得到结果为：</p>
+<pre><code>down
+focus
+focused
+up
+click
+</code></pre><p>也就是通过延迟执行input获取focus事件，最终就是生成的input获取了focus。</p>
+<p>这样的话，通过绑定mouseup，click事件同样能使生成的input夺取按钮的focus事件，事实证明确实如此，就不贴代码上来了。</p>
+<p>如果绑定focus事件会怎样呢？这一次，chrome和ie站在了统一战线，都是生成一个获取了focus的input，但有趣的是firefox居然生成了2个。</p>
+<p>不过ie反应也不算正常，绑定mousedown时不使用setTimeout的输出是这样的：</p>
+<pre><code>LOG: down
+LOG: focused
+LOG: up
+LOG: click
+</code></pre><p>也就是focus事件好像不执行了，由于没有执行按钮的focus事件，生成的input是获得focus的，也就是不需要延迟执行函数，生成的input也能获取focus。</p>
+<p>赶紧将input.focus()注释掉，发现打印出”focused”的地方替换成了”focus”，将生成input且获取focus的代码绑定到其他mouse事件和focus事件得到的结果比较复杂，就暂且不做深究，但是可以知道按钮都能执行focus事件，除了绑定mousedown事件忽略了foucs事件。</p>
+<p>原因不详，应该是和各浏览器对focus的具体实现有差异吧。看到的朋友若知道什么原因，欢迎告知。</p>
+<p>不过折腾了这么久，敢肯定setTimeout确实是实现异步执行的利器。这次对setTimeout的探讨也没有很深入，不过同时也弄清楚了key事件、mouse事件和focus事件的执行顺序。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript 保留关键字]]></title>
       <url>http://yoursite.com/2016/02/22/jsKeyword/</url>
       <content type="html"><![CDATA[<p style="font-size:20px;">在 JavaScript 中，一些标识符是保留关键字，不能用作变量名或函数名。</p>
+
 
 <h2 id="JavaScript-标准"><a href="#JavaScript-标准" class="headerlink" title="JavaScript 标准"></a>JavaScript 标准</h2><p>所有的现代浏览器完全支持 ECMAScript 3（ES3，JavaScript 的第三版，从 1999 年开始）。</p>
 <p>ECMAScript 4（ES4）未通过。</p>
@@ -14,7 +355,7 @@
 <p>随着时间的推移，我们开始看到，所有的现代浏览器已经完全支持 ES5。<br><a id="more"></a></p>
 <h2 id="JavaScript-保留关键字"><a href="#JavaScript-保留关键字" class="headerlink" title="JavaScript 保留关键字"></a>JavaScript 保留关键字</h2><p>Javascript 的保留关键字不可以用作变量、标签或者函数名。有些保留关键字是作为 Javascript 以后扩展使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">abstract	arguments</span><br><span class="line">boolean	break	byte</span><br><span class="line">case	catch	char	class*	const	continue</span><br><span class="line">debugger	default	delete	do	double</span><br><span class="line">else	enum*	eval	export*	extends*</span><br><span class="line">false	final	finally	float	for	function</span><br><span class="line">goto</span><br><span class="line">if	implements	import*	in	instanceof	int	interface</span><br><span class="line">let	long</span><br><span class="line">native	new	null</span><br><span class="line">package	private	protected	public</span><br><span class="line">return</span><br><span class="line">short	static	super*	switch	synchronized</span><br><span class="line">this	throw	throws	transient	true	try	typeof</span><br><span class="line">var	void	volatile</span><br><span class="line">while	with</span><br><span class="line">yield</span><br></pre></td></tr></table></figure>
-<p> 带 * 标记的关键字是 ECMAScript5 中新添加的。</p>
+<p>带 * 标记的关键字是 ECMAScript5 中新添加的。</p>
 <h2 id="JavaScript-对象、属性和方法"><a href="#JavaScript-对象、属性和方法" class="headerlink" title="JavaScript 对象、属性和方法"></a>JavaScript 对象、属性和方法</h2><p>您也应该避免使用 JavaScript 内置的对象、属性和方法的名称作为 Javascript 的变量或函数名：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Array	</span><br><span class="line">Date	</span><br><span class="line">eval	</span><br><span class="line">function	</span><br><span class="line">hasOwnProperty</span><br><span class="line">Infinity	isFinite	isNaN	isPrototypeOf	</span><br><span class="line">length</span><br><span class="line">Math	</span><br><span class="line">NaN	name	Number	</span><br><span class="line">Object</span><br><span class="line">prototype	</span><br><span class="line">String	</span><br><span class="line">toString	</span><br><span class="line">undefined	</span><br><span class="line">valueOf</span><br></pre></td></tr></table></figure>
 <h2 id="Java-保留关键字"><a href="#Java-保留关键字" class="headerlink" title="Java 保留关键字"></a>Java 保留关键字</h2><p>JavaScript 经常与 Java 一起使用。您应该避免使用一些 Java 对象和属性作为 JavaScript 标识符：</p>
