@@ -38,11 +38,8 @@ console.log( arr1, arr2 );            //分别输出[1,2,3,4]和[10,2,3,4]
 </code></pre><p>&lt;注&gt;:在 ECMAScript5 中新增了一个数组方法 forEach() 用来循环数组,它有两个参数:</p>
 <ul>
 <li><p>第一个参数: 回调函数</p>
-<p>  每次循环时都会调用一下回调函数,回调函数有三个参数:</p>
-<pre><code>- 第一个参数:当前循环的值
-- 第二个参数: 当前循环的值的下标
-- 第三个参数: 被循环的数组本身
-</code></pre></li>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">每次循环时都会调用一下回调函数,回调函数有三个参数:</span><br><span class="line">	- 第一个参数:当前循环的值</span><br><span class="line">	- 第二个参数: 当前循环的值的下标</span><br><span class="line">	- 第三个参数: 被循环的数组本身</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>第二个参数: 指定回调函数中this的新值</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	arr1.forEach(function(val,index,arr)&#123;</span><br><span class="line">       alert(this);</span><br><span class="line">  		console.log(val,index,arr);</span><br><span class="line">&#125;,1);</span><br></pre></td></tr></table></figure>
 </li>
