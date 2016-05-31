@@ -275,11 +275,15 @@ call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内�
         
             <a href="/tags/apply/" class="chip red lighten-1">apply()</a>
         
+            <a href="/tags/继承/" class="chip red lighten-1">继承</a>
+        
+            <a href="/tags/原型链/" class="chip red lighten-1">原型链</a>
+        
     </div>
 
 
             <div class="toc red-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#概述"><span class="section table-of-contents-text">概述:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#作用相同"><span class="section table-of-contents-text">作用相同</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传参区别"><span class="section table-of-contents-text">传参区别</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#应用场景"><span class="section table-of-contents-text">应用场景</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#概述"><span class="section table-of-contents-text">概述:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#作用相同"><span class="section table-of-contents-text">作用相同</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传参区别"><span class="section table-of-contents-text">传参区别</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#应用场景"><span class="section table-of-contents-text">应用场景</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#继承的延伸"><span class="section table-of-contents-text">继承的延伸</span></a></li></ol>
 </div>
 
 
@@ -335,7 +339,64 @@ example(”背” , “光” , “脚”, “本”);        //弹出三次”�
 function foo(){
     print.apply(window, arguments);            //foo参数可能为多个
 }
-</code></pre>
+</code></pre><h2 id="继承的延伸"><a href="#继承的延伸" class="headerlink" title="继承的延伸"></a>继承的延伸</h2><p>先看个例子:</p>
+<pre><code>function Person(name,age){
+    this.name = name;
+    this.age = age;
+    this.say = function(){
+       alert(&apos;我叫&apos;+ this.name);
+    };
+}
+Person.prototype.dance = function(){     
+    alert(&apos;旋转，跳跃&apos;);
+};
+
+function Girl(name,age){
+    Person.apply(this,arguments);    
+}
+Girl.prototype.shopping = function(){
+    alert(&apos;买买买&apos;);
+};
+
+var xiaoming = new Person(&apos;小明&apos;,18);
+var xiaohong = new Girl(&apos;小红&apos;,16);
+xiaohong.say()
+xiaohong.dance();      
+</code></pre><p>上面 xiaohong.say() 可以正常运行,但是 xiaohong.dance() 运行的时候直接报错: </p>
+<pre><code>Uncaught TypeError: xiaohong.dance is not a function
+</code></pre><p>因为call() 或者 apply() 的方式继承不到父构造函数的原型对象上的属性和方法。</p>
+<p>我们可以在实例化girl对象前,通过把父构造函数的实例赋给子构造函数的原型来实现继承:</p>
+<pre><code>Girl.prototype = new Person();
+var xiaohong = new Girl(&apos;小红&apos;,16);
+xiaohong.dance(); 
+</code></pre><p>这样dance就可以正常执行了.</p>
+<p>注意,如果子构造函数 Girl 里面没用apply()或者call()方法,由于我们把父构造函数的实例赋给子构造函数的原型时,没有进行传参(为了真正实现继承和面向对象,让好多人都能用我,我也不能传参啊),所以如果现在执行:</p>
+<pre><code>xiaohong.say()
+</code></pre><p>会弹出 我叫 undefined  ,因为父构造函数中的属性没办法进行传参,所以继承时这两句都不能少.</p>
+<p>其实到这已经可以结束了,但我们就是爱折腾,我们看到在进行</p>
+<pre><code>Girl.prototype = new Person();
+</code></pre><p>这句的时候,我们发现我们new出来一个函数仅仅只是用于赋给Girl的原型链,并没有别的操作,这样的内存占用太奢侈了,因为一个变量或者对象占用的内存远大于纯字符的几行代码,所以我宁愿多些几行代码,也要改变它.我发现我们可以直接把父构造函数的原型赋给子构造函数的原型,而不通过new:</p>
+<pre><code>Girl.prototype = Person.prototype;
+</code></pre><p>这样我们是解决了内存占用问题,但是由于这种传值导致了Person<br>也有了Girl的原型上的方法,也就是此时:</p>
+<pre><code>xiaoming.shopping()
+</code></pre><p>也能正确执行 ,这显然我们在继承的时候影响到了被继承的原函数,导致了:</p>
+<pre><code>alert( xiaohong.constructor );
+alert( xiaoming.constructor );
+</code></pre><p>他两弹出的都是</p>
+<pre><code>function Person(name,age){...}
+</code></pre><p>这不是我想要的,怎么办呢,有人说可以改变子构造函数原型的指向,让Girl的原型的构造函数就是Girl本身:</p>
+<pre><code>Girl.prototype.constructor = Girl;
+alert( xiaohong.constructor );
+alert( xiaoming.constructor );
+</code></pre><p>这样确实改变了,两个都弹出</p>
+<pre><code>function Girl(name,age){...}
+</code></pre><p>这貌似改的有点过了吧…其实一切都是传值惹的祸,我们可以这样解决( 不知道传值的可以看我另一篇博客<a href="">传值与传址</a> )具体就是:</p>
+<pre><code>function F(){}                            //我们创建一个空函数
+F.prototype = Person.prototype;            //把父构造函数的原型赋给空函数的原型
+Girl.prototype = new F();
+Girl.prototype.constructor = Girl;        //现在把Girl的原型的构造指向Girl时就不会影响Person了
+</code></pre><p>这样我们就解决了以上所有问题,有人说,你这绕了十八个弯不还是转回来new了一下吗,是的,确实是的,不过我们new的是一个空函数,跟实际项目中那复杂的函数相比,这绕的值啊</p>
+
             </div>
         </div>
     </div>

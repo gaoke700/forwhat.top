@@ -280,7 +280,7 @@ number,boolean,string,function,object,undefined。">
 
 
             <div class="toc red-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#typeof"><span class="section table-of-contents-text">typeof</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#instanceof"><span class="section table-of-contents-text">instanceof</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#typeof"><span class="section table-of-contents-text">typeof</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#instanceof"><span class="section table-of-contents-text">instanceof</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#自定义类型检测函数"><span class="section table-of-contents-text">自定义类型检测函数</span></a></li></ol>
 </div>
 
 
@@ -309,6 +309,40 @@ alert(a instanceof test)    //返回true
 <pre><code>var a=new Array();
 if (a instanceof Object){ alert(&apos;Y&apos;);}
 else alert(&apos;N&apos;);     //弹出Y
+</code></pre><h2 id="自定义类型检测函数"><a href="#自定义类型检测函数" class="headerlink" title="自定义类型检测函数"></a>自定义类型检测函数</h2><p>我们都知道以上两种方法都有不足,就是遇到引用类型数组,函数,正则,Math,Date,window等,测出来的结果都是Object,如果我们想知道更具的类型,我们就得自己封装一个:</p>
+<pre><code>function type(arg){
+    var o = {}
+    return o.toString.call(arg).slice(8,-1)
+}
+</code></pre><p>来来来,我们解释一下,先解释第一行的实例化对象,首先上面的代码也可以这么写:</p>
+<pre><code>function type(arg){
+    return Object.prototype.toString.call(arg).slice(8,-1)
+}
+</code></pre><p>因为当我们初始化的实例对象在其构造函数(Object)上找不见时,就会到构造函数的原型上(Object.prototype)去找</p>
+<p>我们再来继续:</p>
+<p>toString:这是Object.prototype上的一个方法,所有的对象都有这个方法,它返回一个字符串 <mark>[object Object]</mark>    ,第一个固定是Object,第二个是返回的数据的类型,如:</p>
+<pre><code>var obj = {};
+var arr = [];
+var re = /\d+/;
+var m = Math;
+var str=&quot;abn&quot;
+
+console.log( obj.toString() );                //[object Object]
+console.log( obj.toString.call(arr) );        //[object Array]
+console.log( obj.toString.call(re) );        //[object RegExp]
+console.log( obj.toString.call(m) );        //[object Math]
+console.log( obj.toString.call(str) );        //[object String]
+</code></pre><p>.call(arg): 我们把对象上这个方法给传进来这个参数用</p>
+<p>.slice(8,-1): 截取并返回空格后面,最后一个中括号前面的字符串,也就是我们想要的类型</p>
+<pre><code>slice() 方法可从已有的数组或字符串中返回选定的元素
+
+语法: arrayObject.slice(start,end)或stringObject.slice(start,end)
+
+包含start(注意从0开始),不包含end
+
+start:    必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+
+end:    可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
 </code></pre>
             </div>
         </div>

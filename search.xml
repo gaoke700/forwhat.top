@@ -541,7 +541,64 @@ example(”背” , “光” , “脚”, “本”);        //弹出三次”�
 function foo(){
     print.apply(window, arguments);            //foo参数可能为多个
 }
-</code></pre>]]></content>
+</code></pre><h2 id="继承的延伸"><a href="#继承的延伸" class="headerlink" title="继承的延伸"></a>继承的延伸</h2><p>先看个例子:</p>
+<pre><code>function Person(name,age){
+    this.name = name;
+    this.age = age;
+    this.say = function(){
+       alert(&apos;我叫&apos;+ this.name);
+    };
+}
+Person.prototype.dance = function(){     
+    alert(&apos;旋转，跳跃&apos;);
+};
+
+function Girl(name,age){
+    Person.apply(this,arguments);    
+}
+Girl.prototype.shopping = function(){
+    alert(&apos;买买买&apos;);
+};
+
+var xiaoming = new Person(&apos;小明&apos;,18);
+var xiaohong = new Girl(&apos;小红&apos;,16);
+xiaohong.say()
+xiaohong.dance();      
+</code></pre><p>上面 xiaohong.say() 可以正常运行,但是 xiaohong.dance() 运行的时候直接报错: </p>
+<pre><code>Uncaught TypeError: xiaohong.dance is not a function
+</code></pre><p>因为call() 或者 apply() 的方式继承不到父构造函数的原型对象上的属性和方法。</p>
+<p>我们可以在实例化girl对象前,通过把父构造函数的实例赋给子构造函数的原型来实现继承:</p>
+<pre><code>Girl.prototype = new Person();
+var xiaohong = new Girl(&apos;小红&apos;,16);
+xiaohong.dance(); 
+</code></pre><p>这样dance就可以正常执行了.</p>
+<p>注意,如果子构造函数 Girl 里面没用apply()或者call()方法,由于我们把父构造函数的实例赋给子构造函数的原型时,没有进行传参(为了真正实现继承和面向对象,让好多人都能用我,我也不能传参啊),所以如果现在执行:</p>
+<pre><code>xiaohong.say()
+</code></pre><p>会弹出 我叫 undefined  ,因为父构造函数中的属性没办法进行传参,所以继承时这两句都不能少.</p>
+<p>其实到这已经可以结束了,但我们就是爱折腾,我们看到在进行</p>
+<pre><code>Girl.prototype = new Person();
+</code></pre><p>这句的时候,我们发现我们new出来一个函数仅仅只是用于赋给Girl的原型链,并没有别的操作,这样的内存占用太奢侈了,因为一个变量或者对象占用的内存远大于纯字符的几行代码,所以我宁愿多些几行代码,也要改变它.我发现我们可以直接把父构造函数的原型赋给子构造函数的原型,而不通过new:</p>
+<pre><code>Girl.prototype = Person.prototype;
+</code></pre><p>这样我们是解决了内存占用问题,但是由于这种传值导致了Person<br>也有了Girl的原型上的方法,也就是此时:</p>
+<pre><code>xiaoming.shopping()
+</code></pre><p>也能正确执行 ,这显然我们在继承的时候影响到了被继承的原函数,导致了:</p>
+<pre><code>alert( xiaohong.constructor );
+alert( xiaoming.constructor );
+</code></pre><p>他两弹出的都是</p>
+<pre><code>function Person(name,age){...}
+</code></pre><p>这不是我想要的,怎么办呢,有人说可以改变子构造函数原型的指向,让Girl的原型的构造函数就是Girl本身:</p>
+<pre><code>Girl.prototype.constructor = Girl;
+alert( xiaohong.constructor );
+alert( xiaoming.constructor );
+</code></pre><p>这样确实改变了,两个都弹出</p>
+<pre><code>function Girl(name,age){...}
+</code></pre><p>这貌似改的有点过了吧…其实一切都是传值惹的祸,我们可以这样解决( 不知道传值的可以看我另一篇博客<a href="">传值与传址</a> )具体就是:</p>
+<pre><code>function F(){}                            //我们创建一个空函数
+F.prototype = Person.prototype;            //把父构造函数的原型赋给空函数的原型
+Girl.prototype = new F();
+Girl.prototype.constructor = Girl;        //现在把Girl的原型的构造指向Girl时就不会影响Person了
+</code></pre><p>这样我们就解决了以上所有问题,有人说,你这绕了十八个弯不还是转回来new了一下吗,是的,确实是的,不过我们new的是一个空函数,跟实际项目中那复杂的函数相比,这绕的值啊</p>
+]]></content>
     </entry>
     
     <entry>
@@ -893,6 +950,40 @@ alert(a instanceof test)    //返回true
 <pre><code>var a=new Array();
 if (a instanceof Object){ alert(&apos;Y&apos;);}
 else alert(&apos;N&apos;);     //弹出Y
+</code></pre><h2 id="自定义类型检测函数"><a href="#自定义类型检测函数" class="headerlink" title="自定义类型检测函数"></a>自定义类型检测函数</h2><p>我们都知道以上两种方法都有不足,就是遇到引用类型数组,函数,正则,Math,Date,window等,测出来的结果都是Object,如果我们想知道更具的类型,我们就得自己封装一个:</p>
+<pre><code>function type(arg){
+    var o = {}
+    return o.toString.call(arg).slice(8,-1)
+}
+</code></pre><p>来来来,我们解释一下,先解释第一行的实例化对象,首先上面的代码也可以这么写:</p>
+<pre><code>function type(arg){
+    return Object.prototype.toString.call(arg).slice(8,-1)
+}
+</code></pre><p>因为当我们初始化的实例对象在其构造函数(Object)上找不见时,就会到构造函数的原型上(Object.prototype)去找</p>
+<p>我们再来继续:</p>
+<p>toString:这是Object.prototype上的一个方法,所有的对象都有这个方法,它返回一个字符串 <mark>[object Object]</mark>    ,第一个固定是Object,第二个是返回的数据的类型,如:</p>
+<pre><code>var obj = {};
+var arr = [];
+var re = /\d+/;
+var m = Math;
+var str=&quot;abn&quot;
+
+console.log( obj.toString() );                //[object Object]
+console.log( obj.toString.call(arr) );        //[object Array]
+console.log( obj.toString.call(re) );        //[object RegExp]
+console.log( obj.toString.call(m) );        //[object Math]
+console.log( obj.toString.call(str) );        //[object String]
+</code></pre><p>.call(arg): 我们把对象上这个方法给传进来这个参数用</p>
+<p>.slice(8,-1): 截取并返回空格后面,最后一个中括号前面的字符串,也就是我们想要的类型</p>
+<pre><code>slice() 方法可从已有的数组或字符串中返回选定的元素
+
+语法: arrayObject.slice(start,end)或stringObject.slice(start,end)
+
+包含start(注意从0开始),不包含end
+
+start:    必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+
+end:    可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
 </code></pre>]]></content>
     </entry>
     
