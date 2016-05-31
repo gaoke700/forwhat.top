@@ -4,6 +4,40 @@
   
     
     <entry>
+      <title><![CDATA[传值与传址]]></title>
+      <url>http://gaoke700.github.io/2016/03/19/passbyvalue/</url>
+      <content type="html"><![CDATA[<h2 id="传值"><a href="#传值" class="headerlink" title="传值"></a>传值</h2><p>传值:把一个变量的值复制一份给另一个变量</p>
+<ol>
+<li>复制变量的值</li>
+<li>申请一个新的内存地址存放复制的值</li>
+<li>把复制的值的地址告诉另一个变量<br>简单数据类型的赋值是传值</li>
+</ol>
+<p>例:</p>
+<pre><code>var a = 1;
+var b = a;
+b = 2;
+console.log(a,b)                //输出1和2
+</code></pre><h2 id="传址"><a href="#传址" class="headerlink" title="传址"></a>传址</h2><p>传址：把一个变量在内存中的地址复制给另一个变量.</p>
+<p>复杂数据类型的赋值是传址。</p>
+<p>例:</p>
+<pre><code>var arr1 = [1,2,3,4];
+var arr2 = arr1;
+arr2[0] = 10;
+console.log( arr1, arr2 );        //两个输出的都是 [10, 2, 3, 4]
+</code></pre><p><code>通过比较我们发现传址会改变原变量的值,而传值不会.</code></p>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p>要想传址时还不改变原变量的值,我来给介绍几种方法:</p>
+<p>1.通过循环把传址改为传值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var arr1=[1,2,3,4]</span><br><span class="line">var arr2=[]</span><br><span class="line">for(var i=0;i&lt;arr1.length;i++)&#123;</span><br><span class="line">	arr2[i]=arr1[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">arr2[0] = 10;</span><br><span class="line">console.log( arr1, arr2 );			//分别输出[1,2,3,4]和[10,2,3,4]</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">&lt;注&gt; :在 ECMAScript5 中新增了一个数组方法 forEach() 用来循环数组,它有两个参数:</span><br><span class="line"></span><br><span class="line"> - 第一个参数: 回调函数</span><br><span class="line"> </span><br><span class="line"> 	每次循环时都会调用一下回调函数,回调函数有三个参数:</span><br><span class="line"> 		- 第一个参数:当前循环的值</span><br><span class="line"> 		- 第二个参数: 当前循环的值的下标</span><br><span class="line"> 		- 第三个参数: 被循环的数组本身</span><br><span class="line"> - 第二个参数: 指定回调函数中this的新值</span><br></pre></td></tr></table></figure>
+<pre><code> arr1.forEach(function(val,index,arr){
+    alert(this);
+       console.log(val,index,arr);
+},1);
+ ```
+</code></pre><p>2.发</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[真实or梦境]]></title>
       <url>http://gaoke700.github.io/2016/03/06/jiaye/</url>
       <content type="html"><![CDATA[<p></p><h4><br>一个真实的梦境远比残酷的现实更容易让人接受.<br><br><br>当不可能重来的一切再次出现在你眼前,所以你就认为是假的吗?<br><br><br>真或假不取决于你的眼,而取决于你的心.<br><br><br>机会就在眼前,而这一次你拥有了力量,也不再懦弱,为什么还要犹豫呢?<br><br><br>是真实太过虚幻,是你无法相信,还是梦境太过真实,使你难以接受?<br><br><br>如果在你思考问题的时候机会转瞬即逝,你能原谅自己吗?<br></h4><br><a id="more"></a><br><br><br><br>—    假页      &lt;侠岚&gt;<p></p>
@@ -579,7 +613,7 @@ xiaohong.dance();
 <pre><code>Girl.prototype = new Person();
 </code></pre><p>这句的时候,我们发现我们new出来一个函数仅仅只是用于赋给Girl的原型链,并没有别的操作,这样的内存占用太奢侈了,因为一个变量或者对象占用的内存远大于纯字符的几行代码,所以我宁愿多些几行代码,也要改变它.我发现我们可以直接把父构造函数的原型赋给子构造函数的原型,而不通过new:</p>
 <pre><code>Girl.prototype = Person.prototype;
-</code></pre><p>这样我们是解决了内存占用问题,但是由于这种传值导致了Person<br>也有了Girl的原型上的方法,也就是此时:</p>
+</code></pre><p>这样我们是解决了内存占用问题,但是由于这种传址导致了Person<br>也有了Girl的原型上的方法,也就是此时:</p>
 <pre><code>xiaoming.shopping()
 </code></pre><p>也能正确执行 ,这显然我们在继承的时候影响到了被继承的原函数,导致了:</p>
 <pre><code>alert( xiaohong.constructor );
@@ -592,7 +626,7 @@ alert( xiaohong.constructor );
 alert( xiaoming.constructor );
 </code></pre><p>这样确实改变了,两个都弹出</p>
 <pre><code>function Girl(name,age){...}
-</code></pre><p>这貌似改的有点过了吧…其实一切都是传值惹的祸,我们可以这样解决( 不知道传值的可以看我另一篇博客<a href="">传值与传址</a> )具体就是:</p>
+</code></pre><p>这貌似改的有点过了吧…其实一切都是传址惹的祸,我们可以这样解决( 不知道传值的可以看我另一篇博客<a href="">传值与传址</a> )具体就是:</p>
 <pre><code>function F(){}                            //我们创建一个空函数
 F.prototype = Person.prototype;            //把父构造函数的原型赋给空函数的原型
 Girl.prototype = new F();

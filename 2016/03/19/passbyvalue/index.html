@@ -7,15 +7,26 @@
 
     
 
-    <title>真实or梦境 | </title>
+    <title>传值与传址 | </title>
     <meta name="author" content="gaoke">
     
-    <meta name="description" content="一个真实的梦境远比残酷的现实更容易让人接受.当不可能重来的一切再次出现在你眼前,所以你就认为是假的吗?真或假不取决于你的眼,而取决于你的心.机会就在眼前,而这一次你拥有了力量,也不再懦弱,为什么还要犹豫呢?是真实太过虚幻,是你无法相信,还是梦境太过真实,使你难以接受?如果在你思考问题的时候机会转瞬即逝,你能原谅自己吗?">
+    <meta name="description" content="传值传值:把一个变量的值复制一份给另一个变量
+
+复制变量的值
+申请一个新的内存地址存放复制的值
+把复制的值的地址告诉另一个变量简单数据类型的赋值是传值
+
+例:
+var a = 1;
+var b = a;
+b = 2;
+console.log(a,b)                //输出1和2
+传">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="真实or梦境"/>
+    <meta property="og:title" content="传值与传址"/>
     <meta property="og:site_name" content="web knowledges"/>
 
     
@@ -240,7 +251,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/随笔/">随笔</a>
+    <a class="breadcrumb" href="/categories/js/">js</a>
 
 
         
@@ -257,22 +268,59 @@
             <div class="article-title">
                 
     
-        <h1>真实or梦境</h1>
+        <h1>传值与传址</h1>
     
 
 
             </div>
-            <time class="red-link-context" datetime="2016-03-06T09:02:30.000Z"><a href="/2016/03/06/jiaye/">2016-03-06</a></time>
+            <time class="red-link-context" datetime="2016-03-19T09:02:30.000Z"><a href="/2016/03/19/passbyvalue/">2016-03-19</a></time>
 
             
+    <div class="tags-row">
+        
+            <a href="/tags/传值/" class="chip red lighten-1">传值</a>
+        
+            <a href="/tags/传址/" class="chip red lighten-1">传址</a>
+        
+            <a href="/tags/克隆/" class="chip red lighten-1">克隆</a>
+        
+    </div>
+
 
             <div class="toc red-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#undefined"><span class="section table-of-contents-text">一个真实的梦境远比残酷的现实更容易让人接受.当不可能重来的一切再次出现在你眼前,所以你就认为是假的吗?真或假不取决于你的眼,而取决于你的心.机会就在眼前,而这一次你拥有了力量,也不再懦弱,为什么还要犹豫呢?是真实太过虚幻,是你无法相信,还是梦境太过真实,使你难以接受?如果在你思考问题的时候机会转瞬即逝,你能原谅自己吗?</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传值"><span class="section table-of-contents-text">传值</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传址"><span class="section table-of-contents-text">传址</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#克隆"><span class="section table-of-contents-text">克隆</span></a></li></ol>
 </div>
 
 
             <div class="entry red-link-context">
-                <p></p><h4><br>一个真实的梦境远比残酷的现实更容易让人接受.<br><br><br>当不可能重来的一切再次出现在你眼前,所以你就认为是假的吗?<br><br><br>真或假不取决于你的眼,而取决于你的心.<br><br><br>机会就在眼前,而这一次你拥有了力量,也不再懦弱,为什么还要犹豫呢?<br><br><br>是真实太过虚幻,是你无法相信,还是梦境太过真实,使你难以接受?<br><br><br>如果在你思考问题的时候机会转瞬即逝,你能原谅自己吗?<br></h4><br><a id="more"></a><br><br><br><br>—    假页      &lt;侠岚&gt;<p></p>
+                <h2 id="传值"><a href="#传值" class="headerlink" title="传值"></a>传值</h2><p>传值:把一个变量的值复制一份给另一个变量</p>
+<ol>
+<li>复制变量的值</li>
+<li>申请一个新的内存地址存放复制的值</li>
+<li>把复制的值的地址告诉另一个变量<br>简单数据类型的赋值是传值</li>
+</ol>
+<p>例:</p>
+<pre><code>var a = 1;
+var b = a;
+b = 2;
+console.log(a,b)                //输出1和2
+</code></pre><h2 id="传址"><a href="#传址" class="headerlink" title="传址"></a>传址</h2><p>传址：把一个变量在内存中的地址复制给另一个变量.</p>
+<p>复杂数据类型的赋值是传址。</p>
+<p>例:</p>
+<pre><code>var arr1 = [1,2,3,4];
+var arr2 = arr1;
+arr2[0] = 10;
+console.log( arr1, arr2 );        //两个输出的都是 [10, 2, 3, 4]
+</code></pre><p><code>通过比较我们发现传址会改变原变量的值,而传值不会.</code></p>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p>要想传址时还不改变原变量的值,我来给介绍几种方法:</p>
+<p>1.通过循环把传址改为传值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var arr1=[1,2,3,4]</span><br><span class="line">var arr2=[]</span><br><span class="line">for(var i=0;i&lt;arr1.length;i++)&#123;</span><br><span class="line">	arr2[i]=arr1[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">arr2[0] = 10;</span><br><span class="line">console.log( arr1, arr2 );			//分别输出[1,2,3,4]和[10,2,3,4]</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">&lt;注&gt; :在 ECMAScript5 中新增了一个数组方法 forEach() 用来循环数组,它有两个参数:</span><br><span class="line"></span><br><span class="line"> - 第一个参数: 回调函数</span><br><span class="line"> </span><br><span class="line"> 	每次循环时都会调用一下回调函数,回调函数有三个参数:</span><br><span class="line"> 		- 第一个参数:当前循环的值</span><br><span class="line"> 		- 第二个参数: 当前循环的值的下标</span><br><span class="line"> 		- 第三个参数: 被循环的数组本身</span><br><span class="line"> - 第二个参数: 指定回调函数中this的新值</span><br></pre></td></tr></table></figure>
+<pre><code> arr1.forEach(function(val,index,arr){
+    alert(this);
+       console.log(val,index,arr);
+},1);
+ ```
+</code></pre><p>2.发</p>
 
             </div>
         </div>
@@ -286,7 +334,7 @@
         <div class="card">
             <div class="card-content">
                 <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2016/03/06/jiaye/" data-title="真实or梦境" data-url="http://gaoke700.github.io/2016/03/06/jiaye/"></div>
+                <div class="ds-thread" data-thread-key="2016/03/19/passbyvalue/" data-title="传值与传址" data-url="http://gaoke700.github.io/2016/03/19/passbyvalue/"></div>
 
                 <script type="text/javascript">
                     console.log(document.querySelector('.ds-thread'));

@@ -174,7 +174,15 @@ call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内�
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/js/">
-                    js <span class="right">8</span></a>
+                    js <span class="right">9</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/工具/">
+                    工具 <span class="right">7</span></a>
                 </a>
             </li>
 
@@ -191,14 +199,6 @@ call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内�
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/其他/">
                     其他 <span class="right">2</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/工具/">
-                    工具 <span class="right">7</span></a>
                 </a>
             </li>
 
@@ -377,7 +377,7 @@ xiaohong.dance();
 <pre><code>Girl.prototype = new Person();
 </code></pre><p>这句的时候,我们发现我们new出来一个函数仅仅只是用于赋给Girl的原型链,并没有别的操作,这样的内存占用太奢侈了,因为一个变量或者对象占用的内存远大于纯字符的几行代码,所以我宁愿多些几行代码,也要改变它.我发现我们可以直接把父构造函数的原型赋给子构造函数的原型,而不通过new:</p>
 <pre><code>Girl.prototype = Person.prototype;
-</code></pre><p>这样我们是解决了内存占用问题,但是由于这种传值导致了Person<br>也有了Girl的原型上的方法,也就是此时:</p>
+</code></pre><p>这样我们是解决了内存占用问题,但是由于这种传址导致了Person<br>也有了Girl的原型上的方法,也就是此时:</p>
 <pre><code>xiaoming.shopping()
 </code></pre><p>也能正确执行 ,这显然我们在继承的时候影响到了被继承的原函数,导致了:</p>
 <pre><code>alert( xiaohong.constructor );
@@ -390,7 +390,7 @@ alert( xiaohong.constructor );
 alert( xiaoming.constructor );
 </code></pre><p>这样确实改变了,两个都弹出</p>
 <pre><code>function Girl(name,age){...}
-</code></pre><p>这貌似改的有点过了吧…其实一切都是传值惹的祸,我们可以这样解决( 不知道传值的可以看我另一篇博客<a href="">传值与传址</a> )具体就是:</p>
+</code></pre><p>这貌似改的有点过了吧…其实一切都是传址惹的祸,我们可以这样解决( 不知道传值的可以看我另一篇博客<a href="">传值与传址</a> )具体就是:</p>
 <pre><code>function F(){}                            //我们创建一个空函数
 F.prototype = Person.prototype;            //把父构造函数的原型赋给空函数的原型
 Girl.prototype = new F();
