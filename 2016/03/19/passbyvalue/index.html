@@ -20,8 +20,7 @@
 var a = 1;
 var b = a;
 b = 2;
-console.log(a,b)                //输出1和2
-传">
+console.log(a,b)                //输出1和2">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -198,8 +197,8 @@ console.log(a,b)                //输出1和2
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随笔/">
-                    随笔 <span class="right">2</span></a>
+                <a class="no-padding" href="/categories/面试题/">
+                    面试题 <span class="right">4</span></a>
                 </a>
             </li>
 
@@ -214,8 +213,8 @@ console.log(a,b)                //输出1和2
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/面试题/">
-                    面试题 <span class="right">4</span></a>
+                <a class="no-padding" href="/categories/随笔/">
+                    随笔 <span class="right">2</span></a>
                 </a>
             </li>
 
@@ -288,7 +287,7 @@ console.log(a,b)                //输出1和2
 
 
             <div class="toc red-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传值"><span class="section table-of-contents-text">传值</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传址"><span class="section table-of-contents-text">传址</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#克隆"><span class="section table-of-contents-text">克隆</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传值"><span class="section table-of-contents-text">传值</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#传址"><span class="section table-of-contents-text">传址</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#克隆"><span class="section table-of-contents-text">克隆</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-通过循环把传址改为传值"><span class="section table-of-contents-text">1.通过循环把传址改为传值:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-通过json转换"><span class="section table-of-contents-text">2.通过json转换:</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#JSON-stringify"><span class="section table-of-contents-text">JSON.stringify()</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#JSON-parse"><span class="section table-of-contents-text">JSON.parse()</span></a></li></ol></li></ol></li></ol>
 </div>
 
 
@@ -304,7 +303,8 @@ console.log(a,b)                //输出1和2
 var b = a;
 b = 2;
 console.log(a,b)                //输出1和2
-</code></pre><h2 id="传址"><a href="#传址" class="headerlink" title="传址"></a>传址</h2><p>传址：把一个变量在内存中的地址复制给另一个变量.</p>
+</code></pre><a id="more"></a>
+<h2 id="传址"><a href="#传址" class="headerlink" title="传址"></a>传址</h2><p>传址：把一个变量在内存中的地址复制给另一个变量.</p>
 <p>复杂数据类型的赋值是传址。</p>
 <p>例:</p>
 <pre><code>var arr1 = [1,2,3,4];
@@ -313,8 +313,7 @@ arr2[0] = 10;
 console.log( arr1, arr2 );        //两个输出的都是 [10, 2, 3, 4]
 </code></pre><p><code>通过比较我们发现传址会改变原变量的值,而传值不会.</code></p>
 <h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p>要想传址时还不改变原变量的值,我来给介绍几种方法:</p>
-<p>1.通过循环把传址改为传值:</p>
-<pre><code>var arr1=[1,2,3,4]
+<h3 id="1-通过循环把传址改为传值"><a href="#1-通过循环把传址改为传值" class="headerlink" title="1.通过循环把传址改为传值:"></a>1.通过循环把传址改为传值:</h3><pre><code>var arr1=[1,2,3,4]
 var arr2=[]
 for(var i=0;i&lt;arr1.length;i++){
     arr2[i]=arr1[i]
@@ -322,6 +321,10 @@ for(var i=0;i&lt;arr1.length;i++){
 
 arr2[0] = 10;
 console.log( arr1, arr2 );            //分别输出[1,2,3,4]和[10,2,3,4]
+</code></pre><p>也可以用for in循环</p>
+<pre><code>for(var i in arr1){
+    arr2[i]=arr1[i]
+}
 </code></pre><p>&lt;注&gt;:在 ECMAScript5 中新增了一个数组方法 forEach() 用来循环数组,它有两个参数:</p>
 <ul>
 <li><p>第一个参数: 回调函数</p>
@@ -338,8 +341,46 @@ console.log( arr1, arr2 );            //分别输出[1,2,3,4]和[10,2,3,4]
 
 </li>
 </ul>
-<p>2.通过json转换:</p>
+<h3 id="2-通过json转换"><a href="#2-通过json转换" class="headerlink" title="2.通过json转换:"></a>2.通过json转换:</h3><h4 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify()"></a>JSON.stringify()</h4><p> JSON.stringify() :把对象转换成字符串形式的JSON格式字符串值。只能转换js对象，不能转换dom和bom对象</p>
+<p> &lt;注&gt;: JSON要大写.</p>
+<p> 来来来 ,看例子吧:</p>
+<pre><code>var arr = [1,2,[5,6],{a: &apos;abc&apos;,b: true}];
+var obj = {a: &apos;abc&apos;,b: true};
 
+console.log(typeof arr,typeof obj)            //object object
+
+ console.log(JSON.stringify(arr))            //[1,2,[5,6],{&quot;a&quot;:&quot;abc&quot;,&quot;b&quot;:true}]
+ console.log(JSON.stringify(obj))            //{&quot;a&quot;:&quot;abc&quot;,&quot;b&quot;:true}
+
+ console.log(typeof JSON.stringify(arr),typeof JSON.stringify(obj))    //string string
+
+ console.log(JSON.stringify(arr).length,JSON.stringify(obj).length)    //32 20
+</code></pre><p> 通过上述代码我们发现转化过后,他们从对象变成了字符串,在这过程中,它忽略了空格,并给所有的属性都加上了引号,在计算字符串长度时,引号必然也要被计算进去.</p>
+<p> 继续,我们假设HTML结构里有个id为div1的div</p>
+<pre><code>var oDiv = document.getElementById(&apos;div1&apos;);
+
+console.log(JSON.stringify(oDiv));                // {}
+</code></pre><p> 它只会输出一对大括号,所以 JSON.stringify() 只能转换js对象，不能转换dom和bom对象</p>
+<h4 id="JSON-parse"><a href="#JSON-parse" class="headerlink" title="JSON.parse()"></a>JSON.parse()</h4><p> JSON.parse() ：把字符串形式的标准json字符串转换成对象。注意：json字符串必须是标准格式（属性名称必须有引号）。</p>
+<p> 我们还是看例子吧:</p>
+<pre><code>var str1 = &apos;[1,2,[5,6],{&quot;a&quot;:&quot;abc&quot;,&quot;b&quot;:true}]&apos;
+
+console.log(typeof str1)                    //string
+
+console.log(JSON.parse(str1))                //[1, 2, Array[2], Object]
+
+console.log(typeof JSON.parse(str1))        //object
+</code></pre><p> 此种方式仅支持标准格式： <code>  var str=’{ “name”: “John” }’;  </code> ,里面key必须用双引号包起来,单引号都不行.</p>
+<p> jQuery使用 $.parseJSON(str) 来转化:</p>
+<pre><code>console.log($.parseJSON(str1))        
+</code></pre><p> 当然此方式也仅支持标准格式</p>
+<p> 还可以使用eval:</p>
+<pre><code>eval(&apos;(&apos; + str1 + &apos;)&apos;)
+</code></pre><p> Eval方式可以转换以下标准和非标准格式字符串：</p>
+<pre><code> var str=&quot;{ &apos;name&apos;: &apos;John&apos; }&quot;;
+var str2=&apos;{ &quot;name&quot;: &quot;John&quot; }&apos;;
+var str3=&quot;{ name: &apos;John&apos; }&quot;;
+</code></pre>
             </div>
         </div>
     </div>

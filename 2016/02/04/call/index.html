@@ -189,8 +189,8 @@ call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内�
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随笔/">
-                    随笔 <span class="right">2</span></a>
+                <a class="no-padding" href="/categories/面试题/">
+                    面试题 <span class="right">4</span></a>
                 </a>
             </li>
 
@@ -205,8 +205,8 @@ call, apply都属于Function.prototype的一个方法,它是JavaScript引擎内�
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/面试题/">
-                    面试题 <span class="right">4</span></a>
+                <a class="no-padding" href="/categories/随笔/">
+                    随笔 <span class="right">2</span></a>
                 </a>
             </li>
 
@@ -396,7 +396,37 @@ F.prototype = Person.prototype;            //把父构造函数的原型赋给�
 Girl.prototype = new F();
 Girl.prototype.constructor = Girl;        //现在把Girl的原型的构造指向Girl时就不会影响Person了
 </code></pre><p>这样我们就解决了以上所有问题,有人说,你这绕了十八个弯不还是转回来new了一下吗,是的,确实是的,不过我们new的是一个空函数,跟实际项目中那复杂的函数相比,这绕的值啊</p>
+<p>你还可以直接把传址改为传值:</p>
+<pre><code>function Person(name,age){
+    this.name = name;
+    this.age = age;
+    this.say = function(){
+       alert(&apos;我叫&apos;+ this.name);
+    };
+}
+Person.prototype.dance = function(){     
+    alert(&apos;旋转，跳跃&apos;);
+};
 
+function Girl(name,age){
+    Person.apply(this,arguments);    
+}
+for(var i in Person.prototype){                   //用循环把传址改为传值
+    Girl.prototype[i]=Person.prototype[i]
+}
+
+Girl.prototype.shopping = function(){
+    alert(&apos;买买买&apos;);
+};
+
+var xiaoming = new Person(&apos;小明&apos;,18);
+var xiaohong = new Girl(&apos;小红&apos;,16);
+xiaohong.say()
+xiaohong.dance();
+console.log(xiaoming.constructor)            //person
+console.log(xiaohong.constructor)            //Girl
+xiaoming.shopping()                            //报错
+</code></pre>
             </div>
         </div>
     </div>
