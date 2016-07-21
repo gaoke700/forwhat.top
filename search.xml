@@ -3255,16 +3255,16 @@ $(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;
   
     
     <entry>
+      <title><![CDATA[读书]]></title>
+      <url>http://gaoke700.github.io/reading/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于]]></title>
       <url>http://gaoke700.github.io/about/index.html</url>
       <content type="html"><![CDATA[<p>hi guys，i am gaoke。welcome to my blog。</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[读书]]></title>
-      <url>http://gaoke700.github.io/reading/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
